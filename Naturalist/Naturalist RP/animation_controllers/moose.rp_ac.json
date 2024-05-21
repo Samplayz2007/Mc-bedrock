@@ -1,0 +1,111 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.moose.move": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": [
+            "idle",
+            "look_at_target"
+          ],
+          "blend_transition": 0.2,
+          "blend_via_shortest_path": true,
+          "transitions": [
+            {
+              "run": "v.is_running"
+            },
+            {
+              "walk": "v.is_walking"
+            },
+            {
+              "belling": "v.is_belling"
+            }
+          ]
+        },
+        "walk": {
+          "animations": [
+            "walk",
+            "look_at_target"
+          ],
+          "blend_transition": 0.2,
+          "blend_via_shortest_path": true,
+          "transitions": [
+            {
+              "idle": "v.is_idling"
+            },
+            {
+              "run": "v.is_running"
+            },
+            {
+              "belling": "v.is_belling"
+            }
+          ]
+        },
+        "run": {
+          "animations": [
+            "run",
+            "look_at_target"
+          ],
+          "blend_transition": 0.2,
+          "blend_via_shortest_path": true,
+          "transitions": [
+            {
+              "idle": "v.is_idling"
+            },
+            {
+              "walk": "v.is_walking"
+            },
+            {
+              "belling": "v.is_belling"
+            }
+          ]
+        },
+        "belling": {
+          "animations": [
+            "bellow"
+          ],
+          "blend_transition": 0.2,
+          "blend_via_shortest_path": true,
+          "transitions": [
+            {
+              "idle": "!v.is_belling || (q.all_animations_finished && v.is_idling)"
+            },
+            {
+              "run": "!v.is_belling || (q.all_animations_finished && v.is_running)"
+            },
+            {
+              "walk": "!v.is_belling || (q.all_animations_finished && v.is_walking)"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.moose.attack": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "blend_transition": 0.2,
+          "blend_via_shortest_path": true,
+          "transitions": [
+            {
+              "attack": "v.is_attacking"
+            }
+          ]
+        },
+        "attack": {
+          "blend_transition": 0.2,
+          "blend_via_shortest_path": true,
+          "animations": [
+            "attack"
+          ],
+          "transitions": [
+            {
+              "default": "!v.is_attacking && q.all_animations_finished"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

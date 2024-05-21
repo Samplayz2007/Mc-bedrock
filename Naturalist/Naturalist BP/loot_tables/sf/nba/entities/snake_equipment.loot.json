@@ -1,0 +1,33 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 40
+        },
+        {
+          "type": "item",
+          "name": "minecraft:chicken",
+          "weight": 30
+        },
+        {
+          "type": "item",
+          "name": "minecraft:rabbit",
+          "weight": 15
+        },
+        {
+          "type": "item",
+          "name": "minecraft:slime_ball",
+          "weight": 10
+        },
+        {
+          "type": "item",
+          "name": "minecraft:rabbit_foot",
+          "weight": 5
+        }
+      ]
+    }
+  ]
+}

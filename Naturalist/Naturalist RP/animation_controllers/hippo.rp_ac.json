@@ -1,0 +1,145 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.hippo.move": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            "idle"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "walk": "!q.has_target && (q.modified_move_speed >= 0.1)"
+            },
+            {
+              "run": "q.has_target && (q.modified_move_speed >= 0.1)"
+            },
+            {
+              "swim": "q.is_in_water && (q.modified_move_speed >= 0.1)"
+            }
+          ]
+        },
+        "walk": {
+          "animations": [
+            "walk"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "q.modified_move_speed < 0.1"
+            },
+            {
+              "run": "q.has_target"
+            },
+            {
+              "swim": "q.is_in_water"
+            }
+          ]
+        },
+        "run": {
+          "animations": [
+            "run"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "q.modified_move_speed < 0.1"
+            },
+            {
+              "walk": "!q.has_target"
+            },
+            {
+              "swim": "q.is_in_water"
+            }
+          ]
+        },
+        "swim": {
+          "animations": [
+            "swim"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "q.modified_move_speed < 0.1"
+            },
+            {
+              "run": "q.has_target && !q.is_in_water"
+            },
+            {
+              "walk": "!q.has_target && !q.is_in_water"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.hippo.attack": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "bite": "v.attack_time > 0"
+            }
+          ]
+        },
+        "bite": {
+          "animations": [
+            "bite"
+          ],
+          "transitions": [
+            {
+              "default": "q.any_animation_finished"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.hippo.eat": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "breedable": "!q.is_in_love"
+            }
+          ]
+        },
+        "breedable": {
+          "transitions": [
+            {
+              "eat": "q.is_in_love"
+            }
+          ]
+        },
+        "eat": {
+          "animations": [
+            "bite"
+          ],
+          "particle_effects": [
+            {
+              "effect": "bite",
+              "locator": "chomp"
+            },
+            {
+              "effect": "slice",
+              "locator": "chomp"
+            }
+          ],
+          "on_entry": [
+            "v.is_biting = 1;"
+          ],
+          "on_exit": [
+            "v.is_biting = 0;"
+          ],
+          "transitions": [
+            {
+              "default": "q.all_animations_finished"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

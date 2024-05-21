@@ -1,0 +1,265 @@
+{
+  "format_version": "1.20.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "sf_nba:orca",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "properties": {
+        "sf_nba:is_sleeping": {
+          "client_sync": false,
+          "type": "bool",
+          "default": false
+        }
+      }
+    },
+    "component_groups": {
+      "sf_nba:despawn": {
+        "minecraft:instant_despawn": {}
+      },
+      "sf_nba:as_baby": {
+        "minecraft:is_baby": {},
+        "minecraft:scale": {
+          "value": 0.5
+        }
+      },
+      "sf_nba:is_in_water": {
+        "minecraft:movement.sway": {
+          "sway_amplitude": 0
+        },
+        "minecraft:underwater_movement": {
+          "value": 0.05
+        },
+        "minecraft:navigation.generic": {
+          "is_amphibious": false,
+          "can_path_over_water": true,
+          "can_swim": true,
+          "can_walk": false,
+          "can_breach": false,
+          "can_sink": false
+        },
+        "minecraft:behavior.swim_idle": {
+          "priority": 1,
+          "idle_time": 6,
+          "success_rate": 0.05
+        },
+        "minecraft:behavior.random_swim": {
+          "priority": 2,
+          "speed_multiplier": 1.0,
+          "xz_dist": 16,
+          "y_dist": 4,
+          "avoid_surface": false,
+          "interval": 1
+        },
+        "minecraft:behavior.swim_wander": {
+          "priority": 3,
+          "interval": 1.0,
+          "look_ahead": 2.0,
+          "speed_multiplier": 1.0,
+          "wander_time": 5.0
+        }
+      },
+      "sf_nba:out_of_water": {
+        "minecraft:movement.basic": {
+          "max_turn": 30
+        },
+        "minecraft:movement": {
+          "value": 0.2
+        },
+        "minecraft:navigation.generic": {
+          "is_amphibious": true,
+          "can_path_over_water": true,
+          "can_break_doors": false,
+          "can_swim": true,
+          "can_walk": true,
+          "avoid_sun": false,
+          "can_path_from_air": false
+        }
+      },
+      "sf_nba:body_hitbox_adult": {
+        "minecraft:addrider": {
+          "entity_type": "sf_nba:custom_hit_test",
+          "spawn_event": "sf_nba:orca_hitbox"
+        },
+        "minecraft:timer": {
+          "time": 0.1,
+          "looping": false,
+          "time_down_event": {
+            "event": "sf_nba:add_orca_tail_hitbox",
+            "target": "self"
+          }
+        }
+      },
+      "sf_nba:hitbox_2_adult": {
+        "minecraft:addrider": {
+          "entity_type": "sf_nba:custom_hit_test",
+          "spawn_event": "sf_nba:orca_hitbox"
+        }
+      }
+    },
+    "components": {
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:nameable": {},
+      "minecraft:type_family": {
+        "family": [
+          "sf_nba:orca",
+          "mob"
+        ]
+      },
+      "minecraft:health": {
+        "value": 40,
+        "max": 40
+      },
+      "minecraft:rideable": {
+        "seat_count": 4,
+        "family_types": [
+          "sf_nba:custom_hit_test"
+        ],
+        "seats": [
+          {
+            "position": [
+              0,
+              0,
+              2.7
+            ]
+          },
+          {
+            "position": [
+              0,
+              0,
+              4.2
+            ]
+          },
+          {
+            "position": [
+              0,
+              0,
+              -2.7
+            ]
+          },
+          {
+            "position": [
+              0,
+              0,
+              -5.1
+            ]
+          }
+        ]
+      },
+      "minecraft:knockback_resistance": {
+        "value": 0.75
+      },
+      "minecraft:collision_box": {
+        "width": 3,
+        "height": 2.5
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0,
+        "breathes_air": false,
+        "breathes_water": true
+      },
+      "minecraft:environment_sensor": {
+        "triggers": [
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "in_water"
+                },
+                {
+                  "test": "has_component",
+                  "operator": "!=",
+                  "value": "minecraft:behavior.swim_wander"
+                }
+              ]
+            },
+            "event": "sf_nba:orca_in_water"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "in_water",
+                  "value": false
+                },
+                {
+                  "test": "has_component",
+                  "value": "minecraft:behavior.swim_wander"
+                }
+              ]
+            },
+            "event": "sf_nba:orca_out_of_water"
+          }
+        ]
+      },
+      "minecraft:behavior.move_to_water": {
+        "priority": 0,
+        "search_range": 32,
+        "search_height": 32,
+        "search_count": 0,
+        "goal_radius": 0
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:conditional_bandwidth_optimization": {}
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "sf_nba:body_hitbox_adult"
+          ]
+        }
+      },
+      "sf_nba:despawn": {
+        "add": {
+          "component_groups": [
+            "sf_nba:despawn"
+          ]
+        }
+      },
+      "sf_nba:orca_as_baby": {
+        "add": {
+          "component_groups": [
+            "sf_nba:as_baby"
+          ]
+        }
+      },
+      "sf_nba:orca_in_water": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:out_of_water"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "sf_nba:is_in_water"
+          ]
+        }
+      },
+      "sf_nba:orca_out_of_water": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:is_in_water"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "sf_nba:out_of_water"
+          ]
+        }
+      },
+      "sf_nba:add_orca_tail_hitbox": {
+        "add": {
+          "component_groups": [
+            "sf_nba:hitbox_2_adult"
+          ]
+        }
+      }
+    }
+  }
+}

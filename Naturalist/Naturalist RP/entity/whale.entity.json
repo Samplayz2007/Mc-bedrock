@@ -1,0 +1,54 @@
+{
+  "format_version": "1.20.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:whale",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/whale"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.whale"
+      },
+      "animations": {
+        "controller.whale": "controller.animation.sf_nba.whale",
+        "controller.whale.idle_event": "controller.animation.sf_nba.whale.idle_event",
+        "controller.whale.particle": "controller.animation.sf_nba.whale.particle",
+        "idle": "animation.sf_nba.whale.idle",
+        "idle_event": "animation.sf_nba.whale.idle_event",
+        "swim": "animation.sf_nba.whale.swim",
+        "flop": "animation.sf_nba.whale.flop",
+        "baby_transform": "animation.sf_nba.whale.baby_transform",
+        "particle": "animation.sf_nba.whale.particle"
+      },
+      "scripts": {
+        "animate": [
+          "controller.whale.idle_event",
+          "controller.whale",
+          "controller.whale.particle",
+          {
+            "baby_transform": "q.is_baby"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "spawn_egg": {
+        "base_color": "#C9D3BD",
+        "overlay_color": "#3C6873"
+      },
+      "sound_effects": {
+        "swim": "sf_nba.whale.swim",
+        "flop": "sf_nba.whale.flop",
+        "blowhole": "sf_nba.whale.blowhole"
+      },
+      "particle_effects": {
+        "spray_1": "sf_nba:whale_spray_1",
+        "spray_2": "sf_nba:whale_spray_2"
+      }
+    }
+  }
+}

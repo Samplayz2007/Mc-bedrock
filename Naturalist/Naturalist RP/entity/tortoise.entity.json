@@ -1,0 +1,52 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:tortoise",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "black": "textures/sf/nba/entity/tortoise/black",
+        "brown": "textures/sf/nba/entity/tortoise/brown",
+        "green": "textures/sf/nba/entity/tortoise/green"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.tortoise"
+      },
+      "animations": {
+        "controller": "controller.animation.sf_nba.tortoise.main",
+        "look_at_target": "animation.sf_nba.tortoise.look_at_target",
+        "walk": "animation.sf_nba.tortoise.walk",
+        "hide": "animation.sf_nba.tortoise.hide",
+        "dig": "animation.sf_nba.tortoise.dig",
+        "idle": "animation.sf_nba.tortoise.idle",
+        "sit": "animation.sf_nba.tortoise.sit",
+        "baby_transform": "animation.sf_nba.tortoise.babay_transform"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "baby_transform": "q.is_baby"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.tortoise"
+      ],
+      "spawn_egg": {
+        "base_color": "#4ab847",
+        "overlay_color": "#55b430"
+      },
+      "sound_effects": {
+        "dig": "sf_nba.tortoise.dig",
+        "hurt": "sf_nba.tortoise.hurt",
+        "hide": "sf_nba.tortoise.hide",
+        "step": "sf_nba.step.medhoof",
+        "step_-6dB": "sf_nba.step.medhoof_-6dB",
+        "step_-12dB": "sf_nba.step.medhoof_-12dB"
+      }
+    }
+  }
+}

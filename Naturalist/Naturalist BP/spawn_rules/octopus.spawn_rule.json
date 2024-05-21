@@ -1,0 +1,38 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "sf_nba:octopus",
+      "population_control": "water_animal"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_underwater": {},
+        "minecraft:spawns_on_surface": {},
+        "minecraft:weight": {
+          "default": 8
+        },
+        "minecraft:height_filter": {
+          "min": -20,
+          "max": 64
+        },
+        "minecraft:biome_filter": [
+          {
+            "any_of": [
+              {
+                "test": "has_biome_tag",
+                "operator": "==",
+                "value": "frozen"
+              },
+              {
+                "test": "has_biome_tag",
+                "operator": "==",
+                "value": "ocean"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

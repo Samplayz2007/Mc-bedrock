@@ -1,0 +1,80 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.lizard.main": {
+      "states": {
+        "default": {
+          "animations": [
+            "idle",
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "sleep": "q.is_sleeping"
+            },
+            {
+              "sit": "q.is_sitting"
+            },
+            {
+              "walk": "q.modified_move_speed > 0.05"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "walk": {
+          "animations": [
+            "walk",
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "sleep": "q.is_sleeping"
+            },
+            {
+              "sit": "q.is_sitting"
+            },
+            {
+              "default": "q.modified_move_speed <= 0.05"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "sit": {
+          "animations": [
+            "sit",
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "sleep": "q.is_sleeping"
+            },
+            {
+              "walk": "!q.is_sitting && q.modified_move_speed > 0.05"
+            },
+            {
+              "default": "!q.is_sitting"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "sleep": {
+          "animations": [
+            "sleep"
+          ],
+          "transitions": [
+            {
+              "sit": "!q.is_sleeping && q.is_sitting"
+            },
+            {
+              "walk": "!q.is_sleeping && q.modified_move_speed > 0.05"
+            },
+            {
+              "default": "!q.is_sleeping"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}

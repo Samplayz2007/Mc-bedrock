@@ -1,0 +1,138 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.ray.main": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": [
+            "idle"
+          ],
+          "transitions": [
+            {
+              "hide": "(v.is_hiding ?? 0)"
+            },
+            {
+              "swim": "(q.modified_move_speed > 0.01)"
+            },
+            {
+              "on_land": "!q.is_on_ground && !q.is_in_water"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "on_land": {
+          "transitions": [
+            {
+              "idle": "q.is_in_water || (q.modified_move_speed > 0.01)"
+            },
+            {
+              "swim": "q.is_in_water || (q.modified_move_speed > 0.01)"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "swim": {
+          "animations": [
+            "swim"
+          ],
+          "transitions": [
+            {
+              "hide": "(v.is_hiding ?? 0)"
+            },
+            {
+              "idle": "!(q.modified_move_speed > 0.01)"
+            },
+            {
+              "on_land": "!q.is_on_ground && !q.is_in_water"
+            },
+            {
+              "swim_b": "q.any_animation_finished && (math.random_integer(0, 4) == 0)"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "swim_b": {
+          "animations": [
+            "swim_b"
+          ],
+          "transitions": [
+            {
+              "hide": "(v.is_hiding ?? 0)"
+            },
+            {
+              "idle": "!(q.modified_move_speed > 0.01)"
+            },
+            {
+              "on_land": "!q.is_on_ground && !q.is_in_water"
+            },
+            {
+              "swim": "q.any_animation_finished"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "hide": {
+          "animations": [
+            "hide"
+          ],
+          "transitions": [
+            {
+              "idle": "!(v.is_hiding ?? 0)"
+            },
+            {
+              "on_land": "!q.is_on_ground && !q.is_in_water"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    },
+    "controller.animation.sf_nba.ray.dust": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "on_entry": [
+            "v.dig = (v.is_hiding ?? 0);"
+          ],
+          "transitions": [
+            {
+              "dig_up": "(v.dig ?? 0) != (v.is_hiding ?? 0) && !(v.is_hiding ?? 0)"
+            },
+            {
+              "dig_down": "(v.dig ?? 0) != (v.is_hiding ?? 0) && (v.is_hiding ?? 0)"
+            }
+          ]
+        },
+        "dig_up": {
+          "particle_effects": [
+            {
+              "effect": "dust",
+              "locator": "dust",
+              "pre_effect_script": "v.direction = 1;"
+            }
+          ],
+          "transitions": [
+            {
+              "default": "1"
+            }
+          ]
+        },
+        "dig_down": {
+          "particle_effects": [
+            {
+              "effect": "dust",
+              "locator": "dust",
+              "pre_effect_script": "v.direction = -1;"
+            }
+          ],
+          "transitions": [
+            {
+              "default": "1"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

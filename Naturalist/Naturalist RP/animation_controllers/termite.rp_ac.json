@@ -1,0 +1,55 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.termite": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": [
+            "idle"
+          ],
+          "transitions": [
+            {
+              "run": "v.is_sprinting && q.is_on_ground"
+            },
+            {
+              "walk": "v.is_moving && q.is_on_ground"
+            }
+          ],
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.2
+        },
+        "walk": {
+          "animations": [
+            "walk"
+          ],
+          "transitions": [
+            {
+              "idle": "!v.is_moving"
+            },
+            {
+              "run": "v.is_sprinting && q.is_on_ground"
+            }
+          ],
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.2
+        },
+        "run": {
+          "animations": [
+            "run"
+          ],
+          "transitions": [
+            {
+              "idle": "!v.is_moving"
+            },
+            {
+              "walk": "!v.is_sprinting && q.is_on_ground"
+            }
+          ],
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.goose.general_control": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": [
+            "idle",
+            "look_at_target"
+          ],
+          "blend_transition": 0.2,
+          "transitions": [
+            {
+              "walk": "q.modified_move_speed >= (v.walk_lower_boundary ?? 0)"
+            },
+            {
+              "sleep": "q.is_sleeping"
+            },
+            {
+              "swim": "q.property('sf_nba:is_swimming')"
+            }
+          ]
+        },
+        "walk": {
+          "animations": [
+            "walk",
+            "look_at_target"
+          ],
+          "blend_transition": 0.2,
+          "transitions": [
+            {
+              "idle": "q.modified_move_speed < (v.walk_lower_boundary ?? 0)"
+            },
+            {
+              "run": "q.modified_move_speed >= (v.running_lower_boundary ?? 0) && q.has_target"
+            },
+            {
+              "swim": "q.property('sf_nba:is_swimming')"
+            },
+            {
+              "sleep": "q.is_sleeping"
+            }
+          ]
+        },
+        "run": {
+          "animations": [
+            "run",
+            "look_at_target"
+          ],
+          "blend_transition": 0.2,
+          "transitions": [
+            {
+              "idle": "q.modified_move_speed < (v.walk_lower_boundary ?? 0)"
+            },
+            {
+              "walk": "q.in_range(q.modified_move_speed, (v.walk_lower_boundary ?? 0), (v.walk_upper_boundary  ?? 0))"
+            },
+            {
+              "swim": "q.property('sf_nba:is_swimming')"
+            },
+            {
+              "sleep": "q.is_sleeping"
+            }
+          ]
+        },
+        "swim": {
+          "animations": [
+            "swim",
+            "look_at_target"
+          ],
+          "blend_transition": 0.2,
+          "transitions": [
+            {
+              "walk": "!q.property('sf_nba:is_swimming') && q.modified_move_speed > 0.05"
+            },
+            {
+              "idle": "!q.property('sf_nba:is_swimming')"
+            },
+            {
+              "sleep": "q.is_sleeping"
+            }
+          ]
+        },
+        "sleep": {
+          "animations": [
+            "sleep"
+          ],
+          "blend_transition": 0.2,
+          "transitions": [
+            {
+              "idle": "!q.is_sleeping"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.goose.attack_control": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "blend_transition": 0.2,
+          "transitions": [
+            {
+              "peck": "q.is_delayed_attacking == 1"
+            }
+          ]
+        },
+        "peck": {
+          "blend_transition": 0.2,
+          "animations": [
+            "peck"
+          ],
+          "transitions": [
+            {
+              "default": "q.is_delayed_attacking == 0"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

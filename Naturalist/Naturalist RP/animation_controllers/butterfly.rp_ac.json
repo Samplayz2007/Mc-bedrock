@@ -1,0 +1,29 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.butterfly.drip": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "dripping": "q.property('sf_nba:has_nectar')"
+            }
+          ]
+        },
+        "dripping": {
+          "particle_effects": [
+            {
+              "effect": "nectar_dripping"
+            }
+          ],
+          "transitions": [
+            {
+              "default": "!q.property('sf_nba:has_nectar')"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.raccoon": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": ["idle"],
+          "transitions": [
+            { "run": "v.is_sprinting && q.is_on_ground && q.property('sf_nba:search_state') != 'searching_item'" },
+            { "walk": "v.is_moving && q.is_on_ground && q.property('sf_nba:search_state') != 'searching_item'" },
+            { "search_item_on_chest": "q.property('sf_nba:search_state') == 'searching_item' && (q.property('sf_nba:container_type') == 'chest' || q.property('sf_nba:container_type') == 'trapped_chest')" },
+            { "search_item_on_barrel": "q.property('sf_nba:search_state') == 'searching_item' && q.property('sf_nba:container_type') == 'barrel'" },
+            { "sleep": "q.is_sleeping" }
+          ],
+
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.2
+        },
+
+        "walk": {
+          "animations": ["walk"],
+          "transitions": [
+            { "idle": "!v.is_moving && q.property('sf_nba:search_state') != 'searching_item'" },
+            { "run": "v.is_sprinting && q.is_on_ground && q.property('sf_nba:search_state') != 'searching_item'" },
+            { "search_item_on_chest": "q.property('sf_nba:search_state') == 'searching_item' && (q.property('sf_nba:container_type') == 'chest' || q.property('sf_nba:container_type') == 'trapped_chest')" },
+            { "search_item_on_barrel": "q.property('sf_nba:search_state') == 'searching_item' && q.property('sf_nba:container_type') == 'barrel'" }
+          ],
+
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.2
+        },
+
+        "run": {
+          "animations": ["run"],
+          "transitions": [
+            { "idle": "!v.is_moving && q.property('sf_nba:search_state') != 'searching_item'" },
+            { "walk": "!v.is_sprinting && q.is_on_ground && q.property('sf_nba:search_state') != 'searching_item'" },
+            { "search_item_on_chest": "q.property('sf_nba:search_state') == 'searching_item' && (q.property('sf_nba:container_type') == 'chest' || q.property('sf_nba:container_type') == 'trapped_chest')" },
+            { "search_item_on_barrel": "q.property('sf_nba:search_state') == 'searching_item' && q.property('sf_nba:container_type') == 'barrel'" }
+          ],
+          
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.2
+        },
+
+        "search_item_on_chest": {
+          "animations": ["rummage.chest"],
+          "transitions": [
+            { "idle": "!q.is_sleeping && !v.is_moving && q.property('sf_nba:search_state') != 'searching_item'" },
+            { "run": "!q.is_sleeping && v.is_sprinting && q.is_on_ground && q.property('sf_nba:search_state') != 'searching_item'" },
+            { "walk": "!q.is_sleeping && !v.is_sprinting && q.is_on_ground && q.property('sf_nba:search_state') != 'searching_item'" }
+          ],
+
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.2
+        },
+
+        "search_item_on_barrel": {
+          "animations": ["rummage.barrel"],
+          "transitions": [
+            { "idle": "!q.is_sleeping && !v.is_moving && q.property('sf_nba:search_state') != 'searching_item'" },
+            { "run": "!q.is_sleeping && v.is_sprinting && q.is_on_ground && q.property('sf_nba:search_state') != 'searching_item'" },
+            { "walk": "!q.is_sleeping && !v.is_sprinting && q.is_on_ground && q.property('sf_nba:search_state') != 'searching_item'" }
+          ],
+
+          "blend_via_shortest_path": true,
+          "blend_transition": 0.2
+        },
+
+        "sleep": {
+          "animations": ["sleep"],
+          "transitions": [
+            { "idle": "!q.is_sleeping && !v.is_moving && q.property('sf_nba:search_state') != 'searching_item'" },
+            { "run": "!q.is_sleeping && v.is_sprinting && q.is_on_ground && q.property('sf_nba:search_state') != 'searching_item'" },
+            { "walk": "!q.is_sleeping && !v.is_sprinting && q.is_on_ground && q.property('sf_nba:search_state') != 'searching_item'" }
+          ]
+        }
+      }
+    },
+
+    "controller.animation.sf_nba.raccoon.idle_event": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "on_entry": ["v.delay = Math.random_integer(10, 28);", "v.current_delay = q.life_time;"],
+          "transitions": [
+            { "idle_event": "(q.life_time - v.current_delay >= v.delay) && q.modified_move_speed <= 0.1 && q.is_on_ground" }
+          ],
+
+          "blend_transition": 0.2
+        },
+        "idle_event": {
+          "animations": ["idle_event"],
+          "transitions": [
+            { "default": "q.all_animations_finished || q.modified_move_speed > 0.1 || !q.is_on_ground" }
+          ],
+
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}

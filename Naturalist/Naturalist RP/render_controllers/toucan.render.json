@@ -1,0 +1,25 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.sf_nba.toucan": {
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.variant1",
+            "Texture.variant2",
+            "Texture.variant3"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.skins[q.variant]"
+      ]
+    }
+  }
+}

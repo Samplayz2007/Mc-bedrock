@@ -1,0 +1,63 @@
+{
+  "format_version": "1.20.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:squirrel",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "brown": "textures/sf/nba/entity/squirrel/brown",
+        "black": "textures/sf/nba/entity/squirrel/black",
+        "white": "textures/sf/nba/entity/squirrel/white"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.squirrel"
+      },
+      "animations": {
+        "controller.squirrel": "controller.animation.sf_nba.squirrel",
+        "controller.squirrel.idle_event": "controller.animation.sf_nba.squirrel.idle_event",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "baby_transform": "animation.sf_nba.squirrel.baby_transform",
+        "idle": "animation.sf_nba.squirrel.idle",
+        "idle_event": "animation.sf_nba.squirrel.cleaning",
+        "sleep_0": "animation.sf_nba.squirrel.sleep_0",
+        "sleep_1": "animation.sf_nba.squirrel.sleep_1",
+        "run": "animation.sf_nba.squirrel.run"
+      },
+      "scripts": {
+        "initialize": [
+          "v.anim_speed_multiplier = 0;",
+          "v.anim_speed_movement_max = 0;"
+        ],
+        "pre_animation": [
+          "v.anim_speed_multiplier = 1.75;",
+          "v.anim_speed_movement_max = 0.22;"
+        ],
+        "animate": [
+          {
+            "baby_transform": "q.is_baby"
+          },
+          {
+            "controller.squirrel.idle_event": "!q.is_sleeping"
+          },
+          "controller.squirrel",
+          "look_at_target"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.squirrel"
+      ],
+      "spawn_egg": {
+        "base_color": "#563723",
+        "overlay_color": "#A77E59"
+      },
+      "sound_effects": {
+        "clean": "sf_nba.squirrel.clean",
+        "step": "sf_nba.step.medpaw",
+        "step_-6dB": "sf_nba.step.medpaw_-6dB",
+        "step_-12dB": "sf_nba.step.medpaw_-12dB"
+      }
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "format_version": "1.20.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "sf_nba:lizard_tail",
+      "animations": {
+        "controller.animation.sf_nba.lizard_tail.flop": "controller.animation.sf_nba.lizard_tail.flop"
+      },
+      "scripts": {
+        "animate": [
+          "controller.animation.sf_nba.lizard_tail.flop"
+        ]
+      },
+      "is_summonable": true
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "sf_nba:lizard_tail",
+          "mob"
+        ]
+      },
+      "minecraft:timer": {
+        "time": 180,
+        "looping": true,
+        "time_down_event": {
+          "event": "sf_nba:despawn",
+          "target": "self"
+        }
+      },
+      "minecraft:collision_box": {
+        "width": 0.4,
+        "height": 0.4
+      },
+      "minecraft:health": {
+        "value": 4,
+        "max": 4
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/sf/nba/entities/lizard_tail.loot.json"
+      },
+      "minecraft:physics": {}
+    },
+    "component_groups": {
+      "sf_nba:instant_despawn": {
+        "minecraft:instant_despawn": {
+          "remove_child_entities": false
+        }
+      },
+      "sf_nba:variant_0": {
+        "minecraft:variant": {
+          "value": 0
+        }
+      },
+      "sf_nba:variant_1": {
+        "minecraft:variant": {
+          "value": 1
+        }
+      },
+      "sf_nba:variant_2": {
+        "minecraft:variant": {
+          "value": 2
+        }
+      },
+      "sf_nba:variant_3": {
+        "minecraft:variant": {
+          "value": 3
+        }
+      }
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "sequence": [
+          {
+            "filters": {
+              "test": "is_variant",
+              "subject": "other",
+              "value": 0
+            },
+            "add": {
+              "component_groups": [
+                "sf_nba:variant_0"
+              ]
+            }
+          },
+          {
+            "filters": {
+              "test": "is_variant",
+              "subject": "other",
+              "value": 1
+            },
+            "add": {
+              "component_groups": [
+                "sf_nba:variant_1"
+              ]
+            }
+          },
+          {
+            "filters": {
+              "test": "is_variant",
+              "subject": "other",
+              "value": 2
+            },
+            "add": {
+              "component_groups": [
+                "sf_nba:variant_2"
+              ]
+            }
+          },
+          {
+            "filters": {
+              "test": "is_variant",
+              "subject": "other",
+              "value": 3
+            },
+            "add": {
+              "component_groups": [
+                "sf_nba:variant_3"
+              ]
+            }
+          }
+        ]
+      },
+      "sf_nba:despawn": {
+        "add": {
+          "component_groups": [
+            "sf_nba:instant_despawn"
+          ]
+        }
+      }
+    }
+  }
+}

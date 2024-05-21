@@ -1,0 +1,56 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.caterpillar.chrysalis": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "try_to_form": "q.has_any_family('sf_nba:form_chrysalis')"
+            }
+          ]
+        },
+        "try_to_form": {
+          "on_entry": [
+            "/execute unless block ~ ~ ~ air run event entity @s sf_nba:form_chrysalis_failed",
+            "/execute unless block ~ ~ ~1 log unless block ~ ~ ~-1 log unless block ~-1 ~ ~ log unless block ~1 ~ ~ log unless block ~ ~ ~1 log2 unless block ~ ~ ~-1 log2 unless block ~-1 ~ ~ log2 unless block ~1 ~ ~ log2 unless block ~ ~ ~1 mangrove_log unless block ~ ~ ~-1 mangrove_log unless block ~-1 ~ ~ mangrove_log unless block ~1 ~ ~ mangrove_log unless block ~ ~ ~1 cherry_log unless block ~ ~ ~-1 cherry_log unless block ~-1 ~ ~ cherry_log unless block ~1 ~ ~ cherry_log run event entity @s sf_nba:form_chrysalis_failed",
+            "/execute if block ~ ~ ~ air if block ~ ~ ~1 log run setblock ~ ~ ~ sf_nba:chrysalis_stage0 [\"minecraft:block_face\"=\"north\"]",
+            "/execute if block ~ ~ ~ air if block ~ ~ ~-1 log run setblock ~ ~ ~ sf_nba:chrysalis_stage0 [\"minecraft:block_face\"=\"south\"]",
+            "/execute if block ~ ~ ~ air if block ~-1 ~ ~ log run setblock ~ ~ ~ sf_nba:chrysalis_stage0 [\"minecraft:block_face\"=\"east\"]",
+            "/execute if block ~ ~ ~ air if block ~1 ~ ~ log run setblock ~ ~ ~ sf_nba:chrysalis_stage0 [\"minecraft:block_face\"=\"west\"]",
+            "/execute if block ~ ~ ~ air if block ~ ~ ~1 log2 run setblock ~ ~ ~ sf_nba:chrysalis_stage0 [\"minecraft:block_face\"=\"north\"]",
+            "/execute if block ~ ~ ~ air if block ~ ~ ~-1 log2 run setblock ~ ~ ~ sf_nba:chrysalis_stage0 [\"minecraft:block_face\"=\"south\"]",
+            "/execute if block ~ ~ ~ air if block ~-1 ~ ~ log2 run setblock ~ ~ ~ sf_nba:chrysalis_stage0 [\"minecraft:block_face\"=\"east\"]",
+            "/execute if block ~ ~ ~ air if block ~1 ~ ~ log2 run setblock ~ ~ ~ sf_nba:chrysalis_stage0 [\"minecraft:block_face\"=\"west\"]",
+            "/execute if block ~ ~ ~ air if block ~ ~ ~1 mangrove_log run setblock ~ ~ ~ sf_nba:chrysalis_stage0 [\"minecraft:block_face\"=\"north\"]",
+            "/execute if block ~ ~ ~ air if block ~ ~ ~-1 mangrove_log run setblock ~ ~ ~ sf_nba:chrysalis_stage0 [\"minecraft:block_face\"=\"south\"]",
+            "/execute if block ~ ~ ~ air if block ~-1 ~ ~ mangrove_log run setblock ~ ~ ~ sf_nba:chrysalis_stage0 [\"minecraft:block_face\"=\"east\"]",
+            "/execute if block ~ ~ ~ air if block ~1 ~ ~ mangrove_log run setblock ~ ~ ~ sf_nba:chrysalis_stage0 [\"minecraft:block_face\"=\"west\"]",
+            "/execute if block ~ ~ ~ air if block ~ ~ ~1 cherry_log run setblock ~ ~ ~ sf_nba:chrysalis_stage0 [\"minecraft:block_face\"=\"north\"]",
+            "/execute if block ~ ~ ~ air if block ~ ~ ~-1 cherry_log run setblock ~ ~ ~ sf_nba:chrysalis_stage0 [\"minecraft:block_face\"=\"south\"]",
+            "/execute if block ~ ~ ~ air if block ~-1 ~ ~ cherry_log run setblock ~ ~ ~ sf_nba:chrysalis_stage0 [\"minecraft:block_face\"=\"east\"]",
+            "/execute if block ~ ~ ~ air if block ~1 ~ ~ cherry_log run setblock ~ ~ ~ sf_nba:chrysalis_stage0 [\"minecraft:block_face\"=\"west\"]"
+          ],
+          "transitions": [
+            {
+              "on_try_to_form": "1.0"
+            }
+          ]
+        },
+        "on_try_to_form": {
+          "on_entry": [
+            "/execute as @s[family=sf_nba:form_chrysalis] run scriptevent sf_nba:chrysalis_formed",
+            "/execute as @s[family=sf_nba:form_chrysalis] run particle sf_nba:chrysalis_form",
+            "/event entity @s[family=sf_nba:form_chrysalis] sf_nba:form_chrysalis_done"
+          ],
+          "transitions": [
+            {
+              "default": "q.is_alive"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

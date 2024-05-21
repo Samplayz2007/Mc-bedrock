@@ -1,0 +1,43 @@
+{
+  "format_version": "1.20.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.crab": {
+      "initial_state": "on_load",
+      "states": {
+        "on_load": {
+          "on_entry": [
+            "@s sf_nba:crab_is_not_dancing"
+          ],
+          "transitions": [
+            {
+              "try_collect_sand": "q.property('sf_nba:sand_block_interaction_state') == 'try_collect_sand'"
+            },
+            {
+              "try_place_sand": "q.property('sf_nba:sand_block_interaction_state') == 'try_place_sand'"
+            }
+          ]
+        },
+        "try_collect_sand": {
+          "on_entry": [
+            "/scriptevent sf_nba:crab_try_collect_sand"
+          ],
+          "transitions": [
+            {
+              "on_load": "q.property('sf_nba:sand_block_interaction_state') != 'try_collect_sand'"
+            }
+          ]
+        },
+        "try_place_sand": {
+          "on_entry": [
+            "/scriptevent sf_nba:crab_try_place_sand"
+          ],
+          "transitions": [
+            {
+              "on_load": "q.property('sf_nba:sand_block_interaction_state') != 'try_place_sand'"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.duck.main": {
+      "states": {
+        "default": {
+          "animations": [
+            "idle",
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "swim": "q.property('sf_nba:is_swimming')"
+            },
+            {
+              "walk": "q.modified_move_speed > 0.05"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "walk": {
+          "animations": [
+            "walk",
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "swim": "q.property('sf_nba:is_swimming')"
+            },
+            {
+              "default": "q.modified_move_speed <= 0.05"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "swim": {
+          "animations": [
+            "swim",
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "walk": "!q.property('sf_nba:is_swimming') && q.modified_move_speed > 0.05"
+            },
+            {
+              "default": "!q.property('sf_nba:is_swimming')"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    },
+    "controller.animation.sf_nba.duck.flap": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "flap": "!q.is_on_ground && !q.property('sf_nba:is_swimming')"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "flap": {
+          "animations": [
+            "flap"
+          ],
+          "transitions": [
+            {
+              "default": "q.is_on_ground || q.property('sf_nba:is_swimming')"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:bluejay",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/bird/bluejay"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.bird"
+      },
+      "animations": {
+        "fly": "animation.sf_nba.bird.fly",
+        "sit": "animation.sf_nba.bird.sit",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "move": "controller.animation.sf_nba.bird.move",
+        "baby_transform": "animation.sf_nba.bird.baby_transform"
+      },
+      "scripts": {
+        "animate": [
+          "look_at_target",
+          "move",
+          {
+            "baby_transform": "q.is_baby"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.bird"
+      ],
+      "spawn_egg": {
+        "base_color": "#3C6EA4",
+        "overlay_color": "#0097B3"
+      },
+      "sound_effects": {
+        "peck": "sf_nba.bird.peck",
+        "fly": "sf_nba.bird.fly",
+        "step": "sf_nba.step.smallbird",
+        "step_-6dB": "sf_nba.step.smallbird_-6dB",
+        "step_-12dB": "sf_nba.step.smallbird_-12dB"
+      }
+    }
+  }
+}

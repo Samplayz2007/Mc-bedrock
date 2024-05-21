@@ -1,0 +1,66 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:elephant",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/elephant/elephant"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.elephant"
+      },
+      "animations": {
+        "walk": "animation.sf_nba.elephant.walk",
+        "look_at_target": "animation.sf_nba.elephant.look_at_target",
+        "baby_transform": "animation.sf_nba.elephant.baby_transform",
+        "idle": "animation.sf_nba.elephant.idle",
+        "water": "animation.sf_nba.elephant.water",
+        "swing": "animation.sf_nba.elephant.swing",
+        "drink": "animation.sf_nba.elephant.drink",
+        "move": "controller.animation.sf_nba.elephant.move",
+        "attack": "controller.animation.sf_nba.elephant.attack",
+        "drinking": "controller.animation.sf_nba.elephant.drinking"
+      },
+      "scripts": {
+        "initialize": [
+          "v.anim_speed_multiplier = 0;",
+          "v.anim_speed_movement_max = 0;"
+        ],
+        "pre_animation": [
+          "v.anim_speed_multiplier = 1.53125;",
+          "v.anim_speed_movement_max = 0.5;"
+        ],
+        "animate": [
+          {
+            "baby_transform": "q.is_baby"
+          },
+          "look_at_target",
+          "move",
+          "attack",
+          "drinking"
+        ]
+      },
+      "particle_effects": {
+        "dirt": "sf_nba:elephant_dirt"
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.elephant"
+      ],
+      "spawn_egg": {
+        "base_color": "#918E8D",
+        "overlay_color": "#655D5A"
+      },
+      "sound_effects": {
+        "water": "sf_nba.elephant.water",
+        "drink": "sf_nba.elephant.drink",
+        "attack": "sf_nba.elephant.attack",
+        "step": "sf_nba.step.largehoof",
+        "step_-6dB": "sf_nba.step.largehoof_-6dB",
+        "step_-12dB": "sf_nba.step.largehoof_-12dB"
+      }
+    }
+  }
+}

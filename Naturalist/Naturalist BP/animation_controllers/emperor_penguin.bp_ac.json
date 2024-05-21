@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.emperor_penguin.fall": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "fall": "q.property('sf_nba:slip_anim') == 'none' && q.is_on_ground && !q.is_in_water && q.modified_move_speed > 0.05 && math.random_integer(0, 333) == 0"
+            }
+          ]
+        },
+        "fall": {
+          "on_entry": [
+            "/scriptevent sf_nba:emperor_penguin_fall",
+            "v.cooldown_timer = q.life_time;"
+          ],
+          "transitions": [
+            {
+              "default": "q.life_time >= (v.cooldown_timer + 16.0)"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

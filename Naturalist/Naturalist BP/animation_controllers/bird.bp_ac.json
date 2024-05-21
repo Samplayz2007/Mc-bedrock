@@ -1,0 +1,116 @@
+{
+  "format_version": "1.20.40",
+  "animation_controllers": {
+    "controller.animation.sf_nba.bird.landing_check": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "on_entry": [
+            "v.switch_chance = 200;"
+          ],
+          "transitions": [
+            {
+              "walking": "q.property('sf_nba:movement_mode') == 'walk'"
+            },
+            {
+              "flying": "q.property('sf_nba:movement_mode') == 'fly'"
+            }
+          ]
+        },
+        "walking": {
+          "on_entry": [
+            "v.switch_delay = q.life_time + Math.random_integer(5, 10);"
+          ],
+          "transitions": [
+            {
+              "start_flying": "(Math.random_integer(0, (v.switch_chance ?? 1)) == (v.switch_chance ?? 1) && (q.life_time > (v.switch_delay ?? 0))) && !q.property('sf_nba:is_tempted') && !q.is_sitting && !q.is_sleeping"
+            },
+            {
+              "flying": "q.property('sf_nba:movement_mode') == 'fly'"
+            }
+          ]
+        },
+        "start_flying": {
+          "on_entry": [
+            "@s sf_nba:bird_set_flying_mode"
+          ],
+          "transitions": [
+            {
+              "flying": "q.property('sf_nba:movement_mode') == 'fly'"
+            }
+          ]
+        },
+        "flying": {
+          "on_entry": [
+            "v.switch_delay = q.life_time + Math.random_integer(5, 10);"
+          ],
+          "transitions": [
+            {
+              "landing_check": "(Math.random_integer(0, (v.switch_chance ?? 1)) == (v.switch_chance ?? 1) && (q.life_time > (v.switch_delay ?? 0)) && !q.has_target) || q.property('sf_nba:is_tempted')"
+            },
+            {
+              "walking": "q.property('sf_nba:movement_mode') == 'walk'"
+            }
+          ]
+        },
+        "landing_check": {
+          "on_entry": [
+            "/scriptevent sf_nba:bird_landing_check"
+          ],
+          "transitions": [
+            {
+              "default": "1"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.bird.tempt_check": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "on_entry": [
+            "@s sf_nba:not_tempted"
+          ],
+          "transitions": [
+            {
+              "tempted": "q.is_interested"
+            }
+          ]
+        },
+        "tempted": {
+          "on_entry": [
+            "@s sf_nba:is_tempted"
+          ],
+          "transitions": [
+            {
+              "default": "!q.is_interested"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.bird.smooth_landing": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "tempted": "!q.is_on_ground"
+            }
+          ]
+        },
+        "tempted": {
+          "on_entry": [
+            "/effect @s slow_falling 2 1 true"
+          ],
+          "transitions": [
+            {
+              "default": "1"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

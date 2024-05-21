@@ -1,0 +1,32 @@
+{
+	"format_version": "1.20.10",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "sf_nba:shellstone"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"pattern": [
+			"CS",
+			"SC"
+		],
+		"key": {
+			"C": {
+				"item": "minecraft:calcite"
+			},
+			"S": {
+				"item": "sf_nba:snail_shell"
+			}
+		},
+		"unlock": [
+			{
+				"item": "sf_nba:snail_shell"
+			}
+		],
+		"result": {
+			"item": "sf_nba:shellstone",
+			"count": 8
+		}
+	}
+}

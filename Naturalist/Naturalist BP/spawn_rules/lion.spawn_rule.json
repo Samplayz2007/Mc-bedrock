@@ -1,0 +1,38 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "sf_nba:lion",
+      "population_control": "animal"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:brightness_filter": {
+          "min": 9,
+          "max": 15,
+          "adjust_for_weather": false
+        },
+        "minecraft:weight": {
+          "default": 15
+        },
+        "minecraft:spawn_event": {
+          "event": "sf_nba:promote_to_group_leader"
+        },
+        "minecraft:herd": {
+          "min_size": 3,
+          "max_size": 5,
+          "initial_event": "sf_nba:spawn_as_female",
+          "initial_event_count": 2,
+          "event": "sf_nba:entity_born",
+          "event_skip_count": 3
+        },
+        "minecraft:biome_filter": {
+          "test": "has_biome_tag",
+          "operator": "==",
+          "value": "savanna"
+        }
+      }
+    ]
+  }
+}

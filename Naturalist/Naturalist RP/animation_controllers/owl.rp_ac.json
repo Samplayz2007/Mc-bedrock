@@ -1,0 +1,62 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.owl.main": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "sleep": "q.is_on_ground && q.is_sleeping"
+            },
+            {
+              "fly": "!q.is_on_ground"
+            },
+            {
+              "idle_event": "math.random_integer(0, 2000) == 0 && !q.is_sleeping && !q.modified_move_speed > 0.1"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "sleep": {
+          "animations": [
+            "sleep"
+          ],
+          "transitions": [
+            {
+              "default": "!q.is_sleeping"
+            },
+            {
+              "fly": "!q.is_on_ground"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "idle_event": {
+          "animations": [
+            "idle_event"
+          ],
+          "transitions": [
+            {
+              "default": "query.all_animations_finished"
+            },
+            {
+              "fly": "!q.is_on_ground"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "fly": {
+          "animations": [
+            "fly"
+          ],
+          "transitions": [
+            {
+              "default": "q.is_on_ground"
+            }
+          ],
+          "blend_transition": 0.5
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.flamingo.main": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": [
+            "idle"
+          ],
+          "transitions": [
+            {
+              "walk": "q.modified_move_speed > 0.1"
+            },
+            {
+              "swim": "q.is_in_water"
+            },
+            {
+              "idle_event": "math.random_integer(0, 200) == 0"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "walk": {
+          "animations": [
+            "walk"
+          ],
+          "transitions": [
+            {
+              "swim": "q.is_in_water"
+            },
+            {
+              "idle": "q.modified_move_speed < (v.walk_lower_boundary ?? 0)"
+            },
+            {
+              "run": "q.modified_move_speed >= (v.running_lower_boundary ?? 0)"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "run": {
+          "animations": [
+            "run"
+          ],
+          "transitions": [
+            {
+              "idle": "q.modified_move_speed < (v.walk_lower_boundary ?? 0)"
+            },
+            {
+              "walk": "q.in_range(q.modified_move_speed, (v.walk_lower_boundary ?? 0), (v.walk_upper_boundary  ?? 0))"
+            },
+            {
+              "swim": "q.is_in_water"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "swim": {
+          "animations": [
+            "swim"
+          ],
+          "transitions": [
+            {
+              "idle": "!q.is_in_water && q.modified_move_speed < 0.15"
+            },
+            {
+              "walk": "!q.is_in_water && q.modified_move_speed > 0.05 && q.modified_move_speed <= 0.15"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "idle_event": {
+          "animations": [
+            "idle_event"
+          ],
+          "transitions": [
+            {
+              "swim": "q.is_in_water"
+            },
+            {
+              "run": "q.modified_move_speed > 0.15"
+            },
+            {
+              "walk": "q.modified_move_speed > 0.05"
+            },
+            {
+              "idle": "q.all_animations_finished"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}

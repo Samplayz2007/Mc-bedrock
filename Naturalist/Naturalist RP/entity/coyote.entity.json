@@ -1,0 +1,64 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:coyote",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/coyote/coyote",
+        "brown": "textures/sf/nba/entity/coyote/brown"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.coyote"
+      },
+      "animations": {
+        "cont_main": "controller.animation.sf_nba.coyote.main",
+        "cont_attack": "controller.animation.sf_nba.coyote.attack",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "sit": "animation.sf_nba.coyote.sit",
+        "run": "animation.sf_nba.coyote.run",
+        "walk": "animation.sf_nba.coyote.walk",
+        "idle": "animation.sf_nba.coyote.idle",
+        "attack": "animation.sf_nba.coyote.attack",
+        "attack2": "animation.sf_nba.coyote.attack2",
+        "pounce": "animation.sf_nba.coyote.pounce",
+        "wiggle": "animation.sf_nba.coyote.wiggle",
+        "crouch": "animation.sf_nba.coyote.crouch",
+        "stuck": "animation.sf_nba.coyote.stuck",
+        "item_adjust": "animation.sf_nba.coyote.item_adjust",
+        "baby_transform": "animation.sf_nba.coyote.baby_transform"
+      },
+      "scripts": {
+        "initialize": [
+          "v.walk_threshold = 0.1;",
+          "v.run_threshold = 0.45;"
+        ],
+        "animate": [
+          "cont_main",
+          "cont_attack",
+          "look_at_target",
+          "item_adjust",
+          {
+            "baby_transform": "q.is_baby"
+          }
+        ]
+      },
+      "sound_effects": {
+        "attack": "sf_nba.coyote.attack",
+        "howl": "sf_nba.coyote.howl",
+        "step": "sf_nba.step.medpaw",
+        "step_-6dB": "sf_nba.step.medpaw_-6dB",
+        "step_-12dB": "sf_nba.step.medpaw_-12dB"
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.coyote"
+      ],
+      "spawn_egg": {
+        "base_color": "#B97134",
+        "overlay_color": "#A4977E"
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "sf_nba:dragonfly",
+      "population_control": "animal"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_on_block_filter": [
+          "minecraft:grass",
+          "minecraft:dirt",
+          "minecraft:mud"
+        ],
+        "minecraft:brightness_filter": {
+          "min": 7,
+          "max": 15,
+          "adjust_for_weather": false
+        },
+        "minecraft:weight": {
+          "default": 8
+        },
+        "minecraft:herd": {
+          "min_size": 2,
+          "max_size": 3,
+          "event": "sf_nba:entity_born",
+          "event_skip_count": 1
+        },
+        "minecraft:biome_filter": {
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "swampland"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "mangrove_swamp"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.otter.eat": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "on_entry": [
+            "v.eat_step = 0;",
+            "v.float_delay = q.life_time + 1;",
+            "@s sf_nba:not_floating"
+          ],
+          "transitions": [
+            {
+              "float": "(q.life_time > (v.float_delay ?? 0)) && q.is_item_equipped(0) && q.is_in_water && (math.random_integer(1,100) == 100)"
+            }
+          ]
+        },
+        "float": {
+          "on_entry": [
+            "@s sf_nba:is_floating",
+            "v.eat_delay = q.life_time + math.random(2,5);"
+          ],
+          "transitions": [
+            {
+              "default": "!q.is_item_equipped(0) || !q.is_in_water || (q.modified_move_speed >= 0.075)"
+            },
+            {
+              "eat": "(q.life_time > (v.eat_delay ?? 0))"
+            }
+          ]
+        },
+        "eat": {
+          "on_entry": [
+            "v.eat_step = (v.eat_step ?? 0) + 1;",
+            "v.eat_delay = q.life_time + 0.15;"
+          ],
+          "transitions": [
+            {
+              "munch": "((v.eat_step ?? 0) < 3) && (q.life_time > (v.eat_delay ?? 0))"
+            },
+            {
+              "digest": "(q.life_time > (v.eat_delay ?? 0))"
+            }
+          ]
+        },
+        "munch": {
+          "on_entry": [
+            "/playsound mob.fox.eat @a ~ ~ ~"
+          ],
+          "transitions": [
+            {
+              "eat": "1"
+            }
+          ]
+        },
+        "digest": {
+          "on_entry": [
+            "/playsound mob.fox.eat @a ~ ~ ~ 1 1.2",
+            "/replaceitem entity @s slot.inventory 0 air",
+            "/replaceitem entity @s slot.weapon.mainhand 0 air",
+            "@s sf_nba:otter_on_finish_eat",
+            "@s sf_nba:not_floating"
+          ],
+          "transitions": [
+            {
+              "default": "1"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.otter.item_check": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "test": "q.is_item_equipped(0)"
+            }
+          ]
+        },
+        "test": {
+          "on_entry": [
+            "/scriptevent sf_nba:otter_check"
+          ],
+          "transitions": [
+            {
+              "default": "!q.is_item_equipped(0)"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

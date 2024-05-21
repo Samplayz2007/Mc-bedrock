@@ -1,0 +1,56 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:hamster_wheel",
+      "render_controllers": [
+        "controller.render.sf_nba.hamster_wheel"
+      ],
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "black": "textures/sf/nba/entity/hamster_wheel/black",
+        "blue": "textures/sf/nba/entity/hamster_wheel/blue",
+        "brown": "textures/sf/nba/entity/hamster_wheel/brown",
+        "copper": "textures/sf/nba/entity/hamster_wheel/copper",
+        "cyan": "textures/sf/nba/entity/hamster_wheel/cyan",
+        "glow": "textures/sf/nba/entity/hamster_wheel/glow",
+        "gray": "textures/sf/nba/entity/hamster_wheel/gray",
+        "green": "textures/sf/nba/entity/hamster_wheel/green",
+        "light_blue": "textures/sf/nba/entity/hamster_wheel/light_blue",
+        "light_gray": "textures/sf/nba/entity/hamster_wheel/silver",
+        "lime": "textures/sf/nba/entity/hamster_wheel/lime",
+        "magenta": "textures/sf/nba/entity/hamster_wheel/magenta",
+        "orange": "textures/sf/nba/entity/hamster_wheel/orange",
+        "pink": "textures/sf/nba/entity/hamster_wheel/pink",
+        "purple": "textures/sf/nba/entity/hamster_wheel/purple",
+        "red": "textures/sf/nba/entity/hamster_wheel/red",
+        "white": "textures/sf/nba/entity/hamster_wheel/white",
+        "yellow": "textures/sf/nba/entity/hamster_wheel/yellow"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.hamster_wheel"
+      },
+      "animations": {
+        "cardinal_orientation": "animation.sf_nba.generic.cardinal_orientation",
+        "spin": "animation.sf_nba.hamster_wheel.spin"
+      },
+      "scripts": {
+        "animate": [
+          "cardinal_orientation",
+          {
+            "spin": "q.has_rider"
+          }
+        ]
+      },
+      "spawn_egg": {
+        "base_color": "#6f2c00",
+        "overlay_color": "#747474"
+      },
+      "sound_effects": {
+        "spin": "sf_nba.hamster_wheel.spin"
+      }
+    }
+  }
+}

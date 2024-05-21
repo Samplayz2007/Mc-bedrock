@@ -1,0 +1,27 @@
+{
+  "format_version": "1.19.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.hippo.ram_watcher": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "ram_attack": "q.is_casting"
+            }
+          ]
+        },
+        "ram_attack": {
+          "on_entry": [
+            "/scriptevent sf_nba:hippo_ram_attack",
+            "v.ram_attack_delay = q.life_time + 1.5;"
+          ],
+          "transitions": [
+            {
+              "default": "q.life_time > (v.ram_attack_delay ?? 0)"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

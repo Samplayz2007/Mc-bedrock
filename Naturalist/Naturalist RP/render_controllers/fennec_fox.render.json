@@ -1,0 +1,31 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.sf_nba.fennec_fox": {
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.red",
+            "Texture.beige",
+            "Texture.creamy",
+            "Texture.pale"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.skins[q.variant]"
+      ],
+      "part_visibility": [
+        {
+          "sleep": "q.is_sleeping"
+        }
+      ]
+    }
+  }
+}

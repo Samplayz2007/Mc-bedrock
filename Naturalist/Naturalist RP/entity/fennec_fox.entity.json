@@ -1,0 +1,70 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:fennec_fox",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "beige": "textures/sf/nba/entity/fennec_fox/beige",
+        "creamy": "textures/sf/nba/entity/fennec_fox/creamy",
+        "pale": "textures/sf/nba/entity/fennec_fox/pale",
+        "red": "textures/sf/nba/entity/fennec_fox/red"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.fennec_fox"
+      },
+      "animations": {
+        "cont_main": "controller.animation.sf_nba.fennec_fox.main",
+        "cont_shake": "controller.animation.sf_nba.fennec_fox.shake",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "idle": "animation.sf_nba.fennec_fox.idle",
+        "walk": "animation.sf_nba.fennec_fox.walk",
+        "run": "animation.sf_nba.fennec_fox.run",
+        "sleep": "animation.sf_nba.fennec_fox.sleep",
+        "shake": "animation.sf_nba.fennec_fox.shake",
+        "wiggle": "animation.sf_nba.fennec_fox.wiggle",
+        "pounce": "animation.sf_nba.fennec_fox.pounce",
+        "crouch": "animation.sf_nba.fennec_fox.crouch",
+        "stuck": "animation.sf_nba.fennec_fox.stuck",
+        "item_adjust": "animation.sf_nba.fennec_fox.item_adjust",
+        "baby_transform": "animation.sf_nba.fennec_fox.baby_transform"
+      },
+      "scripts": {
+        "initialize": [
+          "v.walk_threshold = 0.05;",
+          "v.run_threshold = 0.3;"
+        ],
+        "animate": [
+          "cont_main",
+          "cont_shake",
+          "look_at_target",
+          "item_adjust",
+          {
+            "baby_transform": "q.is_baby"
+          }
+        ]
+      },
+      "sound_effects": {
+        "bite": "sf_nba.fennec_fox.bite",
+        "shake": "sf_nba.fennec_fox.shake",
+        "aggro": "sf_nba.fennec_fox.aggro",
+        "eat": "sf_nba.fennec_fox.eat",
+        "screech": "sf_nba.fennec_fox.screech",
+        "sleep": "sf_nba.fennec_fox.sleep",
+        "step": "sf_nba.step.medpaw",
+        "step_-6dB": "sf_nba.step.medpaw_-6dB",
+        "step_-12dB": "sf_nba.step.medpaw_-12dB",
+        "dig": "sf_nba.fennec_fox.dig"
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.fennec_fox"
+      ],
+      "spawn_egg": {
+        "base_color": "#FFD498",
+        "overlay_color": "#CE9854"
+      }
+    }
+  }
+}

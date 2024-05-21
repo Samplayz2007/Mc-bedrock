@@ -1,0 +1,62 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:monkey",
+      "render_controllers": [
+        "controller.render.sf_nba.monkey"
+      ],
+      "geometry": {
+        "default": "geometry.sf_nba.monkey"
+      },
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "black": "textures/sf/nba/entity/monkey/black",
+        "brown": "textures/sf/nba/entity/monkey/brown",
+        "lemur": "textures/sf/nba/entity/monkey/lemur"
+      },
+      "animations": {
+        "idle": "animation.sf_nba.monkey.idle",
+        "idle_event": "animation.sf_nba.monkey.idle_event",
+        "run": "animation.sf_nba.monkey.run",
+        "climb": "animation.sf_nba.monkey.climb",
+        "walk": "animation.sf_nba.monkey.walk",
+        "attack": "animation.sf_nba.monkey.attack",
+        "baby_transform": "animation.sf_nba.monkey.baby_transform",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "controller": "controller.animation.sf_nba.monkey.main"
+      },
+      "scripts": {
+        "initialize": [
+          "v.run_anim_speed_multiplier = 2.5;",
+          "v.run_speed_movement_max = 0.4;",
+          "v.walk_threshold = 0.05;"
+        ],
+        "pre_animation": [
+          "v.run_anim_speed_multiplier = 2.0;",
+          "v.run_speed_movement_max = 0.4;"
+        ],
+        "animate": [
+          "controller",
+          "look_at_target",
+          {
+            "baby_transform": "q.is_baby"
+          }
+        ]
+      },
+      "spawn_egg": {
+        "base_color": "#be913b",
+        "overlay_color": "#382d15"
+      },
+      "sound_effects": {
+        "idle_event": "sf_nba.monkey.idle_event",
+        "throw": "sf_nba.monkey.throw",
+        "step": "sf_nba.step.medpaw",
+        "step_-6dB": "sf_nba.step.medpaw_-6dB",
+        "step_-12dB": "sf_nba.step.medpaw_-12dB"
+      }
+    }
+  }
+}

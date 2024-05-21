@@ -1,0 +1,78 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "sf_nba:firefly",
+      "population_control": "animal"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_on_block_filter": [
+          "minecraft:grass",
+          "minecraft:mud",
+          "minecraft:leaves",
+          "minecraft:leaves2"
+        ],
+        "minecraft:brightness_filter": {
+          "min": 0,
+          "max": 7,
+          "adjust_for_weather": true
+        },
+        "minecraft:weight": {
+          "default": 8
+        },
+        "minecraft:herd": {
+          "min_size": 2,
+          "max_size": 3
+        },
+        "minecraft:biome_filter": [
+          {
+            "any_of": [
+              {
+                "test": "has_biome_tag",
+                "operator": "==",
+                "value": "forest"
+              },
+              {
+                "test": "has_biome_tag",
+                "operator": "==",
+                "value": "flower_forest"
+              },
+              {
+                "test": "has_biome_tag",
+                "operator": "==",
+                "value": "plains"
+              },
+              {
+                "test": "has_biome_tag",
+                "operator": "==",
+                "value": "grove"
+              },
+              {
+                "test": "has_biome_tag",
+                "operator": "==",
+                "value": "swamp"
+              },
+              {
+                "test": "has_biome_tag",
+                "operator": "==",
+                "value": "mangrove_swamp"
+              },
+              {
+                "test": "has_biome_tag",
+                "operator": "==",
+                "value": "mooshroom_island"
+              }
+            ]
+          },
+          {
+            "test": "has_biome_tag",
+            "operator": "!=",
+            "value": "extreme_hills"
+          }
+        ]
+      }
+    ]
+  }
+}

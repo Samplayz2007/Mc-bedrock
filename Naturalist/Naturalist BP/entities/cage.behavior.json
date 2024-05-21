@@ -1,0 +1,1062 @@
+{
+  "format_version": "1.20.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "sf_nba:cage",
+      "properties": {
+        "sf_nba:initialized": {
+          "type": "bool",
+          "default": false
+        }
+      },
+      "animations": {
+        "controller.animation.sf_nba.hamster_wheel.initialize": "controller.animation.sf_nba.hamster_wheel.initialize"
+      },
+      "scripts": {
+        "animate": [
+          "controller.animation.sf_nba.hamster_wheel.initialize"
+        ]
+      },
+      "is_summonable": true,
+      "is_spawnable": true
+    },
+    "components": {
+      "minecraft:collision_box": {
+        "width": 0.65,
+        "height": 0.8
+      },
+      "minecraft:health": {
+        "value": 1,
+        "max": 1
+      },
+      "minecraft:knockback_resistance": {
+        "value": 1
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:physics": {},
+      "minecraft:type_family": {
+        "family": [
+          "sf_nba:hamster_wheel",
+          "inanimate"
+        ]
+      },
+      "minecraft:interact": {
+        "interactions": [
+          {
+            "on_interact": {
+              "filters": {
+                "test": "rider_count",
+                "operator": "!=",
+                "value": 0
+              },
+              "event": "sf_nba:dismount_passenger"
+            },
+            "swing": true,
+            "interact_text": "action.interact.sf_nba.hamster_wheel.dismount"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "rider_count",
+                    "value": 0
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "sf_nba:hamster_baby_black"
+                  }
+                ]
+              },
+              "event": "sf_nba:spawn_baby_black"
+            },
+            "swing": true,
+            "use_item": true,
+            "interact_text": "action.interact.sf_nba.hamster_wheel.mount_hamster"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "rider_count",
+                    "value": 0
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "sf_nba:hamster_baby_black_white"
+                  }
+                ]
+              },
+              "event": "sf_nba:spawn_baby_b_w"
+            },
+            "swing": true,
+            "use_item": true,
+            "interact_text": "action.interact.sf_nba.hamster_wheel.mount_hamster"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "rider_count",
+                    "value": 0
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "sf_nba:hamster_baby_brown"
+                  }
+                ]
+              },
+              "event": "sf_nba:spawn_baby_brown"
+            },
+            "swing": true,
+            "use_item": true,
+            "interact_text": "action.interact.sf_nba.hamster_wheel.mount_hamster"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "rider_count",
+                    "value": 0
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "sf_nba:hamster_baby_grey_white"
+                  }
+                ]
+              },
+              "event": "sf_nba:spawn_baby_g_w"
+            },
+            "swing": true,
+            "use_item": true,
+            "interact_text": "action.interact.sf_nba.hamster_wheel.mount_hamster"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "rider_count",
+                    "value": 0
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "sf_nba:hamster_baby_orange"
+                  }
+                ]
+              },
+              "event": "sf_nba:spawn_baby_orange"
+            },
+            "swing": true,
+            "use_item": true,
+            "interact_text": "action.interact.sf_nba.hamster_wheel.mount_hamster"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "rider_count",
+                    "value": 0
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "sf_nba:hamster_baby_peach_cream"
+                  }
+                ]
+              },
+              "event": "sf_nba:spawn_baby_p_a_c"
+            },
+            "swing": true,
+            "use_item": true,
+            "interact_text": "action.interact.sf_nba.hamster_wheel.mount_hamster"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "rider_count",
+                    "value": 0
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "sf_nba:hamster_baby_white"
+                  }
+                ]
+              },
+              "event": "sf_nba:spawn_baby_white"
+            },
+            "swing": true,
+            "use_item": true,
+            "interact_text": "action.interact.sf_nba.hamster_wheel.mount_hamster"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "rider_count",
+                    "value": 0
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "sf_nba:hamster_adult_black"
+                  }
+                ]
+              },
+              "event": "sf_nba:spawn_adult_black"
+            },
+            "swing": true,
+            "use_item": true,
+            "interact_text": "action.interact.sf_nba.hamster_wheel.mount_hamster"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "rider_count",
+                    "value": 0
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "sf_nba:hamster_adult_black_white"
+                  }
+                ]
+              },
+              "event": "sf_nba:spawn_adult_b_w"
+            },
+            "swing": true,
+            "use_item": true,
+            "interact_text": "action.interact.sf_nba.hamster_wheel.mount_hamster"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "rider_count",
+                    "value": 0
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "sf_nba:hamster_adult_brown"
+                  }
+                ]
+              },
+              "event": "sf_nba:spawn_adult_brown"
+            },
+            "swing": true,
+            "use_item": true,
+            "interact_text": "action.interact.sf_nba.hamster_wheel.mount_hamster"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "rider_count",
+                    "value": 0
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "sf_nba:hamster_adult_grey_white"
+                  }
+                ]
+              },
+              "event": "sf_nba:spawn_adult_g_w"
+            },
+            "swing": true,
+            "use_item": true,
+            "interact_text": "action.interact.sf_nba.hamster_wheel.mount_hamster"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "rider_count",
+                    "value": 0
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "sf_nba:hamster_adult_orange"
+                  }
+                ]
+              },
+              "event": "sf_nba:spawn_adult_orange"
+            },
+            "swing": true,
+            "use_item": true,
+            "interact_text": "action.interact.sf_nba.hamster_wheel.mount_hamster"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "rider_count",
+                    "value": 0
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "sf_nba:hamster_adult_peach_cream"
+                  }
+                ]
+              },
+              "event": "sf_nba:spawn_adult_p_a_c"
+            },
+            "swing": true,
+            "use_item": true,
+            "interact_text": "action.interact.sf_nba.hamster_wheel.mount_hamster"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "rider_count",
+                    "value": 0
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "sf_nba:hamster_adult_white"
+                  }
+                ]
+              },
+              "event": "sf_nba:spawn_adult_white"
+            },
+            "swing": true,
+            "use_item": true,
+            "interact_text": "action.interact.sf_nba.hamster_wheel.mount_hamster"
+          }
+        ]
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "entity_attack",
+            "on_damage": {
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "player"
+              },
+              "event": "sf_nba:drop"
+            },
+            "deals_damage": false
+          },
+          {
+            "cause": "all",
+            "deals_damage": false
+          }
+        ]
+      }
+    },
+    "component_groups": {
+      "sf_nba:drop": {
+        "minecraft:instant_despawn": {
+          "remove_child_entities": false
+        },
+        "minecraft:spawn_entity": {
+          "entities": [
+            {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "filters": [
+                {
+                  "test": "is_variant",
+                  "value": 0
+                }
+              ],
+              "spawn_item": "sf_nba:black_cage"
+            },
+            {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "filters": [
+                {
+                  "test": "is_variant",
+                  "value": 1
+                }
+              ],
+              "spawn_item": "sf_nba:blue_cage"
+            },
+            {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "filters": [
+                {
+                  "test": "is_variant",
+                  "value": 2
+                }
+              ],
+              "spawn_item": "sf_nba:brown_cage"
+            },
+            {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "filters": [
+                {
+                  "test": "is_variant",
+                  "value": 3
+                }
+              ],
+              "spawn_item": "sf_nba:copper_cage"
+            },
+            {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "filters": [
+                {
+                  "test": "is_variant",
+                  "value": 4
+                }
+              ],
+              "spawn_item": "sf_nba:cyan_cage"
+            },
+            {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "filters": [
+                {
+                  "test": "is_variant",
+                  "value": 5
+                }
+              ],
+              "spawn_item": "sf_nba:glow_cage"
+            },
+            {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "filters": [
+                {
+                  "test": "is_variant",
+                  "value": 6
+                }
+              ],
+              "spawn_item": "sf_nba:gray_cage"
+            },
+            {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "filters": [
+                {
+                  "test": "is_variant",
+                  "value": 7
+                }
+              ],
+              "spawn_item": "sf_nba:green_cage"
+            },
+            {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "filters": [
+                {
+                  "test": "is_variant",
+                  "value": 8
+                }
+              ],
+              "spawn_item": "sf_nba:light_blue_cage"
+            },
+            {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "filters": [
+                {
+                  "test": "is_variant",
+                  "value": 9
+                }
+              ],
+              "spawn_item": "sf_nba:light_gray_cage"
+            },
+            {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "filters": [
+                {
+                  "test": "is_variant",
+                  "value": 10
+                }
+              ],
+              "spawn_item": "sf_nba:lime_cage"
+            },
+            {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "filters": [
+                {
+                  "test": "is_variant",
+                  "value": 11
+                }
+              ],
+              "spawn_item": "sf_nba:magenta_cage"
+            },
+            {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "filters": [
+                {
+                  "test": "is_variant",
+                  "value": 12
+                }
+              ],
+              "spawn_item": "sf_nba:orange_cage"
+            },
+            {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "spawn_item": "sf_nba:pink_cage",
+              "filters": [
+                {
+                  "test": "is_variant",
+                  "value": 13
+                }
+              ]
+            },
+            {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "spawn_item": "sf_nba:purple_cage",
+              "filters": [
+                {
+                  "test": "is_variant",
+                  "value": 14
+                }
+              ]
+            },
+            {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "spawn_item": "sf_nba:red_cage",
+              "filters": [
+                {
+                  "test": "is_variant",
+                  "value": 15
+                }
+              ]
+            },
+            {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "spawn_item": "sf_nba:white_cage",
+              "filters": [
+                {
+                  "test": "is_variant",
+                  "value": 16
+                }
+              ]
+            },
+            {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "spawn_item": "sf_nba:yellow_cage",
+              "filters": [
+                {
+                  "test": "is_variant",
+                  "value": 17
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "sf_nba:spawn_baby_black": {
+        "minecraft:addrider": {
+          "entity_type": "sf_nba:hamster<sf_nba:spawn_baby_black>"
+        }
+      },
+      "sf_nba:spawn_baby_b_w": {
+        "minecraft:addrider": {
+          "entity_type": "sf_nba:hamster<sf_nba:spawn_baby_b_w>"
+        }
+      },
+      "sf_nba:spawn_baby_brown": {
+        "minecraft:addrider": {
+          "entity_type": "sf_nba:hamster<sf_nba:spawn_baby_brown>"
+        }
+      },
+      "sf_nba:spawn_baby_g_w": {
+        "minecraft:addrider": {
+          "entity_type": "sf_nba:hamster<sf_nba:spawn_baby_g_w>"
+        }
+      },
+      "sf_nba:spawn_baby_orange": {
+        "minecraft:addrider": {
+          "entity_type": "sf_nba:hamster<sf_nba:spawn_baby_orange>"
+        }
+      },
+      "sf_nba:spawn_baby_p_a_c": {
+        "minecraft:addrider": {
+          "entity_type": "sf_nba:hamster<sf_nba:spawn_baby_p_a_c>"
+        }
+      },
+      "sf_nba:spawn_baby_white": {
+        "minecraft:addrider": {
+          "entity_type": "sf_nba:hamster<sf_nba:spawn_baby_white>"
+        }
+      },
+      "sf_nba:spawn_adult_black": {
+        "minecraft:addrider": {
+          "entity_type": "sf_nba:hamster<sf_nba:spawn_adult_black>"
+        }
+      },
+      "sf_nba:spawn_adult_b_w": {
+        "minecraft:addrider": {
+          "entity_type": "sf_nba:hamster<sf_nba:spawn_adult_b_w>"
+        }
+      },
+      "sf_nba:spawn_adult_brown": {
+        "minecraft:addrider": {
+          "entity_type": "sf_nba:hamster<sf_nba:spawn_adult_brown>"
+        }
+      },
+      "sf_nba:spawn_adult_g_w": {
+        "minecraft:addrider": {
+          "entity_type": "sf_nba:hamster<sf_nba:spawn_adult_g_w>"
+        }
+      },
+      "sf_nba:spawn_adult_orange": {
+        "minecraft:addrider": {
+          "entity_type": "sf_nba:hamster<sf_nba:spawn_adult_orange>"
+        }
+      },
+      "sf_nba:spawn_adult_p_a_c": {
+        "minecraft:addrider": {
+          "entity_type": "sf_nba:hamster<sf_nba:spawn_adult_p_a_c>"
+        }
+      },
+      "sf_nba:spawn_adult_white": {
+        "minecraft:addrider": {
+          "entity_type": "sf_nba:hamster<sf_nba:spawn_adult_white>"
+        }
+      },
+      "sf_nba:readd_rideable_timer": {
+        "minecraft:timer": {
+          "time": 0.5,
+          "looping": false,
+          "time_down_event": {
+            "event": "sf_nba:readd_rideable",
+            "target": "self"
+          }
+        }
+      },
+      "sf_nba:rideable": {
+        "minecraft:rideable": {
+          "seat_count": 1,
+          "crouching_skip_interact": false,
+          "family_types": [
+            "sf_nba:hamster"
+          ],
+          "seats": {
+            "position": [
+              0,
+              0.125,
+              0
+            ],
+            "lock_rider_rotation": 0
+          }
+        }
+      },
+      "sf_nba:black_variant": {
+        "minecraft:variant": {
+          "value": 0
+        }
+      },
+      "sf_nba:blue_variant": {
+        "minecraft:variant": {
+          "value": 1
+        }
+      },
+      "sf_nba:brown_variant": {
+        "minecraft:variant": {
+          "value": 2
+        }
+      },
+      "sf_nba:copper_variant": {
+        "minecraft:variant": {
+          "value": 3
+        }
+      },
+      "sf_nba:cyan_variant": {
+        "minecraft:variant": {
+          "value": 4
+        }
+      },
+      "sf_nba:glow_variant": {
+        "minecraft:variant": {
+          "value": 5
+        }
+      },
+      "sf_nba:gray_variant": {
+        "minecraft:variant": {
+          "value": 6
+        }
+      },
+      "sf_nba:green_variant": {
+        "minecraft:variant": {
+          "value": 7
+        }
+      },
+      "sf_nba:l_blue_var": {
+        "minecraft:variant": {
+          "value": 8
+        }
+      },
+      "sf_nba:l_g_var": {
+        "minecraft:variant": {
+          "value": 9
+        }
+      },
+      "sf_nba:lime_variant": {
+        "minecraft:variant": {
+          "value": 10
+        }
+      },
+      "sf_nba:magenta_var": {
+        "minecraft:variant": {
+          "value": 11
+        }
+      },
+      "sf_nba:orange_variant": {
+        "minecraft:variant": {
+          "value": 12
+        }
+      },
+      "sf_nba:pink_variant": {
+        "minecraft:variant": {
+          "value": 13
+        }
+      },
+      "sf_nba:purple_variant": {
+        "minecraft:variant": {
+          "value": 14
+        }
+      },
+      "sf_nba:red_variant": {
+        "minecraft:variant": {
+          "value": 15
+        }
+      },
+      "sf_nba:white_variant": {
+        "minecraft:variant": {
+          "value": 16
+        }
+      },
+      "sf_nba:yellow_variant": {
+        "minecraft:variant": {
+          "value": 17
+        }
+      }
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "sf_nba:rideable"
+          ]
+        }
+      },
+      "sf_nba:initialized": {
+        "add": {
+          "component_groups": [
+            "sf_nba:rideable"
+          ]
+        },
+        "set_property": {
+          "sf_nba:initialized": true
+        }
+      },
+      "sf_nba:dismount_passenger": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:rideable"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "sf_nba:readd_rideable_timer"
+          ]
+        }
+      },
+      "sf_nba:readd_rideable": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:readd_rideable_timer"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "sf_nba:rideable"
+          ]
+        }
+      },
+      "sf_nba:drop": {
+        "add": {
+          "component_groups": [
+            "sf_nba:drop"
+          ]
+        }
+      },
+      "sf_nba:spawn_baby_black": {
+        "add": {
+          "component_groups": [
+            "sf_nba:spawn_baby_black"
+          ]
+        }
+      },
+      "sf_nba:spawn_baby_b_w": {
+        "add": {
+          "component_groups": [
+            "sf_nba:spawn_baby_b_w"
+          ]
+        }
+      },
+      "sf_nba:spawn_baby_brown": {
+        "add": {
+          "component_groups": [
+            "sf_nba:spawn_baby_brown"
+          ]
+        }
+      },
+      "sf_nba:spawn_baby_g_w": {
+        "add": {
+          "component_groups": [
+            "sf_nba:spawn_baby_g_w"
+          ]
+        }
+      },
+      "sf_nba:spawn_baby_orange": {
+        "add": {
+          "component_groups": [
+            "sf_nba:spawn_baby_orange"
+          ]
+        }
+      },
+      "sf_nba:spawn_baby_p_a_c": {
+        "add": {
+          "component_groups": [
+            "sf_nba:spawn_baby_p_a_c"
+          ]
+        }
+      },
+      "sf_nba:spawn_baby_white": {
+        "add": {
+          "component_groups": [
+            "sf_nba:spawn_baby_white"
+          ]
+        }
+      },
+      "sf_nba:spawn_adult_black": {
+        "add": {
+          "component_groups": [
+            "sf_nba:spawn_adult_black"
+          ]
+        }
+      },
+      "sf_nba:spawn_adult_b_w": {
+        "add": {
+          "component_groups": [
+            "sf_nba:spawn_adult_b_w"
+          ]
+        }
+      },
+      "sf_nba:spawn_adult_brown": {
+        "add": {
+          "component_groups": [
+            "sf_nba:spawn_adult_brown"
+          ]
+        }
+      },
+      "sf_nba:spawn_adult_g_w": {
+        "add": {
+          "component_groups": [
+            "sf_nba:spawn_adult_g_w"
+          ]
+        }
+      },
+      "sf_nba:spawn_adult_orange": {
+        "add": {
+          "component_groups": [
+            "sf_nba:spawn_adult_orange"
+          ]
+        }
+      },
+      "sf_nba:spawn_adult_p_a_c": {
+        "add": {
+          "component_groups": [
+            "sf_nba:spawn_adult_p_a_c"
+          ]
+        }
+      },
+      "sf_nba:spawn_adult_white": {
+        "add": {
+          "component_groups": [
+            "sf_nba:spawn_adult_white"
+          ]
+        }
+      },
+      "sf_nba:black_variant": {
+        "add": {
+          "component_groups": [
+            "sf_nba:black_variant"
+          ]
+        }
+      },
+      "sf_nba:blue_variant": {
+        "add": {
+          "component_groups": [
+            "sf_nba:blue_variant"
+          ]
+        }
+      },
+      "sf_nba:brown_variant": {
+        "add": {
+          "component_groups": [
+            "sf_nba:brown_variant"
+          ]
+        }
+      },
+      "sf_nba:copper_variant": {
+        "add": {
+          "component_groups": [
+            "sf_nba:copper_variant"
+          ]
+        }
+      },
+      "sf_nba:cyan_variant": {
+        "add": {
+          "component_groups": [
+            "sf_nba:cyan_variant"
+          ]
+        }
+      },
+      "sf_nba:glow_variant": {
+        "add": {
+          "component_groups": [
+            "sf_nba:glow_variant"
+          ]
+        }
+      },
+      "sf_nba:gray_variant": {
+        "add": {
+          "component_groups": [
+            "sf_nba:gray_variant"
+          ]
+        }
+      },
+      "sf_nba:green_variant": {
+        "add": {
+          "component_groups": [
+            "sf_nba:green_variant"
+          ]
+        }
+      },
+      "sf_nba:l_blue_var": {
+        "add": {
+          "component_groups": [
+            "sf_nba:l_blue_var"
+          ]
+        }
+      },
+      "sf_nba:l_g_var": {
+        "add": {
+          "component_groups": [
+            "sf_nba:l_g_var"
+          ]
+        }
+      },
+      "sf_nba:lime_variant": {
+        "add": {
+          "component_groups": [
+            "sf_nba:lime_variant"
+          ]
+        }
+      },
+      "sf_nba:magenta_var": {
+        "add": {
+          "component_groups": [
+            "sf_nba:magenta_var"
+          ]
+        }
+      },
+      "sf_nba:orange_variant": {
+        "add": {
+          "component_groups": [
+            "sf_nba:orange_variant"
+          ]
+        }
+      },
+      "sf_nba:pink_variant": {
+        "add": {
+          "component_groups": [
+            "sf_nba:pink_variant"
+          ]
+        }
+      },
+      "sf_nba:purple_variant": {
+        "add": {
+          "component_groups": [
+            "sf_nba:purple_variant"
+          ]
+        }
+      },
+      "sf_nba:red_variant": {
+        "add": {
+          "component_groups": [
+            "sf_nba:red_variant"
+          ]
+        }
+      },
+      "sf_nba:white_variant": {
+        "add": {
+          "component_groups": [
+            "sf_nba:white_variant"
+          ]
+        }
+      },
+      "sf_nba:yellow_variant": {
+        "add": {
+          "component_groups": [
+            "sf_nba:yellow_variant"
+          ]
+        }
+      }
+    }
+  }
+}

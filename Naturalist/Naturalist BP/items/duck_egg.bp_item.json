@@ -1,0 +1,46 @@
+{
+  "format_version": "1.20.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "sf_nba:duck_egg",
+      "menu_category": {
+        "category": "items",
+        "group": "naturalist"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "texture": "sf_nba.duck_egg"
+      },
+      "minecraft:use_modifiers": {
+        "use_duration": 1
+      },
+      "minecraft:shooter": {
+        "ammunition": [
+          {
+            "item": "sf_nba:duck_egg",
+            "use_offhand": true,
+            "search_inventory": true,
+            "use_in_creative": true
+          }
+        ],
+        "max_draw_duration": 0,
+        "scale_power_by_draw_duration": true,
+        "charge_on_draw": false
+      },
+      "minecraft:allow_off_hand": {
+        "value": false
+      },
+      "minecraft:can_destroy_in_creative": {
+        "value": true
+      },
+      "minecraft:display_name": {
+        "value": "item.sf_nba:duck_egg.name"
+      },
+      "minecraft:projectile": {
+        "minimum_critical_power": 1.25,
+        "projectile_entity": "sf_nba:duck_egg"
+      }
+    }
+  }
+}

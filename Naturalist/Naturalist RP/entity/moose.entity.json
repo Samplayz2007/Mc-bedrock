@@ -1,0 +1,65 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:moose",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/moose"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.moose"
+      },
+      "animations": {
+        "move_controller": "controller.animation.sf_nba.moose.move",
+        "attack_controller": "controller.animation.sf_nba.moose.attack",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "idle": "animation.sf_nba.moose.idle",
+        "walk": "animation.sf_nba.moose.walk",
+        "attack": "animation.sf_nba.moose.attack",
+        "bellow": "animation.sf_nba.moose.belling",
+        "run": "animation.sf_nba.moose.run",
+        "baby_transform": "animation.sf_nba.moose.baby_transform"
+      },
+      "scripts": {
+        "initialize": [
+          "v.is_idling = 0;",
+          "v.is_walking = 0;",
+          "v.is_running = 0;",
+          "v.is_belling = 0;",
+          "v.is_attacking = 0;"
+        ],
+        "pre_animation": [
+          "v.is_idling = q.modified_move_speed <= 0.05;",
+          "v.is_walking = q.modified_move_speed >= 0.05 && !v.is_running;",
+          "v.is_running = (q.modified_move_speed * (q.is_baby ? 0.7 : 1) - (q.distance_from_camera * 0.000001)) >= 0.6 ? 1;",
+          "v.is_belling = q.property('sf_nba:bellow') && (!q.has_target && !q.is_avoiding_mobs);",
+          "v.is_attacking = q.is_delayed_attacking;"
+        ],
+        "animate": [
+          "move_controller",
+          "attack_controller",
+          {
+            "baby_transform": "q.is_baby"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.moose"
+      ],
+      "spawn_egg": {
+        "base_color": "#E4BD82",
+        "overlay_color": "#663A11"
+      },
+      "sound_effects": {
+        "attack": "sf_nba.moose.attack",
+        "bellow": "sf_nba.moose.bellow",
+        "step": "sf_nba.step.medhoof",
+        "step_-6dB": "sf_nba.step.medhoof_-6dB",
+        "step_-12dB": "sf_nba.step.medhoof_-12dB"
+      }
+    }
+  }
+}

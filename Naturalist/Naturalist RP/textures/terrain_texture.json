@@ -1,0 +1,29 @@
+{
+  "resource_pack_name": "naturalist",
+  "texture_name": "atlas.terrain",
+  "padding": 8,
+  "num_mip_levels": 4,
+  "texture_data": {
+    "sf_nba.chrysalis_stage0": {
+      "textures": "textures/sf/nba/blocks/chrysalis_stage0"
+    },
+    "sf_nba.chrysalis_stage1": {
+      "textures": "textures/sf/nba/blocks/chrysalis_stage1"
+    },
+    "sf_nba.chrysalis_stage2": {
+      "textures": "textures/sf/nba/blocks/chrysalis_stage2"
+    },
+    "sf_nba.cut_shellstone": {
+      "textures": "textures/sf/nba/blocks/cut_shellstone"
+    },
+    "sf_nba.shellstone": {
+      "textures": "textures/sf/nba/blocks/shellstone"
+    },
+    "sf_nba.shellstone_bricks": {
+      "textures": "textures/sf/nba/blocks/shellstone_bricks"
+    },
+    "sf_nba.smooth_shellstone": {
+      "textures": "textures/sf/nba/blocks/smooth_shellstone"
+    }
+  }
+}

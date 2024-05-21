@@ -1,0 +1,25 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.sf_nba.ray": {
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.eagle_ray",
+            "Texture.mobula_ray",
+            "Texture.stingray"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.skins[q.property('sf_nba:variant')]"
+      ]
+    }
+  }
+}

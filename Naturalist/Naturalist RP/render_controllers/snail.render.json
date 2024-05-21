@@ -1,0 +1,39 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.sf_nba.snail": {
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.default",
+            "Texture.white",
+            "Texture.orange",
+            "Texture.magenta",
+            "Texture.light_blue",
+            "Texture.yellow",
+            "Texture.lime",
+            "Texture.pink",
+            "Texture.gray",
+            "Texture.light_gray",
+            "Texture.cyan",
+            "Texture.purple",
+            "Texture.blue",
+            "Texture.brown",
+            "Texture.green",
+            "Texture.red",
+            "Texture.black"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.skins[q.property('sf_nba:variant')]"
+      ]
+    }
+  }
+}

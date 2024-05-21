@@ -1,0 +1,49 @@
+{
+  "format_version": "1.20.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:orca",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/orca"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.orca"
+      },
+      "animations": {
+        "controller.whale": "controller.animation.sf_nba.whale",
+        "controller.whale.idle_event": "controller.animation.sf_nba.whale.idle_event",
+        "idle": "animation.sf_nba.whale.idle",
+        "idle_event": "animation.sf_nba.whale.idle_event",
+        "swim": "animation.sf_nba.whale.swim",
+        "flop": "animation.sf_nba.whale.flop",
+        "baby_transform": "animation.sf_nba.whale.baby_transform"
+      },
+      "scripts": {
+        "animate": [
+          "controller.whale.idle_event",
+          "controller.whale",
+          {
+            "baby_transform": "q.is_baby"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "spawn_egg": {
+        "base_color": "#DBDDDF",
+        "overlay_color": "#101010"
+      },
+      "sound_effects": {
+        "swim": "sf_nba.orca.swim",
+        "swim_fast": "sf_nba.orca.swim_fast",
+        "attack": "sf_nba.orca.attack",
+        "flop": "sf_nba.orca.flop",
+        "blowhole": "sf_nba.orca.blowhole"
+      }
+    }
+  }
+}

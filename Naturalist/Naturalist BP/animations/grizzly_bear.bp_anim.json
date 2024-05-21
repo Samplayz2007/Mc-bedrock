@@ -1,0 +1,14 @@
+{
+  "format_version": "1.20.0",
+  "animations": {
+    "animation.sf_nba.grizzly_bear.harvest_sensor": {
+      "loop": true,
+      "animation_length": 5.0,
+      "timeline": {
+        "2.5": [
+          "/scriptevent sf_nba:bear_search_for_harvest"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:goose",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "canadian": "textures/sf/nba/entity/goose/canadian",
+        "white": "textures/sf/nba/entity/goose/white",
+        "baby": "textures/sf/nba/entity/goose/baby"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.goose"
+      },
+      "animations": {
+        "idle": "animation.sf_nba.goose.idle",
+        "walk": "animation.sf_nba.goose.walk",
+        "peck": "animation.sf_nba.goose.peck",
+        "sleep": "animation.sf_nba.goose.sleep",
+        "swim": "animation.sf_nba.goose.swim",
+        "run": "animation.sf_nba.goose.run",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "general_controller": "controller.animation.sf_nba.goose.general_control",
+        "attack_controller": "controller.animation.sf_nba.goose.attack_control"
+      },
+      "scripts": {
+        "initialize": [
+          "v.walk_lower_boundary = 0;",
+          "v.walk_upper_boundary = 0;",
+          "v.running_lower_boundary = 0;",
+          "v.anim_speed_multiplier = 0;",
+          "v.anim_speed_movement_max = 0;"
+        ],
+        "pre_animation": [
+          "v.walk_lower_boundary = 0.005;",
+          "v.walk_upper_boundary = 0.45;",
+          "v.running_lower_boundary = 0.558;",
+          "v.anim_speed_multiplier = 5.53125;",
+          "v.anim_speed_movement_max = 0.55;"
+        ],
+        "animate": [
+          "general_controller",
+          "attack_controller"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.goose"
+      ],
+      "spawn_egg": {
+        "base_color": "#808080",
+        "overlay_color": "#FFFFFF"
+      },
+      "sound_effects": {
+        "peck": "sf_nba.bird.peck",
+        "angry": "sf_nba.goose.angry",
+        "attack": "sf_nba.goose.attack",
+        "step": "sf_nba.step.waterbird",
+        "step_-6dB": "sf_nba.step.waterbird_-6dB",
+        "step_-12dB": "sf_nba.step.waterbird_-12dB"
+      }
+    }
+  }
+}

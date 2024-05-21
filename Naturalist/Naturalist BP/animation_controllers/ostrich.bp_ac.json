@@ -1,0 +1,59 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.ostrich.egg_check": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "on_entry": [
+            "v.cooldown_timer = 0;"
+          ],
+          "transitions": [
+            {
+              "remove": "q.property('sf_nba:egg_protector') && q.has_rider"
+            },
+            {
+              "cooldown": "q.property('sf_nba:egg_protector') && !q.has_target"
+            }
+          ]
+        },
+        "cooldown": {
+          "on_entry": [
+            "v.cooldown_timer = q.life_time;"
+          ],
+          "transitions": [
+            {
+              "remove": "q.has_rider"
+            },
+            {
+              "default": "!q.property('sf_nba:egg_protector') || q.has_target"
+            },
+            {
+              "egg_check": "q.life_time >= (v.cooldown_timer + 6.0)"
+            }
+          ]
+        },
+        "egg_check": {
+          "on_entry": [
+            "/execute unless entity @e[type=sf_nba:ostrich_egg,c=1,r=24] run event entity @s sf_nba:remove_egg_protector"
+          ],
+          "transitions": [
+            {
+              "default": "1"
+            }
+          ]
+        },
+        "remove": {
+          "on_entry": [
+            "@s sf_nba:remove_egg_protector"
+          ],
+          "transitions": [
+            {
+              "default": "1"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

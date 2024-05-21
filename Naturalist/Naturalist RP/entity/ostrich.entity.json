@@ -1,0 +1,55 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:ostrich",
+      "render_controllers": [
+        "controller.render.sf_nba.ostrich"
+      ],
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/ostrich/ostrich",
+        "baby": "textures/sf/nba/entity/ostrich/ostrich_baby"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.ostrich"
+      },
+      "animations": {
+        "main_controller": "controller.animation.sf_nba.ostrich.main",
+        "attack_controller": "controller.animation.sf_nba.ostrich.attack",
+        "idle": "animation.sf_nba.ostrich.idle",
+        "walk": "animation.sf_nba.ostrich.walk_B",
+        "run": "animation.sf_nba.ostrich.run_B_1",
+        "bury_head": "animation.sf_nba.ostrich.bury_head",
+        "attack": "animation.sf_nba.ostrich.attack"
+      },
+      "scripts": {
+        "initialize": [
+          "v.anim_speed_multiplier = 0;",
+          "v.anim_speed_movement_max = 0;"
+        ],
+        "pre_animation": [
+          "v.anim_speed_multiplier = 1.53125;",
+          "v.anim_speed_movement_max = 0.55;"
+        ],
+        "animate": [
+          "main_controller",
+          "attack_controller"
+        ]
+      },
+      "spawn_egg": {
+        "base_color": "#514A50",
+        "overlay_color": "#FF8912"
+      },
+      "sound_effects": {
+        "attack": "sf_nba.ostrich.attack",
+        "bury": "sf_nba.ostrich.bury",
+        "step": "sf_nba.step.largebird",
+        "step_-6dB": "sf_nba.step.largebird_-6dB",
+        "step_-12dB": "sf_nba.step.largebird_-12dB"
+      }
+    }
+  }
+}

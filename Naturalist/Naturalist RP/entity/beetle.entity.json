@@ -1,0 +1,48 @@
+{
+  "format_version": "1.20.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:beetle",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "yellow": "textures/sf/nba/entity/beetle/yellow",
+        "brown": "textures/sf/nba/entity/beetle/brown",
+        "green": "textures/sf/nba/entity/beetle/green",
+        "red": "textures/sf/nba/entity/beetle/red",
+        "black": "textures/sf/nba/entity/beetle/black"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.beetle"
+      },
+      "animations": {
+        "controller.beetle": "controller.animation.sf_nba.beetle",
+        "idle": "animation.sf_nba.beetle.idle",
+        "walk": "animation.sf_nba.beetle.walk",
+        "run": "animation.sf_nba.beetle.run",
+        "fly": "animation.sf_nba.beetle.fly"
+      },
+      "scripts": {
+        "pre_animation": [
+          "v.is_moving = q.modified_move_speed >= 0.05;",
+          "v.is_sprinting = (q.modified_move_speed * (q.is_baby ? 0.7 : 1) - (q.distance_from_camera * 0.000001)) >= 0.4 ? 1;"
+        ],
+        "animate": [
+          "controller.beetle"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.beetle"
+      ],
+      "spawn_egg": {
+        "base_color": "#7D461A",
+        "overlay_color": "#E9BF29"
+      },
+      "sound_effects": {
+        "step": "sf_nba.beetle.step",
+        "fly": "sf_nba.beetle.fly"
+      }
+    }
+  }
+}

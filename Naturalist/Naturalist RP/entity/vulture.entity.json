@@ -1,0 +1,49 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:vulture",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/vulture"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.vulture"
+      },
+      "animations": {
+        "fly": "animation.sf_nba.vulture.fly",
+        "glide": "animation.sf_nba.vulture.glide",
+        "idle": "animation.sf_nba.vulture.idle",
+        "carrying_block": "animation.sf_nba.vulture.carrying_block",
+        "move": "controller.animation.sf_nba.vulture.move",
+        "baby_transform": "animation.sf_nba.vulture.baby_transform"
+      },
+      "scripts": {
+        "animate": [
+          {
+            "carrying_block": "q.is_carrying_block"
+          },
+          "move",
+          {
+            "baby_transform": "q.is_baby"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.vulture"
+      ],
+      "spawn_egg": {
+        "base_color": "#3D3026",
+        "overlay_color": "#E9D8C0"
+      },
+      "sound_effects": {
+        "sf_nba.vulture.wing": "sf_nba.vulture.wing",
+        "step": "sf_nba.step.smallbird",
+        "step_-6dB": "sf_nba.step.smallbird_-6dB",
+        "step_-12dB": "sf_nba.step.smallbird_-12dB"
+      }
+    }
+  }
+}

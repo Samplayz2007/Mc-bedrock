@@ -1,0 +1,63 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+      "description": {
+          "identifier": "sf_nba:orca",
+          "population_control": "water_animal"
+      },
+      "conditions": [
+          {
+              "minecraft:spawns_underwater": {},
+              "minecraft:spawns_on_surface": {},
+              "minecraft:herd": {
+                  "min_size": 2,
+                  "max_size": 4,
+                  "event": "sf_nba:entity_born",
+                  "event_skip_count": 1
+              },
+              "minecraft:weight": {
+                  "default": 2
+              },
+              "minecraft:biome_filter": {
+                  "all_of": [
+                      {
+                          "test": "has_biome_tag",
+                          "operator": "==",
+                          "value": "frozen"
+                      },
+                      {
+                          "test": "has_biome_tag",
+                          "operator": "==",
+                          "value": "ocean"
+                      }
+                  ]
+              }
+          },
+          {
+              "minecraft:spawns_underwater": {},
+              "minecraft:spawns_on_surface": {},
+              "minecraft:herd": {
+                  "min_size": 2,
+                  "max_size": 4
+              },
+              "minecraft:weight": {
+                  "default": 1
+              },
+              "minecraft:biome_filter": {
+                  "all_of": [
+                      {
+                          "test": "has_biome_tag",
+                          "operator": "==",
+                          "value": "cold"
+                      },
+                      {
+                          "test": "has_biome_tag",
+                          "operator": "==",
+                          "value": "ocean"
+                      }
+                  ]
+              }
+          }
+      ]
+  }
+}

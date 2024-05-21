@@ -1,0 +1,202 @@
+{
+  "format_version": "1.18.10",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "sf_nba:desert_scorpion",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "sf_nba:despawn": {
+        "minecraft:instant_despawn": {}
+      },
+      "sf_nba:as_baby": {
+        "minecraft:is_baby": {},
+        "minecraft:scale": {
+          "value": 0.5
+        }
+      },
+      "sf_nba:not_angry": {
+        "minecraft:movement": {
+          "value": 0.2
+        },
+        "minecraft:on_target_acquired": {
+          "event": "sf_nba:scorpion_angry",
+          "target": "self"
+        },
+        "minecraft:on_target_escape": {}
+      },
+      "sf_nba:angry": {
+        "minecraft:movement": {
+          "value": 0.27
+        },
+        "minecraft:on_target_acquired": {},
+        "minecraft:on_target_escape": {
+          "event": "sf_nba:scorpion_not_angry",
+          "target": "self"
+        }
+      }
+    },
+    "components": {
+      "minecraft:nameable": {},
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:experience_reward": {
+        "on_death": "q.last_hit_by_player ? 3 : 0"
+      },
+      "minecraft:type_family": {
+        "family": [
+          "sf_nba:desert_scorpion",
+          "sf_nba:scorpion",
+          "arthropod",
+          "mob"
+        ]
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/sf/nba/entities/scorpion.loot.json"
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0,
+        "breathes_water": false,
+        "breathes_air": true
+      },
+      "minecraft:collision_box": {
+        "width": 0.7,
+        "height": 0.3
+      },
+      "minecraft:jump.static": {},
+      "minecraft:despawn": {
+        "despawn_from_distance": {}
+      },
+      "minecraft:health": {
+        "value": 5,
+        "max": 5
+      },
+      "minecraft:leashable": {
+        "soft_distance": 4,
+        "hard_distance": 6,
+        "max_distance": 10
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:navigation.walk": {
+        "can_jump": true,
+        "avoid_water": true,
+        "can_float": true,
+        "can_path_over_water": false,
+        "can_path_from_air": false,
+        "can_swim": false,
+        "can_walk": true,
+        "can_sink": true
+      },
+      "minecraft:attack": {
+        "damage": 3
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.hurt_by_target": {
+        "priority": 1,
+        "alert_same_type": true
+      },
+      "minecraft:behavior.nearest_prioritized_attackable_target": {
+        "priority": 1,
+        "reselect_targets": true,
+        "must_see": true,
+        "within_radius": 12,
+        "must_see_forget_duration": 5,
+        "persist_time": 0.5,
+        "entity_types": [
+          {
+            "filters": { 
+              "any_of": [
+                { "test": "is_family", "subject": "other",  "operator": "==", "value": "sf_nba:beetle" },
+				{ "test": "is_family", "subject": "other",  "operator": "==", "value": "sf_nba:termite" },
+				{ "test": "is_family", "subject": "other",  "operator": "==", "value": "sf_nba:lizard" }
+              ]
+            },
+            "max_dist": 16,
+            "priority": 2
+          },
+          {
+            "filters": { 
+              "any_of": [
+                { "test": "is_family", "subject": "other",  "operator": "==", "value": "sf_nba:lizard_tail" }
+              ]
+            },
+            "max_dist": 16,
+            "priority": 1
+          }
+		]
+	  },
+      "minecraft:behavior.delayed_attack": {
+        "priority": 2,
+        "attack_once": false,
+        "track_target": true,
+        "require_complete_path": false,
+        "random_stop_interval": 0,
+        "reach_multiplier": 1.5,
+        "attack_duration": 0.75,
+        "cooldown_time": 1.5,
+        "hit_delay_pct": 0.2
+      },
+      "minecraft:behavior.random_stroll": {
+        "priority": 3,
+        "xz_dist": 8,
+        "y_dist": 2
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 4
+      },
+      "minecraft:conditional_bandwidth_optimization": {}
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "trigger": "sf_nba:scorpion_not_angry"
+      },
+      "sf_nba:despawn": {
+        "add": {
+          "component_groups": [
+            "sf_nba:despawn"
+          ]
+        }
+      },
+      "sf_nba:scorpion_as_baby": {
+        "add": {
+          "component_groups": [
+            "sf_nba:as_baby"
+          ]
+        }
+      },
+      "sf_nba:scorpion_angry": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:not_angry"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "sf_nba:angry"
+          ]
+        }
+      },
+      "sf_nba:scorpion_not_angry": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:angry"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "sf_nba:not_angry"
+          ]
+        }
+      }
+    }
+  }
+}

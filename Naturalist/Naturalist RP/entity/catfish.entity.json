@@ -1,0 +1,38 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:catfish",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/catfish"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.catfish"
+      },
+      "animations": {
+        "main_controller": "controller.animation.sf_nba.fish.move",
+        "swim": "animation.sf_nba.catfish.swim",
+        "flop": "animation.sf_nba.catfish.flop"
+      },
+      "scripts": {
+        "animate": [
+          "main_controller"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "spawn_egg": {
+        "base_color": "#2F4F4F",
+        "overlay_color": "#556B2F"
+      },
+      "sound_effects": {
+        "swim": "sf_nba.catfish.swim",
+        "flop": "sf_nba.catfish.flop"
+      }
+    }
+  }
+}

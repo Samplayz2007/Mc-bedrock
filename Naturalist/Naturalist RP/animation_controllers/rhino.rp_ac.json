@@ -1,0 +1,120 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.rhino.move": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            "idle",
+            "look_at_target"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "run": "q.is_casting && v.is_moving"
+            },
+            {
+              "walk": "v.is_moving"
+            },
+            {
+              "stunned": "q.is_stunned"
+            }
+          ]
+        },
+        "walk": {
+          "animations": [
+            "walk",
+            "look_at_target"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "!v.is_moving"
+            },
+            {
+              "run": "q.is_casting"
+            },
+            {
+              "stunned": "q.is_stunned"
+            }
+          ]
+        },
+        "run": {
+          "animations": [
+            "run"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "!v.is_moving"
+            },
+            {
+              "walk": "!q.is_casting"
+            },
+            {
+              "stunned": "q.is_stunned"
+            }
+          ]
+        },
+        "stunned": {
+          "animations": [
+            "stunned"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "!q.is_stunned"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.rhino.charge": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "prepare": "q.is_casting && !v.is_moving"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "prepare": {
+          "animations": [
+            "foot"
+          ],
+          "transitions": [
+            {
+              "default": "!q.is_casting || v.is_moving"
+            }
+          ],
+          "blend_transition": 0.5
+        }
+      }
+    },
+    "controller.animation.sf_nba.rhino.attack": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "prepare": "v.attack_time > 0"
+            }
+          ]
+        },
+        "prepare": {
+          "animations": [
+            "attack"
+          ],
+          "transitions": [
+            {
+              "default": "!(v.attack_time > 0)"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

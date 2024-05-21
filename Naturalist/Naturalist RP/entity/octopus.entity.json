@@ -1,0 +1,49 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:octopus",
+      "render_controllers": [
+        "controller.render.sf_nba.octopus"
+      ],
+      "geometry": {
+        "default": "geometry.sf_nba.octopus"
+      },
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "orange": "textures/sf/nba/entity/octopus/orange",
+        "purple": "textures/sf/nba/entity/octopus/purple",
+        "red": "textures/sf/nba/entity/octopus/red"
+      },
+      "animations": {
+        "main_controller": "controller.animation.sf_nba.octopus.main",
+        "idle": "animation.sf_nba.octopus.idle",
+        "swim": "animation.sf_nba.octopus.swim",
+        "swim_fast": "animation.sf_nba.octopus.swim_fast",
+        "spray": "animation.sf_nba.octopus.spray",
+        "walk": "animation.sf_nba.octopus.walk",
+        "tilt": "animation.sf_nba.octopus.tilt"
+      },
+      "scripts": {
+        "animate": [
+          "main_controller"
+        ]
+      },
+      "spawn_egg": {
+        "base_color": "#800000",
+        "overlay_color": "#F5F5DC"
+      },
+      "sound_effects": {
+        "swim": "sf_nba.octopus.swim",
+        "swim_fast": "sf_nba.octopus.swim_fast",
+        "spray": "sf_nba.octopus.spray",
+        "walk": "sf_nba.octopus.walk"
+      },
+      "particle_effects": {
+        "spray": "sf_nba:octopus_spray"
+      }
+    }
+  }
+}

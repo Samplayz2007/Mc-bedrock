@@ -1,0 +1,122 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.kiwi.main": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": [
+            "idle"
+          ],
+          "transitions": [
+            {
+              "sleep": "q.is_sleeping"
+            },
+            {
+              "run": "q.is_avoiding_mobs && (q.modified_move_speed > 0.1)"
+            },
+            {
+              "walk": "(q.modified_move_speed > 0.1)"
+            },
+            {
+              "swim": "q.is_in_water"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "walk": {
+          "animations": [
+            "walk"
+          ],
+          "transitions": [
+            {
+              "sleep": "q.is_sleeping"
+            },
+            {
+              "run": "q.is_avoiding_mobs"
+            },
+            {
+              "idle": "!(q.modified_move_speed > 0.1)"
+            },
+            {
+              "swim": "q.is_in_water"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "run": {
+          "animations": [
+            "run"
+          ],
+          "transitions": [
+            {
+              "sleep": "q.is_sleeping"
+            },
+            {
+              "walk": "!q.is_avoiding_mobs"
+            },
+            {
+              "idle": "!(q.modified_move_speed > 0.1)"
+            },
+            {
+              "swim": "q.is_in_water"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "swim": {
+          "animations": [
+            "swim"
+          ],
+          "transitions": [
+            {
+              "idle": "!q.is_in_water && !(q.modified_move_speed > 0.1)"
+            },
+            {
+              "walk": "!q.is_in_water && (q.modified_move_speed > 0.1)"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "sleep": {
+          "animations": [
+            "sleep"
+          ],
+          "transitions": [
+            {
+              "idle": "!q.is_sleeping"
+            },
+            {
+              "swim": "q.is_in_water"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    },
+    "controller.animation.sf_nba.kiwi.happy_screech": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "transitions": [
+            {
+              "screech": "q.property('sf_nba:feeling_happy')"
+            }
+          ]
+        },
+        "screech": {
+          "sound_effects": [
+            {
+              "effect": "screech"
+            }
+          ],
+          "transitions": [
+            {
+              "idle": "!q.property('sf_nba:feeling_happy')"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

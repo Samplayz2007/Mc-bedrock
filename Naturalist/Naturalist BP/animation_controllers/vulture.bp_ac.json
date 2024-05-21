@@ -1,0 +1,40 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.vulture.item_equipped": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "on_equip": "!q.property('sf_nba:is_item_equipped') && q.is_item_equipped"
+            },
+            {
+              "on_unequip": "q.property('sf_nba:is_item_equipped') && !q.is_item_equipped"
+            }
+          ]
+        },
+        "on_equip": {
+          "on_entry": [
+            "@s sf_nba:set_item_equipped"
+          ],
+          "transitions": [
+            {
+              "default": "q.property('sf_nba:is_item_equipped')"
+            }
+          ]
+        },
+        "on_unequip": {
+          "on_entry": [
+            "@s sf_nba:set_item_equipped"
+          ],
+          "transitions": [
+            {
+              "default": "!q.property('sf_nba:is_item_equipped')"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

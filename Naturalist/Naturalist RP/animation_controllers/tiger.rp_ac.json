@@ -1,0 +1,129 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.tiger.move": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            "idle",
+            "look_at_target"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "prey": "v.is_moving && q.is_sneaking && q.is_on_ground"
+            },
+            {
+              "run": "v.is_sprinting || q.is_sprinting"
+            },
+            {
+              "walk": "v.is_moving"
+            },
+            {
+              "sleeping": "q.is_sleeping"
+            }
+          ]
+        },
+        "prey": {
+          "animations": [
+            "prey",
+            "look_at_target"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "!v.is_moving"
+            },
+            {
+              "run": "v.is_sprinting || q.is_sprinting"
+            },
+            {
+              "walk": "v.is_moving && !(q.is_sneaking && q.is_on_ground)"
+            },
+            {
+              "sleeping": "q.is_sleeping"
+            }
+          ]
+        },
+        "walk": {
+          "animations": [
+            "walk",
+            "look_at_target"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "!v.is_moving"
+            },
+            {
+              "prey": "v.is_moving && q.is_sneaking && q.is_on_ground"
+            },
+            {
+              "run": "v.is_sprinting || q.is_sprinting"
+            },
+            {
+              "sleeping": "q.is_sleeping"
+            }
+          ]
+        },
+        "run": {
+          "animations": [
+            "run",
+            "look_at_target"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "!v.is_moving"
+            },
+            {
+              "prey": "v.is_moving && q.is_sneaking && q.is_on_ground"
+            },
+            {
+              "walk": "!(v.is_sprinting || q.is_sprinting)"
+            }
+          ]
+        },
+        "sleeping": {
+          "animations": [
+            {
+              "sleep": "q.property('sf_nba:sleep')"
+            },
+            {
+              "sleep2": "!q.property('sf_nba:sleep')"
+            }
+          ],
+          "transitions": [
+            {
+              "default": "!q.is_sleeping"
+            }
+          ],
+          "blend_transition": 0.5
+        }
+      }
+    },
+    "controller.animation.sf_nba.tiger.attack": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "attack": "v.attack_time > 0"
+            }
+          ]
+        },
+        "attack": {
+          "animations": [
+            "swing"
+          ],
+          "transitions": [
+            {
+              "default": "v.attack_time <= 0 && q.all_animations_finished"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

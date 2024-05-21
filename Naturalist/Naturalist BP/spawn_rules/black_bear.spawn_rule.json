@@ -1,0 +1,62 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "sf_nba:black_bear",
+      "population_control": "animal"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_above_block_filter": {
+          "blocks": [
+            "minecraft:grass"
+          ]
+        },
+        "minecraft:brightness_filter": {
+          "min": 7,
+          "max": 15,
+          "adjust_for_weather": false
+        },
+        "minecraft:weight": {
+          "default": 8
+        },
+        "minecraft:herd": {
+          "min_size": 1,
+          "max_size": 2,
+          "event": "sf_nba:entity_born",
+          "event_skip_count": 1
+        },
+        "minecraft:biome_filter": {
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "forest"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "flower_forest"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "taiga"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "mega_taiga"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "grove"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "format_version": "1.20.41",
+  "animation_controllers": {
+    "controller.animation.sf_nba.small_jellyfish.main": {
+      "states": {
+        "default": {
+          "animations": [
+            "idle"
+          ],
+          "transitions": [
+            {
+              "swim": "query.is_swimming"
+            },
+            {
+              "idle_event": "math.random_integer(0, 2000) == 0 && !q.is_swimming"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "swim": {
+          "animations": [
+            "swim"
+          ],
+          "transitions": [
+            {
+              "default": "!query.is_swimming && query.all_animations_finished"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "idle_event": {
+          "animations": [
+            "idle_event"
+          ],
+          "transitions": [
+            {
+              "default": "query.all_animations_finished"
+            }
+          ],
+          "blend_transition": 0.5
+        }
+      }
+    }
+  }
+}

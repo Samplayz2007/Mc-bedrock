@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:cpillar",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/caterpillar"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.caterpillar"
+      },
+      "animations": {
+        "move": "animation.sf_nba.caterpillar.crawl",
+        "general": "controller.animation.sf_nba.caterpillar.general"
+      },
+      "scripts": {
+        "animate": [
+          "general"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.caterpillar"
+      ],
+      "spawn_egg": {
+        "base_color": "#3A3831",
+        "overlay_color": "#EEC300"
+      }
+    }
+  }
+}

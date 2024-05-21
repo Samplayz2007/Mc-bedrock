@@ -1,0 +1,26 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.sf_nba.lizard_tail": {
+      "arrays": {
+        "textures": {
+          "array.skins": [
+            "texture.beardie",
+            "texture.brown",
+            "texture.green",
+            "texture.leopard_gecko"
+          ]
+        }
+      },
+      "geometry": "geometry.default",
+      "materials": [
+        {
+          "*": "material.default"
+        }
+      ],
+      "textures": [
+        "array.skins[q.variant]"
+      ]
+    }
+  }
+}

@@ -1,0 +1,322 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "sf_nba:info_book",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false,
+      "properties": {
+        "sf_nba:oriented": {
+          "type": "bool",
+          "default": false
+        },
+        "sf_nba:recipe_page": {
+          "type": "int",
+          "default": 0,
+          "range": [
+            0,
+            62
+          ],
+          "client_sync": true
+        },
+        "sf_nba:hit": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "sf_nba:health": {
+          "type": "int",
+          "default": 1,
+          "range": [
+            0,
+            1
+          ],
+          "client_sync": true
+        },
+        "sf_nba:destroy": {
+          "type": "bool",
+          "default": false
+        }
+      },
+      "animations": {
+        "orient_controller": "controller.animation.sf_nba.info_book.orient",
+        "hit_controller": "controller.animation.sf_nba.info_book.hit"
+      },
+      "scripts": {
+        "animate": [
+          {
+            "orient_controller": "query.property('sf_nba:oriented') == false"
+          },
+          "hit_controller"
+        ]
+      }
+    },
+    "component_groups": {
+      "sf_nba:spawned": {
+        "minecraft:is_ignited": {},
+        "minecraft:timer": {
+          "time": 0.1,
+          "looping": false,
+          "time_down_event": {
+            "event": "sf_nba:remove_spawned",
+            "target": "self"
+          }
+        }
+      },
+      "sf_nba:damaged": {
+        "minecraft:timer": {
+          "time": 1.5,
+          "looping": false,
+          "time_down_event": {
+            "event": "sf_nba:heal",
+            "target": "self"
+          }
+        }
+      },
+      "sf_nba:remove": {
+        "minecraft:instant_despawn": {}
+      },
+      "sf_nba:drop_egg": {
+        "minecraft:is_shaking": {},
+        "minecraft:equipment": {
+          "table": "loot_tables/sf/nba/entities/info_book.loot.json"
+        },
+        "minecraft:transformation": {
+          "priority": 1,
+          "drop_equipment": true,
+          "delay": {
+            "value": 0.1
+          }
+        },
+        "minecraft:timer": {
+          "time": 0.05,
+          "time_down_event": {
+            "event": "sf_nba:remove"
+          }
+        }
+      }
+    },
+    "components": {
+      "minecraft:collision_box": {
+        "width": 1,
+        "height": 1
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:push_through": {
+        "value": 1
+      },
+      "minecraft:knockback_resistance": {
+        "value": 1
+      },
+      "minecraft:physics": {
+        "has_collision": true,
+        "has_gravity": true
+      },
+      "minecraft:custom_hit_test": {
+        "hitboxes": [
+          {
+            "width": 1,
+            "height": 1,
+            "pivot": [
+              0,
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "minecraft:persistent": {},
+      "minecraft:interact": {
+        "interactions": [
+          {
+            "swing": true,
+            "on_interact": {
+              "filters": {
+                "test": "is_sneaking",
+                "subject": "other",
+                "value": true
+              },
+              "target": "self",
+              "event": "sf_nba:interact_sneaking"
+            }
+          },
+          {
+            "swing": true,
+            "on_interact": {
+              "filters": {
+                "test": "is_sneaking",
+                "subject": "other",
+                "value": false
+              },
+              "target": "self",
+              "event": "sf_nba:interact"
+            }
+          }
+        ]
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "entity_attack",
+            "deals_damage": false,
+            "on_damage": {
+              "filters": [
+                {
+                  "all_of": [
+                    {
+                      "test": "int_property",
+                      "subject": "self",
+                      "domain": "sf_nba:health",
+                      "operator": ">",
+                      "value": 0
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "damager",
+                      "value": "player"
+                    }
+                  ]
+                }
+              ],
+              "target": "self",
+              "event": "sf_nba:damage"
+            }
+          },
+          {
+            "cause": "entity_attack",
+            "deals_damage": false,
+            "on_damage": {
+              "filters": [
+                {
+                  "all_of": [
+                    {
+                      "test": "int_property",
+                      "subject": "self",
+                      "domain": "sf_nba:health",
+                      "operator": "<=",
+                      "value": 0
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "damager",
+                      "value": "player"
+                    }
+                  ]
+                }
+              ],
+              "target": "self",
+              "event": "sf_nba:drop_egg"
+            }
+          },
+          {
+            "cause": "all",
+            "deals_damage": false
+          }
+        ]
+      }
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "sf_nba:spawned"
+          ]
+        }
+      },
+      "sf_nba:drop_egg": {
+        "add": {
+          "component_groups": [
+            "sf_nba:drop_egg",
+            "sf_nba:reset_all"
+          ]
+        },
+        "set_property": {
+          "sf_nba:hit": true
+        }
+      },
+      "sf_nba:interact": {
+        "set_property": {
+          "sf_nba:recipe_page": "query.property('sf_nba:recipe_page')+1 > 62 ? 0 : query.property('sf_nba:recipe_page')+1"
+        }
+      },
+      "sf_nba:interact_sneaking": {
+        "set_property": {
+          "sf_nba:recipe_page": "query.property('sf_nba:recipe_page')-1 < 0 ? 62 : query.property('sf_nba:recipe_page')-1"
+        }
+      },
+      "sf_nba:remove": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:drop_egg"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "sf_nba:remove"
+          ]
+        },
+        "set_property": {
+          "sf_nba:destroy": true
+        }
+      },
+      "sf_nba:damage": {
+        "add": {
+          "component_groups": [
+            "sf_nba:damaged",
+            "sf_nba:drop_egg"
+          ]
+        },
+        "set_property": {
+          "sf_nba:health": "query.property('sf_nba:health')-1",
+          "sf_nba:hit": true
+        }
+      },
+      "sf_nba:heal": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:damaged"
+          ]
+        },
+        "set_property": {
+          "sf_nba:health": "1000",
+          "sf_nba:hit": false
+        }
+      },
+      "sf_nba:oriented": {
+        "set_property": {
+          "sf_nba:oriented": true
+        }
+      },
+      "sf_nba:not_hit": {
+        "set_property": {
+          "sf_nba:hit": false
+        }
+      },
+      "sf_nba:despawn": {
+        "add": {
+          "component_groups": [
+            "sf_nba:remove"
+          ]
+        }
+      },
+      "sf_nba:spawned": {
+        "add": {
+          "component_groups": [
+            "sf_nba:spawned"
+          ]
+        }
+      },
+      "sf_nba:remove_spawned": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:spawned"
+          ]
+        }
+      }
+    }
+  }
+}

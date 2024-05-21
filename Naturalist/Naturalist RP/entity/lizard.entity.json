@@ -1,0 +1,54 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:lizard",
+      "render_controllers": [
+        "controller.render.sf_nba.lizard"
+      ],
+      "geometry": {
+        "default": "geometry.sf_nba.lizard"
+      },
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "beardie": "textures/sf/nba/entity/lizard/beardie",
+        "brown": "textures/sf/nba/entity/lizard/brown",
+        "green": "textures/sf/nba/entity/lizard/green",
+        "leopard_gecko": "textures/sf/nba/entity/lizard/leopard_gecko"
+      },
+      "animations": {
+        "main_controller": "controller.animation.sf_nba.lizard.main",
+        "sleep": "animation.sf_nba.lizard.sleep",
+        "sit": "animation.sf_nba.lizard.sit",
+        "idle": "animation.sf_nba.lizard.idle",
+        "walk": "animation.sf_nba.lizard.walk",
+        "look_at_target": "animation.sf_nba.look_at_target"
+      },
+      "scripts": {
+        "initialize": [
+          "v.anim_speed_multiplier = 0;",
+          "v.anim_speed_movement_max = 0;"
+        ],
+        "pre_animation": [
+          "v.anim_speed_multiplier = 8.5125;",
+          "v.anim_speed_movement_max = 1.0;"
+        ],
+        "animate": [
+          "main_controller"
+        ]
+      },
+      "spawn_egg": {
+        "base_color": "#228B22",
+        "overlay_color": "#A52A2A"
+      },
+      "sound_effects": {
+        "sleep": "sf_nba.lizard.sleep",
+        "step": "sf_nba.step.smallbird",
+        "step_-6dB": "sf_nba.step.smallbird_-6dB",
+        "step_-12dB": "sf_nba.step.smallbird_-12dB"
+      }
+    }
+  }
+}

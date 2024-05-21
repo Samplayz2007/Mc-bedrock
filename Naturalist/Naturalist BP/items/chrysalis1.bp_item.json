@@ -1,0 +1,23 @@
+{
+  "format_version": "1.20.20",
+  "minecraft:item": {
+    "description": {
+      "identifier": "sf_nba:chrysalis1",
+      "menu_category": {
+        "category": "none",
+        "is_hidden_in_commands": true
+      }
+    },
+    "components": {
+      "minecraft:block_placer": {
+        "block": "sf_nba:chrysalis_stage1"
+      },
+      "minecraft:icon": {
+        "texture": "chrysalis"
+      },
+      "minecraft:display_name": {
+        "value": "tile.sf_nba:chrysalis.name"
+      }
+    }
+  }
+}

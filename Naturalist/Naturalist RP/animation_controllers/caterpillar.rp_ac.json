@@ -1,0 +1,29 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.caterpillar.general": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "blend_transition": 0.25,
+          "transitions": [
+            {
+              "move": "q.ground_speed > 0"
+            }
+          ]
+        },
+        "move": {
+          "animations": [
+            "move"
+          ],
+          "blend_transition": 0.25,
+          "transitions": [
+            {
+              "default": "q.ground_speed <= 0"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

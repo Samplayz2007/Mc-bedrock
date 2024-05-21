@@ -1,0 +1,132 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.beaver.main": {
+      "states": {
+        "default": {
+          "animations": [
+            "idle"
+          ],
+          "transitions": [
+            {
+              "tail_slap": "math.random_integer(0,1000) == 0"
+            },
+            {
+              "chew": "q.property('sf_nba:is_chewing')"
+            },
+            {
+              "swim": "q.is_in_water && q.modified_move_speed >= 0.05"
+            },
+            {
+              "walk": "!q.is_in_water && !q.is_interested && q.modified_move_speed >= 0.05"
+            },
+            {
+              "run": "!q.is_in_water && q.is_interested && q.modified_move_speed >= 0.05"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "tail_slap": {
+          "animations": [
+            "tail_slap"
+          ],
+          "transitions": [
+            {
+              "default": "q.all_animations_finished"
+            },
+            {
+              "chew": "q.property('sf_nba:is_chewing')"
+            },
+            {
+              "swim": "q.is_in_water && q.modified_move_speed >= 0.05"
+            },
+            {
+              "walk": "!q.is_in_water && !q.is_interested && q.modified_move_speed >= 0.05"
+            },
+            {
+              "run": "!q.is_in_water && q.is_interested && q.modified_move_speed >= 0.05"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "chew": {
+          "animations": [
+            "nibbling"
+          ],
+          "transitions": [
+            {
+              "default": "!q.property('sf_nba:is_chewing')"
+            },
+            {
+              "swim": "q.is_in_water && q.modified_move_speed >= 0.05"
+            },
+            {
+              "walk": "!q.is_in_water && !q.is_interested && q.modified_move_speed >= 0.05"
+            },
+            {
+              "run": "!q.is_in_water && q.is_interested && q.modified_move_speed >= 0.05"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "walk": {
+          "animations": [
+            "walk"
+          ],
+          "transitions": [
+            {
+              "default": "!q.property('sf_nba:is_chewing') && (q.modified_move_speed < 0.05)"
+            },
+            {
+              "chew": "q.property('sf_nba:is_chewing') && (q.modified_move_speed < 0.05)"
+            },
+            {
+              "run": "q.is_interested"
+            },
+            {
+              "swim": "q.is_in_water"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "swim": {
+          "animations": [
+            "walk"
+          ],
+          "transitions": [
+            {
+              "default": "!q.property('sf_nba:is_chewing') && (q.modified_move_speed < 0.05)"
+            },
+            {
+              "chew": "q.property('sf_nba:is_chewing') && (q.modified_move_speed < 0.05)"
+            },
+            {
+              "walk": "!q.is_in_water"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "run": {
+          "animations": [
+            "run"
+          ],
+          "transitions": [
+            {
+              "default": "!q.property('sf_nba:is_chewing') && (q.modified_move_speed < 0.05)"
+            },
+            {
+              "chew": "q.property('sf_nba:is_chewing') && (q.modified_move_speed < 0.05)"
+            },
+            {
+              "walk": "!q.is_interested"
+            },
+            {
+              "swim": "q.is_in_water"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "format_version": "1.20.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "sf_nba:beaver_pelt",
+      "category": "Nature"
+    },
+    "components": {
+      "minecraft:icon": {
+        "texture": "sf_nba.beaver_pelt"
+      },
+      "minecraft:display_name": {
+        "value": "item.sf_nba:beaver_pelt.name"
+      }
+    }
+  }
+}

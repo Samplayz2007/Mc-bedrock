@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.40",
+  "minecraft:item": {
+    "description": {
+      "identifier": "sf_nba:light_blue_cage",
+      "menu_category": {
+        "category": "items",
+        "group": "naturalist"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 64,
+      "minecraft:liquid_clipped": {},
+      "minecraft:can_destroy_in_creative": {
+        "value": true
+      },
+      "minecraft:allow_off_hand": {
+        "value": true
+      },
+      "minecraft:icon": {
+        "texture": "sf_nba.light_blue_cage"
+      },
+      "minecraft:entity_placer": {
+        "entity": "sf_nba:cage<sf_nba:l_blue_var>"
+      },
+      "minecraft:display_name": {
+        "value": "item.sf_nba:light_blue_cage.name"
+      }
+    }
+  }
+}

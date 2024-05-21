@@ -1,0 +1,23 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.sf_nba.hamster_wheel.spin": {
+      "loop": true,
+      "animation_length": 1.79167,
+      "bones": {
+        "wheel": {
+          "rotation": [
+            "q.anim_time * 200",
+            0,
+            0
+          ]
+        }
+      },
+      "sound_effects": {
+        "0.0": {
+          "effect": "spin"
+        }
+      }
+    }
+  }
+}

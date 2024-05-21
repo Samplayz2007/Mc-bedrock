@@ -1,0 +1,50 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:piranha",
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/piranha"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.piranha"
+      },
+      "animations": {
+        "main_controller": "controller.animation.sf_nba.piranha.main",
+        "attack_controller": "controller.animation.sf_nba.piranha.attack",
+        "var.out_of_water": "controller.animation.sf_nba.piranha.var.out_of_water",
+        "idle": "animation.sf_nba.piranha.idle",
+        "swim": "animation.sf_nba.piranha.swim",
+        "swim_fast": "animation.sf_nba.piranha.swim_fast",
+        "attack": "animation.sf_nba.piranha.attack",
+        "flop": "animation.sf_nba.piranha.flop"
+      },
+      "scripts": {
+        "initialize": [
+          "v.out_of_water = 0.0;"
+        ],
+        "animate": [
+          "main_controller",
+          "attack_controller",
+          "var.out_of_water"
+        ]
+      },
+      "spawn_egg": {
+        "base_color": "#514A50",
+        "overlay_color": "#FF8912"
+      },
+      "sound_effects": {
+        "swim": "sf_nba.piranha.swim",
+        "swim_fast": "sf_nba.piranha.swim_fast",
+        "attack": "sf_nba.piranha.attack",
+        "flop": "sf_nba.piranha.flop"
+      }
+    }
+  }
+}

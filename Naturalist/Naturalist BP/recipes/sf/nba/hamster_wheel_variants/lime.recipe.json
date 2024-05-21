@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "sf_nba:lime_hamster_wheel"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "minecraft:lime_dye"
+      },
+      {
+        "item": "sf_nba:copper_hamster_wheel"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "minecraft:lime_dye"
+      },
+      {
+        "item": "sf_nba:copper_hamster_wheel"
+      }
+    ],
+    "result": {
+      "item": "sf_nba:lime_hamster_wheel",
+      "count": 1
+    }
+  }
+}

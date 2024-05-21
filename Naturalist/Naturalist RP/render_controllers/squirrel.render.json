@@ -1,0 +1,30 @@
+{
+  "format_version": "1.20.0",
+  "render_controllers": {
+    "controller.render.sf_nba.squirrel": {
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "arrays": {
+        "textures": {
+          "Array.variant": [
+            "Texture.brown",
+            "Texture.black",
+            "Texture.white"
+          ]
+        }
+      },
+      "textures": [
+        "Array.variant[q.property('sf_nba:variant')]"
+      ],
+      "part_visibility": [
+        {
+          "sleep": "q.is_sleeping"
+        }
+      ]
+    }
+  }
+}

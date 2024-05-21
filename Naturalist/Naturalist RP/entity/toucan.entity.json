@@ -1,0 +1,47 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:toucan",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "variant1": "textures/sf/nba/entity/toucan/toucan",
+        "variant2": "textures/sf/nba/entity/toucan/choco",
+        "variant3": "textures/sf/nba/entity/toucan/keel_billed"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.toucan"
+      },
+      "animations": {
+        "controller": "controller.animation.sf_nba.toucan.main",
+        "idle": "animation.sf_nba.toucan.idle",
+        "fly": "animation.sf_nba.toucan.fly",
+        "walk": "animation.sf_nba.toucan.walk",
+        "baby_transform": "animation.sf_nba.toucan.baby_transform"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "baby_transform": "q.is_baby"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.toucan"
+      ],
+      "spawn_egg": {
+        "base_color": "#2ab125",
+        "overlay_color": "#829c21"
+      },
+      "sound_effects": {
+        "wing": "sf_nba.toucan.wing",
+        "step": "sf_nba.step.smallbird",
+        "step_-6dB": "sf_nba.step.smallbird_-6dB",
+        "step_-12dB": "sf_nba.step.smallbird_-12dB"
+      }
+    }
+  }
+}

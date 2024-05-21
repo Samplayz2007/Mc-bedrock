@@ -1,0 +1,65 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:tiger",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "black_panther": "textures/sf/nba/entity/tiger/black_panther",
+        "leopard": "textures/sf/nba/entity/tiger/leopard",
+        "tiger": "textures/sf/nba/entity/tiger/tiger",
+        "white_tiger": "textures/sf/nba/entity/tiger/white_tiger"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.tiger"
+      },
+      "animations": {
+        "walk": "animation.sf_nba.tiger.walk",
+        "run": "animation.sf_nba.tiger.run",
+        "prey": "animation.sf_nba.tiger.prey",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "baby_transform": "animation.sf_nba.tiger.baby_transform",
+        "idle": "animation.sf_nba.tiger.idle",
+        "sleep": "animation.sf_nba.tiger.sleep",
+        "sleep2": "animation.sf_nba.tiger.sleep2",
+        "swing": "animation.sf_nba.tiger.swing",
+        "move": "controller.animation.sf_nba.tiger.move",
+        "attack_controller": "controller.animation.sf_nba.tiger.attack",
+        "attack": "animation.sf_nba.tiger.attack"
+      },
+      "scripts": {
+        "initialize": [
+          "v.is_moving = 0;",
+          "v.is_sprinting = 0;"
+        ],
+        "pre_animation": [
+          "v.is_moving = q.modified_move_speed >= 0.05;",
+          "v.is_sprinting = (q.modified_move_speed * (q.is_baby ? 0.7 : 1) - (q.distance_from_camera * 0.000001)) >= 0.95 ? 1;"
+        ],
+        "animate": [
+          {
+            "baby_transform": "q.is_baby"
+          },
+          "move",
+          "attack_controller"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.tiger"
+      ],
+      "spawn_egg": {
+        "base_color": "#E4BD82",
+        "overlay_color": "#663A11"
+      },
+      "sound_effects": {
+        "attack": "sf_nba.tiger.attack",
+        "sleep": "sf_nba.tiger.sleep",
+        "step": "sf_nba.lion.step",
+        "step_-6dB": "sf_nba.lion.step_-6dB",
+        "prey": "sf_nba.tiger.prey"
+      }
+    }
+  }
+}

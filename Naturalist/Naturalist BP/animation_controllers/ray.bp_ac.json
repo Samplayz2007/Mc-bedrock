@@ -1,0 +1,41 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.ray.main": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "on_entry": [
+            "@s sf_nba:complete_attack"
+          ],
+          "transitions": [
+            {
+              "escape": "!q.is_powered && q.is_avoiding_mobs"
+            }
+          ]
+        },
+        "escape": {
+          "on_entry": [
+            "v.escape_timer = q.life_time + 3;"
+          ],
+          "transitions": [
+            {
+              "hide": "q.life_time > (v.escape_timer ?? 0)"
+            }
+          ]
+        },
+        "hide": {
+          "on_entry": [
+            "v.hide_timer = q.life_time + 3;",
+            "@s sf_nba:start_hide"
+          ],
+          "transitions": [
+            {
+              "default": "(q.life_time > (v.hide_timer ?? 0)) || !q.is_powered"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "format_version": "1.17.20",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "sf_nba:bear_harvest_pathfinder",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "sf_nba:despawn": {
+        "minecraft:instant_despawn": {}
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "sf_nba:bear_harvest_pathfinder",
+          "inanimate"
+        ]
+      },
+      "minecraft:collision_box": {
+        "width": 1.0,
+        "height": 1.0
+      },
+      "minecraft:custom_hit_test": {
+        "hitboxes": [
+          {
+            "width": 0.0,
+            "height": 0.0,
+            "pivot": [
+              0.0,
+              100.0,
+              0.0
+            ]
+          }
+        ]
+      },
+      "minecraft:health": {
+        "value": 1.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "minecraft:fire_immune": {},
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "cause": "all",
+          "deals_damage": false
+        }
+      },
+      "minecraft:entity_sensor": {
+        "sensor_range": 12,
+        "require_all": true,
+        "event_filters": {
+          "none_of": {
+            "test": "is_family",
+            "subject": "other",
+            "value": "sf_nba:grizzly_bear"
+          }
+        },
+        "event": "sf_nba:despawn"
+      },
+      "minecraft:despawn": {
+        "filters": {
+          "none_of": [
+            {
+              "test": "in_block",
+              "value": "minecraft:sweet_berry_bush"
+            },
+            {
+              "test": "in_block",
+              "value": "minecraft:beehive"
+            },
+            {
+              "test": "in_block",
+              "value": "minecraft:bee_nest"
+            },
+            {
+              "test": "in_block",
+              "value": "minecraft:campfire"
+            },
+            {
+              "test": "in_block",
+              "value": "minecraft:soul_campfire"
+            }
+          ]
+        }
+      },
+      "minecraft:conditional_bandwidth_optimization": {}
+    },
+    "events": {
+      "sf_nba:despawn": {
+        "add": {
+          "component_groups": [
+            "sf_nba:despawn"
+          ]
+        }
+      }
+    }
+  }
+}

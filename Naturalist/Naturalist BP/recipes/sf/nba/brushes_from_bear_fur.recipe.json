@@ -1,0 +1,37 @@
+{
+    "format_version": "1.20.10",
+    "minecraft:recipe_shaped": {
+      "description": {
+        "identifier": "sf_nba:brush_from_bear_fur"
+      },
+      "tags": [ "crafting_table" ],
+      "pattern": [
+        "X",
+        "#",
+        "|"
+      ],
+      "key": {
+        "X": {
+          "item": "sf_nba:bear_fur"
+        },
+        "#": {
+          "item": "minecraft:copper_ingot"
+        },
+        "|": {
+          "item": "minecraft:stick"
+        }
+      },
+      "unlock": [
+        {
+          "item": "minecraft:copper_ingot"
+        },
+        {
+          "item": "sf_nba:bear_fur"
+        }
+      ],
+      "result": {
+        "item": "minecraft:brush",
+        "count": 1
+      }
+    }
+  }

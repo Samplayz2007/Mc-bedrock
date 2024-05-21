@@ -1,0 +1,38 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:emperor_penguin_egg",
+      "render_controllers": [
+        "controller.render.sf_nba.ostrich_egg"
+      ],
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "stage_0": "textures/sf/nba/entity/penguin_egg/stage_0",
+        "stage_1": "textures/sf/nba/entity/penguin_egg/stage_1",
+        "stage_2": "textures/sf/nba/entity/penguin_egg/stage_2"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.penguin_egg"
+      },
+      "animations": {
+        "no_rotate": "animation.sf_nba.generic.no_rotate.root",
+        "crack_sound": "controller.animation.sf_nba.egg.crack_sound"
+      },
+      "scripts": {
+        "initialize": [
+          "v.current_variant = q.variant;"
+        ],
+        "animate": [
+          "no_rotate",
+          "crack_sound"
+        ]
+      },
+      "sound_effects": {
+        "crack": "sf_nba.ostrichegg.crack"
+      }
+    }
+  }
+}

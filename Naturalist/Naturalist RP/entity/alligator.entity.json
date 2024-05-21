@@ -1,0 +1,51 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:alligator",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/alligator/alligator"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.alligator"
+      },
+      "animations": {
+        "main_controller": "controller.animation.sf_nba.alligator.main",
+        "attack_controller": "controller.animation.sf_nba.alligator.attack",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "baby_transform": "animation.sf_nba.alligator.baby_transform",
+        "idle": "animation.sf_nba.alligator.idle",
+        "walk": "animation.sf_nba.alligator.walk",
+        "swim": "animation.sf_nba.alligator.swim",
+        "bite": "animation.sf_nba.alligator.bite"
+      },
+      "scripts": {
+        "animate": [
+          "main_controller",
+          "attack_controller",
+          "look_at_target",
+          {
+            "baby_transform": "q.is_baby"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "spawn_egg": {
+        "base_color": "#3C6EA4",
+        "overlay_color": "#0097B3"
+      },
+      "sound_effects": {
+        "swim": "sf_nba.alligator.swim",
+        "bite": "sf_nba.alligator.bite",
+        "step": "sf_nba.lion.step",
+        "step_-6dB": "sf_nba.lion.step_-6dB",
+        "step_-12dB": "sf_nba.lion.step_-12dB"
+      }
+    }
+  }
+}

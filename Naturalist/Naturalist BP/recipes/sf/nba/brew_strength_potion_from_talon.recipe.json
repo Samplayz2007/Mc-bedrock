@@ -1,0 +1,14 @@
+{
+    "format_version": "1.20.10",
+    "minecraft:recipe_brewing_mix": {
+      "description": {
+        "identifier": "sf_nba:brew_strength_potion_from_talon"
+      },
+  
+      "tags": [ "brewing_stand" ],
+  
+      "input": "minecraft:potion_type:awkward",
+      "reagent": "sf_nba:talon",
+      "output": "minecraft:potion_type:strength"
+    }
+  }

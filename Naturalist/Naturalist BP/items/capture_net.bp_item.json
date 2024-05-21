@@ -1,0 +1,25 @@
+{
+  "format_version": "1.20.40",
+  "minecraft:item": {
+    "description": {
+      "identifier": "sf_nba:capture_net",
+      "menu_category": {
+        "category": "items",
+        "group": "naturalist"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "texture": "sf_nba.capture_net"
+      },
+      "minecraft:durability": {
+        "max_durability": 64
+      },
+      "minecraft:tags": {
+        "tags": [
+          "minecraft:is_tool"
+        ]
+      }
+    }
+  }
+}

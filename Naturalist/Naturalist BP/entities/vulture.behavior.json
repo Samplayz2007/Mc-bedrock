@@ -1,0 +1,211 @@
+{
+  "format_version": "1.20.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "sf_nba:vulture",
+      "is_summonable": true,
+      "is_spawnable": true
+    },
+    "components": {
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:experience_reward": {
+        "on_death": "query.last_hit_by_player ? Math.Random(1,3) : 0"
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/sf/nba/entities/bird.loot.json"
+      },
+      "minecraft:attack": {
+        "damage": 4
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:equip_item": {},
+      "minecraft:equipment": {
+        "slot_drop_chance": [
+          {
+            "slot": "slot.weapon.mainhand",
+            "drop_chance": 1
+          }
+        ]
+      },
+      "minecraft:collision_box": {
+        "width": 0.9,
+        "height": 0.5
+      },
+      "minecraft:nameable": {},
+      "minecraft:health": {
+        "value": 10,
+        "max": 10
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "on_damage": {
+              "filters": {
+                "test": "is_block",
+                "subject": "block",
+                "value": "minecraft:cactus"
+              }
+            },
+            "deals_damage": false
+          },
+          {
+            "cause": "fall",
+            "deals_damage": false
+          }
+        ]
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": {
+              "test": "in_lava"
+            },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:movement": {
+        "value": 0.3
+      },
+      "minecraft:flying_speed": {
+        "value": 0.15
+      },
+      "minecraft:leashable": {
+        "soft_distance": 4,
+        "hard_distance": 6,
+        "max_distance": 10
+      },
+      "minecraft:navigation.hover": {
+        "can_path_over_water": true,
+        "can_sink": false,
+        "can_pass_doors": true,
+        "can_path_from_air": true,
+        "avoid_water": true,
+        "avoid_damage_blocks": true,
+        "avoid_sun": false
+      },
+      "minecraft:movement.hover": {},
+      "minecraft:jump.static": {},
+      "minecraft:can_fly": {},
+      "minecraft:shareables": {
+        "items": [
+          {
+            "item": "minecraft:rotten_flesh",
+            "max_amount": 1
+          }
+        ],
+        "singular_pickup": true
+      },
+      "minecraft:despawn": {
+        "despawn_from_distance": {}
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.nearest_prioritized_attackable_target": {
+        "priority": 1,
+        "reselect_targets": true,
+        "entity_types": [
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "any_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "zombie"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "zombie_pigman"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "zoglin"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "zombiehorse"
+                    }
+                  ]
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "hand",
+                  "operator": "!=",
+                  "value": "rotten_flesh"
+                }
+              ]
+            },
+            "max_dist": 32
+          }
+        ]
+      },
+      "minecraft:follow_range": {
+        "value": 32
+      },
+      "minecraft:behavior.melee_attack": {
+        "priority": 1,
+        "speed_multiplier": 1.2,
+        "track_target": true,
+        "reach_multiplier": 1
+      },
+      "minecraft:behavior.pickup_items": {
+        "priority": 2,
+        "max_dist": 32,
+        "goal_radius": 2,
+        "speed_multiplier": 1.2,
+        "track_target": true
+      },
+      "minecraft:behavior.equip_item": {
+        "priority": 2
+      },
+      "minecraft:behavior.eat_carried_item": {
+        "priority": 2,
+        "delay_before_eating": 28
+      },
+      "minecraft:behavior.random_hover": {
+        "priority": 3,
+        "xz_dist": 12,
+        "y_dist": 12,
+        "y_offset": -1,
+        "interval": 10,
+        "hover_height": [
+          15,
+          30
+        ]
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 4,
+        "look_distance": 8,
+        "probability": 0.02
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 5
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:game_event_movement_tracking": {
+        "emit_flap": true
+      },
+      "minecraft:type_family": {
+        "family": [
+          "sf_nba:vulture",
+          "mob"
+        ]
+      }
+    }
+  }
+}

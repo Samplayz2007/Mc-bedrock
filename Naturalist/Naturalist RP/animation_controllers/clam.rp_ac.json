@@ -1,0 +1,67 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.clam.main": {
+      "states": {
+        "default": {
+          "animations": [
+            "idle_closed"
+          ],
+          "transitions": [
+            {
+              "launch": "q.property('sf_nba:is_open') && q.property('sf_nba:launch')"
+            },
+            {
+              "open": "q.property('sf_nba:is_open')"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "launch": {
+          "animations": [
+            "launch"
+          ],
+          "transitions": [
+            {
+              "idle_open": "q.all_animations_finished"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "open": {
+          "animations": [
+            "open"
+          ],
+          "transitions": [
+            {
+              "idle_open": "q.all_animations_finished"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "idle_open": {
+          "animations": [
+            "idle_open"
+          ],
+          "transitions": [
+            {
+              "close": "!q.property('sf_nba:is_open')"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "close": {
+          "animations": [
+            "close"
+          ],
+          "transitions": [
+            {
+              "default": "q.all_animations_finished"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}

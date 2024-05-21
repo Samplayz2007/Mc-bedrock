@@ -1,0 +1,40 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.sf_nba.hamster_wheel": {
+      "arrays": {
+        "textures": {
+          "array.skins": [
+            "texture.black",
+            "texture.blue",
+            "texture.brown",
+            "texture.copper",
+            "texture.cyan",
+            "texture.glow",
+            "texture.gray",
+            "texture.green",
+            "texture.light_blue",
+            "texture.light_gray",
+            "texture.lime",
+            "texture.magenta",
+            "texture.orange",
+            "texture.pink",
+            "texture.purple",
+            "texture.red",
+            "texture.white",
+            "texture.yellow"
+          ]
+        }
+      },
+      "geometry": "geometry.default",
+      "materials": [
+        {
+          "*": "material.default"
+        }
+      ],
+      "textures": [
+        "array.skins[q.variant]"
+      ]
+    }
+  }
+}

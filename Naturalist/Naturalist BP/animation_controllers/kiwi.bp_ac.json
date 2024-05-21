@@ -1,0 +1,137 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.kiwi.digging_control": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "init": "!q.is_tamed"
+            }
+          ]
+        },
+        "init": {
+          "on_entry": [
+            "/event entity @s sf_nba:end_feeling_happy",
+            "/event entity @s sf_nba:scenting"
+          ],
+          "transitions": [
+            {
+              "test_digging_success": "q.property('sf_nba:digging_states') == 'test_digging_success'"
+            }
+          ]
+        },
+        "test_digging_success": {
+          "on_entry": [
+            "/function sf/nba/gameplay/digging/init_digging"
+          ],
+          "on_exit": [
+            "v.stand_delay_trigger = q.life_time + 2;"
+          ],
+          "transitions": [
+            {
+              "digging_successful": "q.property('sf_nba:digging_states') == 'successful'"
+            },
+            {
+              "digging_unsuccessful": "q.property('sf_nba:digging_states') == 'unsuccessful'"
+            }
+          ]
+        },
+        "digging_successful": {
+          "on_entry": [
+            "/function sf/nba/gameplay/digging/digging_loot"
+          ],
+          "transitions": [
+            {
+              "feeling_happy": "q.life_time >= v.stand_delay_trigger"
+            }
+          ]
+        },
+        "digging_unsuccessful": {
+          "transitions": [
+            {
+              "default": "q.life_time >= v.stand_delay_trigger"
+            }
+          ]
+        },
+        "feeling_happy": {
+          "on_entry": [
+            "/event entity @s sf_nba:feeling_happy"
+          ],
+          "transitions": [
+            {
+              "default": "1"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.kiwi.sniffing_control": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "start_sniffing": "!q.is_tamed && (q.property('sf_nba:digging_states') == 'trigger_digging')"
+            }
+          ]
+        },
+        "start_sniffing": {
+          "on_entry": [
+            "/function sf/nba/gameplay/digging/init_sniffing"
+          ],
+          "transitions": [
+            {
+              "default": "q.property('sf_nba:digging_states') != 'trigger_digging'"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.kiwi.pickup_control": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "start_sniffing": "q.is_tamed && !q.is_item_name_any('slot.weapon.mainhand', 'minecraft:wheat')"
+            }
+          ]
+        },
+        "start_sniffing": {
+          "on_entry": [
+            "/replaceitem entity @s slot.weapon.mainhand 0 wheat"
+          ],
+          "transitions": [
+            {
+              "start_sniffing": "!q.is_tamed || q.is_item_name_any('slot.weapon.mainhand', 'minecraft:wheat')"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.kiwi.following_owner_check": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "on_entry": [
+            "@s sf_nba:not_following_owner"
+          ],
+          "transitions": [
+            {
+              "following": "!q.is_sitting && q.is_tamed"
+            }
+          ]
+        },
+        "following": {
+          "on_entry": [
+            "@s sf_nba:is_following_owner"
+          ],
+          "transitions": [
+            {
+              "default": "q.is_sitting || !q.is_tamed"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

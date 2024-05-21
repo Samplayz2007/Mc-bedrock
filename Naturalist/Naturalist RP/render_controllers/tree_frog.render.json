@@ -1,0 +1,28 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.sf_nba.tree_frog": {
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.green",
+            "Texture.red_eyed",
+            "Texture.blue_dart",
+            "Texture.red_dart",
+            "Texture.strawberry_dart",
+            "Texture.yellow_dart"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.skins[q.property('sf_nba:variant')]"
+      ]
+    }
+  }
+}

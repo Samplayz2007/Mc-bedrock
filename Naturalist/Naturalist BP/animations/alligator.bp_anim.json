@@ -1,0 +1,15 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.sf_nba.alligator.defensive_mode_check": {
+      "loop": true,
+      "animation_length": 1.0,
+      "timeline": {
+        "0.0": [
+          "/execute at @s if entity @e[family=sf_nba:alligator_egg,r=10] run event entity @s sf_nba:defending_eggs",
+          "/execute at @s unless entity @e[family=sf_nba:alligator_egg,r=10] run event entity @s sf_nba:not_defending_eggs"
+        ]
+      }
+    }
+  }
+}

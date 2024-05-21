@@ -1,0 +1,41 @@
+{
+  "format_version": "1.20.0",
+  "render_controllers": {
+    "controller.render.sf_nba.beetle": {
+      "geometry": "geometry.default",
+      "materials": [
+        {
+          "*": "material.default"
+        }
+      ],
+      "arrays": {
+        "textures": {
+          "array.skins": [
+            "texture.yellow",
+            "texture.brown",
+            "texture.green",
+            "texture.red",
+            "texture.black"
+          ]
+        }
+      },
+      "textures": [
+        "array.skins[q.variant]"
+      ],
+      "part_visibility": [
+        {
+          "body_open_wings": "q.can_fly && !q.is_on_ground"
+        },
+        {
+          "*_wing": "q.can_fly && !q.is_on_ground"
+        },
+        {
+          "*_flap": "q.can_fly && !q.is_on_ground"
+        },
+        {
+          "body_close_wings": "!q.can_fly || q.is_on_ground"
+        }
+      ]
+    }
+  }
+}

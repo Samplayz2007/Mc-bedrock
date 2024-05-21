@@ -1,0 +1,49 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "sf_nba:raven",
+      "population_control": "animal"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_on_block_filter": [
+          "minecraft:grass",
+          "minecraft:stone",
+          "minecraft:leaves",
+          "minecraft:leaves2",
+          "minecraft:log",
+          "minecraft:log2"
+        ],
+        "minecraft:brightness_filter": {
+          "min": 7,
+          "max": 15,
+          "adjust_for_weather": false
+        },
+        "minecraft:weight": {
+          "default": 8
+        },
+        "minecraft:biome_filter": {
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "taiga"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "desert"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "stone_beach"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

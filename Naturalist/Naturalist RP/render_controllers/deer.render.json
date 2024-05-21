@@ -1,0 +1,32 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.sf_nba.deer": {
+      "geometry": "Geometry.default",
+      "part_visibility": [
+        {
+          "antlers": "!q.is_baby"
+        },
+        {
+          "sleep": "q.is_sleeping"
+        }
+      ],
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "arrays": {
+        "textures": {
+          "Array.variant": [
+            "Texture.default",
+            "Texture.white"
+          ]
+        }
+      },
+      "textures": [
+        "Array.variant[q.variant]"
+      ]
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:capybara",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/capybara"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.capybara"
+      },
+      "animations": {
+        "controller": "controller.animation.sf_nba.capybara.main",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "idle": "animation.sf_nba.capybara.idle",
+        "walk": "animation.sf_nba.capybara.walk",
+        "swim": "animation.sf_nba.capybara.swim",
+        "sleep": "animation.sf_nba.capybara.sleep",
+        "sleep2": "animation.sf_nba.capybara.sleep2",
+        "baby_transform": "animation.sf_nba.capybara.baby_transform"
+      },
+      "scripts": {
+        "pre_animation": [
+          "v.anim_speed_multiplier = 0.985;",
+          "v.anim_speed_movement_max = 0.30;"
+        ],
+        "animate": [
+          "controller",
+          "look_at_target",
+          {
+            "baby_transform": "q.is_baby"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "spawn_egg": {
+        "base_color": "#684a23",
+        "overlay_color": "#635242"
+      },
+      "sound_effects": {
+        "sleep": "sf_nba.capybara.sleep",
+        "swim": "sf_nba.capybara.swim",
+        "step": "sf_nba.lion.step",
+        "step_-6dB": "sf_nba.lion.step_-6dB"
+      }
+    }
+  }
+}

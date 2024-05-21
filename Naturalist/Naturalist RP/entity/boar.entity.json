@@ -1,0 +1,57 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:boar",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/boar"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.boar"
+      },
+      "animations": {
+        "walk": "animation.sf_nba.boar.walk",
+        "run": "animation.sf_nba.boar.run",
+        "look_at_target": "animation.sf_nba.boar.look_at_target",
+        "baby_transform": "animation.sf_nba.boar.baby_transform",
+        "idle": "animation.sf_nba.boar.idle",
+        "move": "controller.animation.sf_nba.boar.move",
+        "attack": "animation.sf_nba.boar.attack",
+        "attack_controller": "controller.animation.sf_nba.boar.attack"
+      },
+      "scripts": {
+        "initialize": [
+          "v.is_moving = 0;"
+        ],
+        "pre_animation": [
+          "v.is_moving = q.modified_move_speed >= 0.1;",
+          "v.is_sprinting = (q.modified_move_speed * (q.is_baby ? 0.7 : 1) - (q.distance_from_camera * 0.000001)) >= 0.4 ? 1;"
+        ],
+        "animate": [
+          {
+            "baby_transform": "q.is_baby"
+          },
+          "look_at_target",
+          "move",
+          "attack_controller"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.boar"
+      ],
+      "spawn_egg": {
+        "base_color": "#674731",
+        "overlay_color": "#965E55"
+      },
+      "sound_effects": {
+        "attack": "sf_nba.boar.attack",
+        "step": "sf_nba.step.medhoof",
+        "step_-6dB": "sf_nba.step.medhoof_-6dB",
+        "step_-12dB": "sf_nba.step.medhoof_-12dB"
+      }
+    }
+  }
+}

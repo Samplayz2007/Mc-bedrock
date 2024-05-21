@@ -1,0 +1,74 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.boar.move": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            "idle"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "run": "v.is_sprinting"
+            },
+            {
+              "walk": "v.is_moving"
+            }
+          ]
+        },
+        "walk": {
+          "animations": [
+            "walk"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "!v.is_moving"
+            },
+            {
+              "run": "v.is_sprinting"
+            }
+          ]
+        },
+        "run": {
+          "animations": [
+            "run"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "!v.is_moving"
+            },
+            {
+              "walk": "!v.is_sprinting"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.boar.attack": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "attack": "v.attack_time > 0"
+            }
+          ]
+        },
+        "attack": {
+          "animations": [
+            "attack"
+          ],
+          "transitions": [
+            {
+              "default": "v.attack_time <= 0 && q.all_animations_finished"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

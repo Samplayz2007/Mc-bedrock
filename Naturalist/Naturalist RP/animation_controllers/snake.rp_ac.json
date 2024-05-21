@@ -1,0 +1,123 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.snake.general": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            "look_at_target"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "climb": "q.is_wall_climbing"
+            },
+            {
+              "move": "q.modified_move_speed > 0.1"
+            },
+            {
+              "sleeping": "q.is_sleeping"
+            }
+          ]
+        },
+        "climb": {
+          "animations": [
+            "climb",
+            "move",
+            "look_at_target"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "move": "(q.modified_move_speed > 0.1) && !q.is_wall_climbing"
+            },
+            {
+              "sleeping": "q.is_sleeping"
+            },
+            {
+              "default": "!q.is_wall_climbing"
+            }
+          ]
+        },
+        "move": {
+          "animations": [
+            "move",
+            "look_at_target"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "climb": "q.is_wall_climbing"
+            },
+            {
+              "sleeping": "q.is_sleeping"
+            },
+            {
+              "default": "q.modified_move_speed <= 0.1"
+            }
+          ]
+        },
+        "sleeping": {
+          "animations": [
+            "sleep"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "!q.is_sleeping"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.snake.bite": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "attack": "v.attack_time > 0"
+            }
+          ]
+        },
+        "attack": {
+          "animations": [
+            "attack"
+          ],
+          "transitions": [
+            {
+              "default": "v.attack_time <= 0 && q.all_animations_finished"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.snake.ambient": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "on_entry": [
+            "v.next_tongue = math.random_integer(0, 50);",
+            "v.last_tongue = q.life_time;"
+          ],
+          "transitions": [
+            {
+              "tongue": "q.life_time >= ((v.next_tongue ?? 0) + (v.last_tongue ?? 0)) && !q.is_sleeping"
+            }
+          ]
+        },
+        "tongue": {
+          "animations": [
+            "tongue"
+          ],
+          "transitions": [
+            {
+              "default": "q.all_animations_finished || q.is_sleeping"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

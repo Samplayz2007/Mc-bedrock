@@ -1,0 +1,42 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:sloth",
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "geometry": {
+        "default": "geometry.sf_nba.sloth"
+      },
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/sloth"
+      },
+      "animations": {
+        "idle": "animation.sf_nba.sloth.idle",
+        "walk": "animation.sf_nba.sloth.walk",
+        "hang": "animation.sf_nba.sloth.hang",
+        "baby_transform": "animation.sf_nba.sloth.baby_transform",
+        "controller": "controller.animation.sf_nba.sloth.main"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "baby_transform": "q.is_baby"
+          }
+        ]
+      },
+      "spawn_egg": {
+        "base_color": "#D2B48C",
+        "overlay_color": "#D3D3D3"
+      },
+      "sound_effects": {
+        "step_-6dB": "sf_nba.lion.step_-12dB"
+      }
+    }
+  }
+}

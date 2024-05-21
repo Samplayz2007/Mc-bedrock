@@ -1,0 +1,27 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "sf_nba:cut_shellstone"
+    },
+    "tags": [ "crafting_table" ],
+    "pattern": [
+      "#",
+      "#"
+    ],
+    "key": {
+      "#": {
+        "item": "sf_nba:shellstone"
+      }
+    },
+    "unlock": [
+      {
+        "item": "sf_nba:shellstone"
+      }
+    ],
+    "result": {
+      "item": "sf_nba:cut_shellstone",
+      "count": 2
+    }
+  }
+}

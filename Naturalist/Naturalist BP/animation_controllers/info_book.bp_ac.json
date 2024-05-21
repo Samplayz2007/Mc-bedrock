@@ -1,0 +1,47 @@
+{
+  "format_version": "1.19.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.info_book.orient": {
+      "initial_state": "not_oriented",
+      "states": {
+        "not_oriented": {
+          "on_entry": [
+            "/function sf/nba/cardinal_orientation"
+          ],
+          "transitions": [
+            {
+              "oriented": "1"
+            }
+          ]
+        },
+        "oriented": {
+          "on_entry": [
+            "@s sf_nba:oriented"
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.info_book.hit": {
+      "initial_state": "not_hit",
+      "states": {
+        "not_hit": {
+          "transitions": [
+            {
+              "hit": "query.property('sf_nba:hit')"
+            }
+          ]
+        },
+        "hit": {
+          "on_entry": [
+            "@s sf_nba:not_hit"
+          ],
+          "transitions": [
+            {
+              "not_hit": "1"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

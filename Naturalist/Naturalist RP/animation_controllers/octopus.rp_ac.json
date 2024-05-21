@@ -1,0 +1,106 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.octopus.main": {
+      "states": {
+        "default": {
+          "animations": [
+            "idle"
+          ],
+          "transitions": [
+            {
+              "swim_fast": "!q.is_on_ground && q.modified_move_speed > 1.2"
+            },
+            {
+              "swim": "!q.is_on_ground && q.modified_move_speed > 0.05"
+            },
+            {
+              "walk": "q.modified_move_speed > 0.05"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "walk": {
+          "animations": [
+            "walk"
+          ],
+          "transitions": [
+            {
+              "swim_fast": "!q.is_on_ground && q.modified_move_speed > 1.2"
+            },
+            {
+              "swim": "!q.is_on_ground && q.modified_move_speed > 0.05"
+            },
+            {
+              "default": "q.is_on_ground && q.modified_move_speed <= 0.05"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "swim": {
+          "animations": [
+            "swim",
+            "tilt"
+          ],
+          "transitions": [
+            {
+              "spray": "q.is_avoiding_mobs && math.random_integer(0, 250) == 0"
+            },
+            {
+              "swim_fast": "!q.is_on_ground && q.modified_move_speed > 1.2"
+            },
+            {
+              "walk": "q.is_on_ground && q.modified_move_speed > 0.05"
+            },
+            {
+              "default": "q.is_on_ground"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "swim_fast": {
+          "animations": [
+            "swim_fast",
+            "tilt"
+          ],
+          "transitions": [
+            {
+              "spray": "q.is_avoiding_mobs && math.random_integer(0, 250) == 0"
+            },
+            {
+              "swim": "!q.is_on_ground && q.modified_move_speed <= 1.2"
+            },
+            {
+              "walk": "q.is_on_ground && q.modified_move_speed > 0.05"
+            },
+            {
+              "default": "q.is_on_ground"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "spray": {
+          "animations": [
+            "spray",
+            "tilt"
+          ],
+          "transitions": [
+            {
+              "swim_fast": "q.all_animations_finished && !q.is_on_ground && q.modified_move_speed > 1.2"
+            },
+            {
+              "swim": "q.all_animations_finished && !q.is_on_ground && q.modified_move_speed > 0.05"
+            },
+            {
+              "walk": "q.all_animations_finished && q.modified_move_speed > 0.05"
+            },
+            {
+              "default": "q.all_animations_finished"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}

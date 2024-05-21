@@ -1,0 +1,47 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:owl",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "snowy": "textures/sf/nba/entity/owl/white_owl",
+        "brown": "textures/sf/nba/entity/owl/brown_owl"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.owl"
+      },
+      "animations": {
+        "controller": "controller.animation.sf_nba.owl.main",
+        "idle_event": "animation.sf_nba.owl.idle_event",
+        "fly": "animation.sf_nba.owl.fly",
+        "sleep": "animation.sf_nba.owl.sleep",
+        "baby_transform": "animation.sf_nba.owl.baby_transform"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "baby_transform": "q.is_baby"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.owl"
+      ],
+      "spawn_egg": {
+        "base_color": "#684a23",
+        "overlay_color": "#635242"
+      },
+      "sound_effects": {
+        "wing": "sf_nba.owl.wing",
+        "hoot": "sf_nba.owl.hoot",
+        "step": "sf_nba.step.smallbird",
+        "step_-6dB": "sf_nba.step.smallbird_-6dB",
+        "step_-12dB": "sf_nba.step.smallbird_-12dB"
+      }
+    }
+  }
+}

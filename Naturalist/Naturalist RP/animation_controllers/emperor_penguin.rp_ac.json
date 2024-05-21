@@ -1,0 +1,167 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.emperor_penguin.main": {
+      "states": {
+        "default": {
+          "animations": [
+            "idle",
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "swim": "q.is_in_water"
+            },
+            {
+              "run": "q.modified_move_speed > 0.15"
+            },
+            {
+              "walk": "q.modified_move_speed > 0.05"
+            },
+            {
+              "fall": "q.property('sf_nba:slip_anim') == 'fall'"
+            },
+            {
+              "slide": "q.property('sf_nba:slip_anim') == 'slide'"
+            },
+            {
+              "idle_event": "math.random_integer(0, 200) == 0"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "idle_event": {
+          "animations": [
+            "idle_event"
+          ],
+          "transitions": [
+            {
+              "swim": "q.is_in_water"
+            },
+            {
+              "run": "q.modified_move_speed > 0.15"
+            },
+            {
+              "walk": "q.modified_move_speed > 0.05"
+            },
+            {
+              "fall": "q.property('sf_nba:slip_anim') == 'fall'"
+            },
+            {
+              "slide": "q.property('sf_nba:slip_anim') == 'slide'"
+            },
+            {
+              "default": "q.all_animations_finished"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "walk": {
+          "animations": [
+            "walk",
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "swim": "q.is_in_water"
+            },
+            {
+              "fall": "q.property('sf_nba:slip_anim') == 'fall'"
+            },
+            {
+              "slide": "q.property('sf_nba:slip_anim') == 'slide'"
+            },
+            {
+              "run": "q.modified_move_speed > 0.15"
+            },
+            {
+              "default": "q.modified_move_speed <= 0.05"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "run": {
+          "animations": [
+            "run",
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "swim": "q.is_in_water"
+            },
+            {
+              "fall": "q.property('sf_nba:slip_anim') == 'fall'"
+            },
+            {
+              "slide": "q.property('sf_nba:slip_anim') == 'slide'"
+            },
+            {
+              "default": "q.modified_move_speed <= 0.05"
+            },
+            {
+              "walk": "q.modified_move_speed <= 0.15"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "swim": {
+          "animations": [
+            "swim"
+          ],
+          "transitions": [
+            {
+              "run": "!q.is_in_water && q.modified_move_speed > 0.15"
+            },
+            {
+              "walk": "!q.is_in_water && q.modified_move_speed > 0.05"
+            },
+            {
+              "default": "!q.is_in_water"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "fall": {
+          "animations": [
+            "fall"
+          ],
+          "transitions": [
+            {
+              "swim": "q.is_in_water"
+            },
+            {
+              "run": "q.all_animations_finished && q.modified_move_speed > 0.15"
+            },
+            {
+              "walk": "q.all_animations_finished && q.modified_move_speed > 0.05"
+            },
+            {
+              "default": "q.all_animations_finished"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "slide": {
+          "animations": [
+            "slide"
+          ],
+          "transitions": [
+            {
+              "swim": "q.is_in_water"
+            },
+            {
+              "run": "q.all_animations_finished && q.modified_move_speed > 0.15"
+            },
+            {
+              "walk": "q.all_animations_finished && q.modified_move_speed > 0.05"
+            },
+            {
+              "default": "q.all_animations_finished"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}

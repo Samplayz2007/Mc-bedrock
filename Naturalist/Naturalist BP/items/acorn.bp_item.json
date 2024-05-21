@@ -1,0 +1,33 @@
+{
+  "format_version": "1.20.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "sf_nba:acorn",
+      "menu_category": {
+        "category": "nature",
+        "group": "itemGroup.name.rawFood"
+      }
+    },
+    "components": {
+      "minecraft:food": {
+        "nutrition": 1,
+        "is_meat": false
+      },
+      "minecraft:use_modifiers": {
+        "use_duration": 1.6
+      },
+      "minecraft:icon": {
+        "texture": "sf_nba.acorn"
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:display_name": {
+        "value": "item.sf_nba:acorn.name"
+      },
+      "minecraft:tags": {
+        "tags": [
+          "minecraft:is_food"
+        ]
+      }
+    }
+  }
+}

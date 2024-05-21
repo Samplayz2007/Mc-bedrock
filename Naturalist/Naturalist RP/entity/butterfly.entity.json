@@ -1,0 +1,41 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:butterfly",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "cabbage_white": "textures/sf/nba/entity/butterfly/cabbage_white",
+        "monarch": "textures/sf/nba/entity/butterfly/monarch",
+        "clouded_yellow": "textures/sf/nba/entity/butterfly/clouded_yellow",
+        "swallowtail": "textures/sf/nba/entity/butterfly/swallowtail",
+        "blue_morpho": "textures/sf/nba/entity/butterfly/blue_morpho"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.butterfly"
+      },
+      "animations": {
+        "fly": "animation.sf_nba.butterfly.fly",
+        "drip": "controller.animation.sf_nba.butterfly.drip"
+      },
+      "scripts": {
+        "animate": [
+          "fly",
+          "drip"
+        ]
+      },
+      "particle_effects": {
+        "nectar_dripping": "minecraft:nectar_drip_particle"
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.butterfly"
+      ],
+      "spawn_egg": {
+        "base_color": "#FF7A00",
+        "overlay_color": "#482219"
+      }
+    }
+  }
+}

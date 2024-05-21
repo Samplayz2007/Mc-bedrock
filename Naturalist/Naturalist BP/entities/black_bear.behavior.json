@@ -1,0 +1,1063 @@
+{
+  "format_version": "1.18.10",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "sf_nba:black_bear",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false,
+      "properties": {
+        "sf_nba:holding_food": {
+          "type": "int",
+          "range": [
+            0,
+            5
+          ],
+          "default": 0
+        },
+        "sf_nba:is_sitting": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "sf_nba:is_eating": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        }
+      },
+      "scripts": {
+        "animate": [
+          "eat",
+          {
+            "harvest_sensor": "!q.is_baby && !q.has_target && !q.is_sleeping && !q.property('sf_nba:holding_food')"
+          }
+        ]
+      },
+      "animations": {
+        "eat": "controller.animation.sf_nba.grizzly_bear.eat",
+        "harvest_sensor": "animation.sf_nba.grizzly_bear.harvest_sensor"
+      }
+    },
+    "component_groups": {
+      "sf_nba:baby": {
+        "minecraft:is_baby": {},
+        "minecraft:scale": {
+          "value": 0.5
+        },
+        "minecraft:ageable": {
+          "duration": 1200,
+          "feed_items": [
+            "honeycomb",
+            "sweet_berries",
+            "salmon",
+            "cooked_salmon",
+            "sf_nba:venison"
+          ],
+          "grow_up": {
+            "event": "sf_nba:ageable_grow_up",
+            "target": "self"
+          }
+        },
+        "minecraft:behavior.panic": {
+          "priority": 3,
+          "speed_multiplier": 2.0
+        },
+        "minecraft:behavior.follow_parent": {
+          "priority": 5,
+          "speed_multiplier": 1.25
+        }
+      },
+      "sf_nba:baby_wild": {
+        "minecraft:on_target_acquired": {
+          "filters": {
+            "test": "is_family",
+            "subject": "target",
+            "operator": "!=",
+            "value": "sf_nba:black_bear"
+          },
+          "event": "sf_nba:on_scared",
+          "target": "self"
+        },
+        "minecraft:on_friendly_anger": {
+          "filters": {
+            "test": "has_component",
+            "subject": "parent",
+            "value": "minecraft:angry"
+          },
+          "event": "sf_nba:on_scared",
+          "target": "self"
+        },
+        "minecraft:behavior.nearest_prioritized_attackable_target": {
+          "priority": 2,
+          "reselect_targets": true,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "player"
+              },
+              "max_dist": 10,
+              "priority": 0
+            },
+            {
+              "filters": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "sf_nba:black_bear"
+                },
+                {
+                  "test": "is_baby",
+                  "subject": "other",
+                  "value": false
+                }
+              ],
+              "max_dist": 48,
+              "must_reach": true,
+              "priority": 1
+            }
+          ]
+        },
+        "minecraft:target_nearby_sensor": {
+          "inside_range": 4.0,
+          "outside_range": 12.0,
+          "on_inside_range": {
+            "filters": [
+              {
+                "test": "is_family",
+                "subject": "target",
+                "value": "sf_nba:black_bear"
+              },
+              {
+                "test": "has_component",
+                "value": "minecraft:behavior.move_towards_target"
+              }
+            ],
+            "event": "sf_nba:distanced_reached_parent"
+          },
+          "on_outside_range": {
+            "filters": [
+              {
+                "test": "is_family",
+                "subject": "target",
+                "value": "sf_nba:black_bear"
+              },
+              {
+                "test": "has_component",
+                "operator": "!=",
+                "value": "minecraft:behavior.move_towards_target"
+              }
+            ],
+            "event": "sf_nba:distanced_follow_parent"
+          }
+        }
+      },
+      "sf_nba:distanced_follow_parent": {
+        "minecraft:behavior.move_towards_target": {
+          "priority": 5,
+          "speed_multiplier": 1.25,
+          "within_radius": 48
+        }
+      },
+      "sf_nba:baby_scared": {
+        "minecraft:angry": {
+          "duration": 1,
+          "broadcast_anger": true,
+          "broadcast_range": 20,
+          "broadcast_filters": [
+            {
+              "test": "is_baby",
+              "value": false
+            },
+            {
+              "test": "is_sleeping",
+              "value": false
+            }
+          ],
+          "calm_event": {
+            "event": "sf_nba:baby_on_calm",
+            "target": "self"
+          }
+        }
+      },
+      "sf_nba:adult": {
+        "minecraft:experience_reward": {
+          "on_bred": "Math.Random(1,7)",
+          "on_death": "query.last_hit_by_player ? Math.Random(1,3) : 0"
+        },
+        "minecraft:breedable": {
+          "require_tame": false,
+          "breeds_with": {
+            "mate_type": "sf_nba:black_bear",
+            "baby_type": "sf_nba:black_bear",
+            "breed_event": {
+              "event": "sf_nba:entity_born",
+              "target": "baby"
+            }
+          },
+          "breed_items": [
+            "honeycomb",
+            "sweet_berries",
+            "salmon",
+            "cooked_salmon",
+            "sf_nba:venison"
+          ]
+        },
+        "minecraft:behavior.breed": {
+          "priority": 1,
+          "speed_multiplier": 1.0
+        },
+        "minecraft:behavior.pickup_items": {
+          "priority": 5,
+          "max_dist": 8,
+          "goal_radius": 2,
+          "speed_multiplier": 1.2,
+          "track_target": true,
+          "pickup_same_items_as_in_hand": false
+        },
+        "minecraft:behavior.equip_item": {
+          "priority": 5
+        }
+      },
+      "sf_nba:adult_wild": {
+        "minecraft:on_target_acquired": {
+          "filters": {
+            "test": "is_family",
+            "subject": "target",
+            "operator": "!=",
+            "value": "sf_nba:bear_harvest_pathfinder"
+          },
+          "event": "sf_nba:on_anger",
+          "target": "self"
+        },
+        "minecraft:on_friendly_anger": {
+          "event": "sf_nba:on_anger",
+          "target": "self"
+        },
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 3,
+          "entity_types": {
+            "filters": {
+              "all_of": {
+                "test": "int_property",
+                "domain": "sf_nba:holding_food",
+                "value": 0
+              },
+              "any_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "salmon"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "sf_nba:deer"
+                }
+              ]
+            },
+            "max_dist": 10,
+            "must_reach": true
+          }
+        }
+      },
+      "sf_nba:adult_hostile": {
+        "minecraft:attack": {
+          "damage": 6.0
+        },
+        "minecraft:angry": {
+          "duration": 30,
+          "duration_delta": 10,
+          "broadcast_anger_on_being_attacked": true,
+          "broadcast_range": 20,
+          "broadcast_filters": {
+            "test": "is_baby",
+            "value": true
+          },
+          "calm_event": {
+            "event": "sf_nba:on_calm",
+            "target": "self"
+          }
+        }
+      },
+      "sf_nba:bear_attack": {
+        "minecraft:behavior.melee_attack": {
+          "priority": 2,
+          "speed_multiplier": 2.0,
+          "track_target": true,
+          "require_complete_path": true,
+          "reach_multiplier": 1.5
+        }
+      },
+      "sf_nba:bear_sheared": {
+        "minecraft:is_sheared": {}
+      },
+      "sf_nba:bear_sheared_target": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "entity_types": {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "player"
+            },
+            "max_dist": 10
+          }
+        }
+      },
+      "sf_nba:bear_sniff": {
+        "minecraft:behavior.tempt": {
+          "priority": 3,
+          "speed_multiplier": 1.0,
+          "items": [
+            "honeycomb",
+            "sweet_berries",
+            "salmon",
+            "cooked_salmon",
+            "sf_nba:venison"
+          ],
+          "tempt_sound": "tempt",
+          "sound_interval": {
+            "range_min": 2.0,
+            "range_max": 5.0
+          }
+        },
+        "minecraft:behavior.beg": {
+          "priority": 3,
+          "look_distance": 16,
+          "items": [
+            "honeycomb",
+            "sweet_berries",
+            "salmon",
+            "cooked_salmon",
+            "sf_nba:venison"
+          ]
+        }
+      },
+      "sf_nba:bear_sitting": {
+        "minecraft:behavior.lay_down": {
+          "priority": 7,
+          "interval": 0,
+          "random_stop_interval": -1
+        }
+      },
+      "sf_nba:bear_move_to_harvest": {
+        "minecraft:attack": {
+          "damage": 0.0
+        },
+        "minecraft:behavior.nearest_prioritized_attackable_target": {
+          "priority": 6,
+          "entity_types": {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "sf_nba:bear_harvest_pathfinder"
+            },
+            "max_dist": 12,
+            "target_search_height": 3
+          }
+        },
+        "minecraft:behavior.melee_box_attack": {
+          "priority": 6,
+          "speed_multiplier": 1.2,
+          "track_target": true,
+          "require_complete_path": false
+        },
+        "minecraft:on_target_escape": {
+          "event": "sf_nba:reset_harvest_sensor",
+          "target": "self"
+        }
+      }
+    },
+    "components": {
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:type_family": {
+        "family": [
+          "sf_nba:black_bear",
+          "mob"
+        ]
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:equip_item": {},
+      "minecraft:navigation.walk": {
+        "can_path_over_water": true,
+        "avoid_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:jump.static": {},
+      "minecraft:can_climb": {},
+      "minecraft:ambient_sound_interval": {
+        "event_name": "ambient",
+        "event_names": [
+          {
+            "event_name": "sleep",
+            "condition": "q.is_sleeping"
+          },
+          {
+            "event_name": "ambient.baby",
+            "condition": "q.is_baby"
+          }
+        ]
+      },
+      "minecraft:inventory": {
+        "inventory_size": 1,
+        "restrict_to_owner": true
+      },
+      "minecraft:collision_box": {
+        "width": 1.3,
+        "height": 1.3
+      },
+      "minecraft:nameable": {},
+      "minecraft:health": {
+        "value": 30,
+        "max": 30
+      },
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "on_damage": {
+            "filters": {
+              "test": "is_block",
+              "subject": "block",
+              "value": "minecraft:sweet_berry_bush"
+            }
+          },
+          "deals_damage": false
+        }
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": {
+              "test": "in_lava",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:movement": {
+        "value": 0.19
+      },
+      "minecraft:water_movement": {
+        "drag_factor": 0.98
+      },
+      "minecraft:shareables": {
+        "items": [
+          {
+            "item": "minecraft:honeycomb",
+            "max_amount": 1,
+            "pickup_limit": 1
+          },
+          {
+            "item": "minecraft:sweet_berries",
+            "max_amount": 1,
+            "pickup_limit": 1
+          },
+          {
+            "item": "minecraft:salmon",
+            "max_amount": 1,
+            "pickup_limit": 1
+          },
+          {
+            "item": "minecraft:cooked_salmon",
+            "max_amount": 1,
+            "pickup_limit": 1
+          },
+          {
+            "item": "sf_nba:venison",
+            "max_amount": 1,
+            "pickup_limit": 1
+          }
+        ],
+        "singular_pickup": true
+      },
+      "minecraft:despawn": {
+        "despawn_from_distance": {}
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.hurt_by_target": {
+        "priority": 1
+      },
+      "minecraft:behavior.nap": {
+        "priority": 4,
+        "cooldown_min": 2.0,
+        "cooldown_max": 4.0,
+        "can_nap_filters": {
+          "any_of": [
+            {
+              "test": "hourly_clock_time",
+              "operator": "<",
+              "value": 12000
+            },
+            {
+              "test": "hourly_clock_time",
+              "operator": ">",
+              "value": 18000
+            }
+          ],
+          "all_of": [
+            {
+              "test": "hourly_clock_time",
+              "operator": "<",
+              "value": 23000
+            },
+            {
+              "test": "hourly_clock_time",
+              "operator": ">",
+              "value": 6000
+            },
+            {
+              "test": "has_component",
+              "operator": "!=",
+              "value": "minecraft:behavior.melee_attack"
+            },
+            {
+              "test": "in_block",
+              "operator": "!=",
+              "value": "water"
+            }
+          ]
+        }
+      },
+      "minecraft:behavior.random_stroll": {
+        "priority": 8,
+        "speed_multiplier": 1.0
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 9,
+        "look_distance": 6.0,
+        "probability": 0.02
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 10
+      },
+      "minecraft:knockback_resistance": {
+        "value": 0.6
+      },
+      "minecraft:leashable": {
+        "soft_distance": 4.0,
+        "hard_distance": 6.0,
+        "max_distance": 10.0
+      },
+      "minecraft:balloonable": {},
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:variable_max_auto_step": {
+        "base_value": 1.0
+      },
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:follow_range": {
+        "value": 48
+      },
+      "minecraft:scheduler": {
+        "min_delay_secs": 0,
+        "max_delay_secs": 1,
+        "scheduled_events": [
+          {
+            "filters": {
+              "any_of": [
+                {
+                  "test": "has_equipment",
+                  "domain": "hand",
+                  "value": "honeycomb"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "hand",
+                  "value": "sweet_berries"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "hand",
+                  "value": "salmon"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "hand",
+                  "value": "cooked_salmon"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "hand",
+                  "value": "sf_nba:venison"
+                }
+              ]
+            },
+            "event": "sf_nba:has_holding_food"
+          },
+          {
+            "filters": {
+              "none_of": [
+                {
+                  "test": "has_equipment",
+                  "domain": "hand",
+                  "value": "honeycomb"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "hand",
+                  "value": "sweet_berries"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "hand",
+                  "value": "salmon"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "hand",
+                  "value": "cooked_salmon"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "hand",
+                  "value": "sf_nba:venison"
+                }
+              ]
+            },
+            "event": "sf_nba:has_no_holding_food"
+          }
+        ]
+      },
+      "minecraft:environment_sensor": {
+        "triggers": [
+          {
+            "filters": [
+              {
+                "test": "is_baby",
+                "value": false
+              },
+              {
+                "test": "has_target",
+                "value": true
+              },
+              {
+                "test": "has_component",
+                "operator": "!=",
+                "value": "minecraft:behavior.melee_attack"
+              },
+              {
+                "test": "has_component",
+                "operator": "!=",
+                "value": "minecraft:behavior.nearest_prioritized_attackable_target"
+              },
+              {
+                "test": "int_property",
+                "domain": "sf_nba:holding_food",
+                "value": 0
+              }
+            ],
+            "event": "sf_nba:attack_mode"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "int_property",
+                  "domain": "sf_nba:holding_food",
+                  "operator": ">",
+                  "value": 0
+                },
+                {
+                  "test": "bool_property",
+                  "domain": "sf_nba:is_sitting"
+                }
+              ],
+              "any_of": [
+                {
+                  "test": "in_block",
+                  "value": "water"
+                },
+                {
+                  "any_of": [
+                    {
+                      "test": "hourly_clock_time",
+                      "operator": "<",
+                      "value": 12000
+                    },
+                    {
+                      "test": "hourly_clock_time",
+                      "operator": ">",
+                      "value": 18000
+                    }
+                  ],
+                  "all_of": [
+                    {
+                      "test": "hourly_clock_time",
+                      "operator": "<",
+                      "value": 23000
+                    },
+                    {
+                      "test": "hourly_clock_time",
+                      "operator": ">",
+                      "value": 6000
+                    }
+                  ]
+                }
+              ]
+            },
+            "event": "sf_nba:configure_holding_food_no_sitting"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_baby",
+                  "value": false
+                },
+                {
+                  "test": "on_ground",
+                  "value": true
+                },
+                {
+                  "test": "int_property",
+                  "domain": "sf_nba:holding_food",
+                  "operator": ">",
+                  "value": 0
+                },
+                {
+                  "test": "bool_property",
+                  "operator": "!=",
+                  "domain": "sf_nba:is_sitting"
+                }
+              ],
+              "none_of": {
+                "all_of": {
+                  "any_of": [
+                    {
+                      "test": "hourly_clock_time",
+                      "operator": "<",
+                      "value": 12000
+                    },
+                    {
+                      "test": "hourly_clock_time",
+                      "operator": ">",
+                      "value": 18000
+                    }
+                  ],
+                  "all_of": [
+                    {
+                      "test": "hourly_clock_time",
+                      "operator": "<",
+                      "value": 23000
+                    },
+                    {
+                      "test": "hourly_clock_time",
+                      "operator": ">",
+                      "value": 6000
+                    },
+                    {
+                      "test": "has_component",
+                      "operator": "!=",
+                      "value": "minecraft:behavior.melee_attack"
+                    },
+                    {
+                      "test": "in_block",
+                      "operator": "!=",
+                      "value": "water"
+                    }
+                  ]
+                }
+              }
+            },
+            "event": "sf_nba:configure_sitting"
+          }
+        ]
+      }
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "randomize": [
+          {
+            "weight": 95,
+            "trigger": "sf_nba:spawn_adult"
+          },
+          {
+            "weight": 5,
+            "trigger": "sf_nba:entity_born"
+          }
+        ]
+      },
+      "sf_nba:spawn_adult": {
+        "add": {
+          "component_groups": [
+            "sf_nba:adult",
+            "sf_nba:adult_wild"
+          ]
+        }
+      },
+      "sf_nba:entity_born": {
+        "add": {
+          "component_groups": [
+            "sf_nba:baby",
+            "sf_nba:baby_wild"
+          ]
+        }
+      },
+      "sf_nba:ageable_grow_up": {
+        "trigger": "sf_nba:spawn_adult",
+        "remove": {
+          "component_groups": [
+            "sf_nba:baby",
+            "sf_nba:baby_wild"
+          ]
+        }
+      },
+      "sf_nba:on_calm": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:adult_hostile"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "sf_nba:adult_wild"
+          ]
+        }
+      },
+      "sf_nba:on_anger": {
+        "sequence": [
+          {
+            "filters": {
+              "test": "int_property",
+              "domain": "sf_nba:holding_food",
+              "value": 0
+            },
+            "remove": {
+              "component_groups": [
+                "sf_nba:adult_wild",
+                "sf_nba:bear_sheared_target",
+                "sf_nba:bear_move_to_harvest"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "sf_nba:adult_hostile",
+                "sf_nba:bear_attack"
+              ]
+            }
+          }
+        ]
+      },
+      "sf_nba:attack_mode": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:adult_wild"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "sf_nba:adult_hostile",
+            "sf_nba:bear_attack"
+          ]
+        }
+      },
+      "sf_nba:distanced_follow_parent": {
+        "add": {
+          "component_groups": [
+            "sf_nba:distanced_follow_parent"
+          ]
+        }
+      },
+      "sf_nba:distanced_reached_parent": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:distanced_follow_parent"
+          ]
+        }
+      },
+      "sf_nba:baby_on_calm": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:baby_scared"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "sf_nba:baby_wild"
+          ]
+        }
+      },
+      "sf_nba:on_scared": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:baby_wild",
+            "sf_nba:distanced_follow_parent"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "sf_nba:baby_scared"
+          ]
+        }
+      },
+      "sf_nba:has_holding_food": {
+        "sequence": [
+          {
+            "filters": {
+              "test": "has_equipment",
+              "domain": "hand",
+              "value": "honeycomb"
+            },
+            "set_property": {
+              "sf_nba:holding_food": 1
+            }
+          },
+          {
+            "filters": {
+              "test": "has_equipment",
+              "domain": "hand",
+              "value": "sweet_berries"
+            },
+            "set_property": {
+              "sf_nba:holding_food": 2
+            }
+          },
+          {
+            "filters": {
+              "test": "has_equipment",
+              "domain": "hand",
+              "value": "salmon"
+            },
+            "set_property": {
+              "sf_nba:holding_food": 3
+            }
+          },
+          {
+            "filters": {
+              "test": "has_equipment",
+              "domain": "hand",
+              "value": "cooked_salmon"
+            },
+            "set_property": {
+              "sf_nba:holding_food": 4
+            }
+          },
+          {
+            "filters": {
+              "test": "has_equipment",
+              "domain": "hand",
+              "value": "sf_nba:venison"
+            },
+            "set_property": {
+              "sf_nba:holding_food": 5
+            }
+          },
+          {
+            "remove": {
+              "component_groups": [
+                "sf_nba:bear_sniff",
+                "sf_nba:bear_attack"
+              ]
+            }
+          }
+        ]
+      },
+      "sf_nba:has_no_holding_food": {
+        "set_property": {
+          "sf_nba:holding_food": 0
+        },
+        "add": {
+          "component_groups": [
+            "sf_nba:bear_sniff"
+          ]
+        }
+      },
+      "sf_nba:configure_holding_food_no_sitting": {
+        "set_property": {
+          "sf_nba:is_sitting": false
+        },
+        "remove": {
+          "component_groups": [
+            "sf_nba:bear_sitting"
+          ]
+        }
+      },
+      "sf_nba:configure_sitting": {
+        "set_property": {
+          "sf_nba:is_sitting": true
+        },
+        "add": {
+          "component_groups": [
+            "sf_nba:bear_sitting"
+          ]
+        }
+      },
+      "sf_nba:configure_eating": {
+        "set_property": {
+          "sf_nba:is_eating": true
+        }
+      },
+      "sf_nba:on_eat": {
+        "set_property": {
+          "sf_nba:is_sitting": false,
+          "sf_nba:is_eating": false
+        },
+        "remove": {
+          "component_groups": [
+            "sf_nba:bear_sheared",
+            "sf_nba:bear_sitting"
+          ]
+        }
+      },
+      "sf_nba:on_sheared": {
+        "sequence": [
+          {
+            "add": {
+              "component_groups": [
+                "sf_nba:bear_sheared"
+              ]
+            }
+          },
+          {
+            "filters": [
+              {
+                "test": "has_ability",
+                "subject": "other",
+                "operator": "!=",
+                "value": "instabuild"
+              },
+              {
+                "test": "is_sleeping",
+                "value": false
+              }
+            ],
+            "add": {
+              "component_groups": [
+                "sf_nba:bear_sheared_target"
+              ]
+            }
+          }
+        ]
+      },
+      "sf_nba:reset_harvest_sensor": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:bear_move_to_harvest"
+          ]
+        }
+      },
+      "sf_nba:move_to_harvest": {
+        "add": {
+          "component_groups": [
+            "sf_nba:bear_move_to_harvest"
+          ]
+        }
+      }
+    }
+  }
+}

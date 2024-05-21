@@ -1,0 +1,27 @@
+{
+  "format_version": "1.20.40",
+  "animation_controllers": {
+    "controller.animation.sf_nba.is_angry.stats": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "is_angry": "query.is_angry"
+            }
+          ]
+        },
+        "is_angry": {
+          "on_entry": [
+            "/function sf/nba/angrygoose_stat_add"
+          ],
+          "transitions": [
+            {
+              "default": "!query.is_angry"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

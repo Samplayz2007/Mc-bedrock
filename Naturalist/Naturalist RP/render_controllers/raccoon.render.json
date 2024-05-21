@@ -1,0 +1,21 @@
+{
+  "format_version": "1.20.0",
+  "render_controllers": {
+    "controller.render.sf_nba.raccoon": {
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "part_visibility": [
+        {
+          "sleep": "q.is_sleeping"
+        }
+      ],
+      "textures": [
+        "Texture.default"
+      ]
+    }
+  }
+}

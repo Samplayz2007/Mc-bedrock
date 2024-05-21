@@ -1,0 +1,67 @@
+{
+  "format_version": "1.19.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.rhino.ram_watcher": {
+      "states": {
+        "default": {
+          "on_entry": [
+            "/tag @s remove ram_attack",
+            "@s sf_nba:stop_ram"
+          ],
+          "transitions": [
+            {
+              "start_ram_attack": "q.is_casting"
+            }
+          ]
+        },
+        "start_ram_attack": {
+          "on_entry": [
+            "v.ram_attack_delay = q.life_time + 2.2;"
+          ],
+          "transitions": [
+            {
+              "default": "!q.is_casting"
+            },
+            {
+              "using_ram_attack": "q.life_time > (v.ram_attack_delay ?? 0)"
+            }
+          ]
+        },
+        "using_ram_attack": {
+          "on_entry": [
+            "/scriptevent sf_nba:rhino_ram_attack",
+            "/tag @s add ram_attack",
+            "@s sf_nba:start_ram",
+            "v.ram_attack_end_delay = q.life_time + 1.95;"
+          ],
+          "transitions": [
+            {
+              "default": "q.life_time > (v.ram_attack_end_delay ?? 0)"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.rhino.angry_watcher": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "scared": "q.has_target"
+            }
+          ]
+        },
+        "scared": {
+          "on_entry": [
+            "/scriptevent sf_nba:rhino_angry"
+          ],
+          "transitions": [
+            {
+              "default": "!q.has_target"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

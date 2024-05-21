@@ -1,0 +1,53 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:ray",
+      "render_controllers": [
+        "controller.render.sf_nba.ray"
+      ],
+      "geometry": {
+        "default": "geometry.sf_nba.ray"
+      },
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "eagle_ray": "textures/sf/nba/entity/ray/eagle_ray",
+        "mobula_ray": "textures/sf/nba/entity/ray/mobula_ray",
+        "stingray": "textures/sf/nba/entity/ray/stingray"
+      },
+      "animations": {
+        "cont_main": "controller.animation.sf_nba.ray.main",
+        "cont_dust": "controller.animation.sf_nba.ray.dust",
+        "idle": "animation.sf_nba.ray.idle",
+        "swim": "animation.sf_nba.ray.swim",
+        "swim_b": "animation.sf_nba.ray.swim_idle_event",
+        "hide": "animation.sf_nba.ray.hide"
+      },
+      "scripts": {
+        "initialize": [
+          "v.is_hiding = 0;"
+        ],
+        "pre_animation": [
+          "v.is_hiding = q.is_powered && !q.has_target && q.is_on_ground;"
+        ],
+        "animate": [
+          "cont_main",
+          "cont_dust"
+        ]
+      },
+      "particle_effects": {
+        "dust": "sf_nba:ray_dust_plume"
+      },
+      "sound_effects": {
+        "click": "sf_nba.ray.click",
+        "swim": "sf_nba.ray.swim"
+      },
+      "spawn_egg": {
+        "base_color": "#595A59",
+        "overlay_color": "#A8ACA6"
+      }
+    }
+  }
+}

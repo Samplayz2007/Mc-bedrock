@@ -1,0 +1,27 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.lizard_tail.flop": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "flop": "q.is_on_ground && !q.is_in_water"
+            }
+          ]
+        },
+        "flop": {
+          "on_entry": [
+            "/scriptevent sf_nba:lizard_tail_flop"
+          ],
+          "transitions": [
+            {
+              "default": "!q.is_on_ground || q.is_in_water"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "sf_nba:capybara",
+      "population_control": "animal"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:brightness_filter": {
+          "min": 7,
+          "max": 15,
+          "adjust_for_weather": false
+        },
+        "minecraft:weight": {
+          "default": 4
+        },
+        "minecraft:herd": {
+          "min_size": 2,
+          "max_size": 4,
+          "event": "sf_nba:entity_born",
+          "event_skip_count": 2
+        },
+        "minecraft:biome_filter": {
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "jungle"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "swampland"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "mangrove_swamp"
+            },
+            {
+              "any_of": [
+                {
+                  "test": "has_biome_tag",
+                  "operator": "==",
+                  "value": "river"
+                }
+              ],
+              "none_of": [
+                {
+                  "test": "has_biome_tag",
+                  "operator": "==",
+                  "value": "frozen_river"
+                }
+              ]
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "jungle_edge"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

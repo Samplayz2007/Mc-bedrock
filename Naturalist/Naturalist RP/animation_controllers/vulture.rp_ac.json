@@ -1,0 +1,52 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.vulture.move": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            "idle"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "fly": "!q.is_on_ground && !q.is_riding"
+            },
+            {
+              "glide": "q.modified_move_speed >= 0.1 && q.is_on_ground"
+            }
+          ]
+        },
+        "fly": {
+          "animations": [
+            "fly"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "glide": "q.modified_move_speed >= 0.1 && q.is_on_ground"
+            },
+            {
+              "default": "q.is_on_ground || q.is_riding"
+            }
+          ]
+        },
+        "glide": {
+          "animations": [
+            "glide"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "fly": "!q.is_on_ground && !q.is_riding"
+            },
+            {
+              "default": "!(q.modified_move_speed >= 0.1 && q.is_on_ground)"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

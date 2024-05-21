@@ -1,0 +1,16 @@
+{
+    "format_version": "1.20.10",
+    "minecraft:recipe_brewing_mix": {
+      "description": {
+        "identifier": "sf_nba:brew_slow_fall_potion_from_wings"
+      },
+  
+      "tags": [ "brewing_stand" ],
+  
+      "input": "minecraft:potion_type:awkward",
+      "reagent": "sf_nba:wing",
+      "output": "minecraft:potion_type:slow_falling"
+    }
+  
+  }
+  

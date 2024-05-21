@@ -1,0 +1,245 @@
+{
+  "format_version": "1.20.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "sf_nba:jellyfish",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false,
+      "animations": {
+        "jellyfish.on_bucket_controller": "controller.animation.sf_nba.bucketable_entity"
+      },
+      "scripts": {
+        "animate": [
+          "jellyfish.on_bucket_controller"
+        ]
+      },
+      "properties": {
+        "sf_nba:variant": {
+          "client_sync": true,
+          "type": "int",
+          "default": 0,
+          "range": [
+            0,
+            4
+          ]
+        },
+        "sf_nba:on_bucket": {
+          "client_sync": false,
+          "type": "bool",
+          "default": false
+        }
+      }
+    },
+    "component_groups": {},
+    "components": {
+      "minecraft:movement": {
+        "value": 0.05
+      },
+      "minecraft:movement.sway": {
+		"sway_amplitude": 0.0
+	  },
+      "minecraft:underwater_movement": {
+        "value": 0.05
+      },
+      "minecraft:navigation.generic": {
+        "is_amphibious": false,
+        "can_path_over_water": false,
+        "can_swim": true,
+        "can_walk": false,
+        "can_breach": false,
+        "can_sink": false
+      },
+      "minecraft:behavior.swim_idle": {
+        "priority": 5,
+        "idle_time": 5,
+        "success_rate": 0.1
+      },
+      "minecraft:behavior.random_swim": {
+        "priority": 3,
+        "speed_multiplier": 1,
+        "xz_dist": 16,
+        "y_dist": 4,
+        "interval": 0
+      },
+      "minecraft:behavior.swim_wander": {
+        "priority": 4,
+        "interval": 0.1,
+        "look_ahead": 2,
+        "speed_multiplier": 1,
+        "wander_time": 5
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:experience_reward": {
+        "on_death": "query.last_hit_by_player ? Math.Random(1,2) : 0"
+      },
+      "minecraft:nameable": {},
+      "minecraft:type_family": {
+        "family": [
+          "sf_nba:jellyfish",
+          "sf_nba:bucketable_entity",
+          "mob",
+          "non_sting"
+        ]
+      },
+      "minecraft:interact": {
+        "interactions": [
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "subject": "other",
+                    "test": "is_family",
+                    "value": "player"
+                  },
+                  {
+                    "subject": "other",
+                    "test": "has_equipment",
+                    "domain": "hand",
+                    "value": "minecraft:water_bucket"
+                  }
+                ]
+              },
+              "event": "sf_nba:jellyfish_bucket",
+              "target": "self"
+            }
+          }
+        ]
+      },
+      "minecraft:health": {
+        "value": 10,
+        "max": 10
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": {
+              "test": "in_lava",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/entities/jellyfish.loot.json"
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0,
+        "breathes_air": false,
+        "breathes_water": true
+      },
+      "minecraft:leashable": {
+        "soft_distance": 4,
+        "hard_distance": 6,
+        "max_distance": 10
+      },
+      "minecraft:balloonable": {
+        "mass": 0.5
+      },
+      "minecraft:despawn": {
+        "despawn_from_distance": {}
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:flocking": {
+        "in_water": true,
+        "match_variants": false,
+        "use_center_of_mass": true,
+        "low_flock_limit": 3,
+        "high_flock_limit": 6,
+        "goal_weight": 2,
+        "loner_chance": 0.1,
+        "influence_radius": 3,
+        "breach_influence": 7,
+        "separation_weight": 1.75,
+        "separation_threshold": 0.95,
+        "cohesion_weight": 2,
+        "cohesion_threshold": 1.95,
+        "innner_cohesion_threshold": 1.25,
+        "min_height": 1.5,
+        "max_height": 6,
+        "block_distance": 2,
+        "block_weight": 0.85
+      },
+      "minecraft:area_attack": {
+        "damage_per_tick": 1,
+        "damage_range": 0.2,
+        "cause": "contact",
+        "entity_filter": {
+          "any_of": [
+            {
+              "test": "is_family",
+              "value": "non_sting",
+              "operator": "!="
+            },
+            {
+              "test": "is_family",
+              "subject": "other",
+              "value": "player"
+            },
+            {
+              "test": "is_family",
+              "subject": "other",
+              "value": "mob"
+            }
+          ]
+        }
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "contact",
+            "deals_damage": false
+          }
+        ]
+      }
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "set_property": {
+          "sf_nba:variant": "Math.random_integer(0, 4)"
+        }
+      },
+      "sf_nba:jellyfish_bucket": {
+        "set_property": {
+          "sf_nba:on_bucket": true
+        }
+      },
+      "sf_nba:set_variant_0": {
+        "set_property": {
+          "sf_nba:variant": 0
+        }
+      },
+      "sf_nba:set_variant_1": {
+        "set_property": {
+          "sf_nba:variant": 1
+        }
+      },
+      "sf_nba:set_variant_2": {
+        "set_property": {
+          "sf_nba:variant": 2
+        }
+      },
+      "sf_nba:set_variant_3": {
+        "set_property": {
+          "sf_nba:variant": 3
+        }
+      },
+      "sf_nba:set_variant_4": {
+        "set_property": {
+          "sf_nba:variant": 4
+        }
+      }
+    }
+  }
+}

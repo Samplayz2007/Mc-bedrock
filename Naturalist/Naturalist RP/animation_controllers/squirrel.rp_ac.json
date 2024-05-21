@@ -1,0 +1,114 @@
+{
+  "format_version": "1.20.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.squirrel": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": [
+            "idle"
+          ],
+          "transitions": [
+            {
+              "sleeping_selector": "q.is_sleeping"
+            },
+            {
+              "run": "q.is_on_ground && q.modified_move_speed > 0.1 && !q.is_sleeping"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "run": {
+          "animations": [
+            "run"
+          ],
+          "transitions": [
+            {
+              "sleeping_selector": "q.is_sleeping"
+            },
+            {
+              "idle": "q.modified_move_speed <= 0.1 && !q.is_sleeping"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "sleeping_selector": {
+          "on_entry": [
+            "v.sleep_type = Math.random_integer(0, 100);"
+          ],
+          "transitions": [
+            {
+              "idle": "q.modified_move_speed <= 0.1 && !q.is_sleeping"
+            },
+            {
+              "run": "q.is_on_ground && q.modified_move_speed > 0.1 && !q.is_sleeping"
+            },
+            {
+              "sleep_0": "v.sleep_type > 20"
+            },
+            {
+              "sleep_1": "v.sleep_type <= 20"
+            }
+          ],
+          "blend_transition": 0.4
+        },
+        "sleep_0": {
+          "animations": [
+            "sleep_0"
+          ],
+          "transitions": [
+            {
+              "idle": "q.modified_move_speed <= 0.1 && !q.is_sleeping"
+            },
+            {
+              "run": "q.modified_move_speed > 0.1 && !q.is_sleeping"
+            }
+          ],
+          "blend_transition": 0.4
+        },
+        "sleep_1": {
+          "animations": [
+            "sleep_1"
+          ],
+          "transitions": [
+            {
+              "idle": "q.modified_move_speed <= 0.1 && !q.is_sleeping"
+            },
+            {
+              "run": "q.modified_move_speed > 0.1 && !q.is_sleeping"
+            }
+          ],
+          "blend_transition": 0.4
+        }
+      }
+    },
+    "controller.animation.sf_nba.squirrel.idle_event": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "on_entry": [
+            "v.delay = Math.random_integer(10, 28);",
+            "v.current_delay = q.life_time;"
+          ],
+          "transitions": [
+            {
+              "idle_event": "(q.life_time - v.current_delay >= v.delay) && q.modified_move_speed <= 0.1 && q.is_on_ground"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "idle_event": {
+          "animations": [
+            "idle_event"
+          ],
+          "transitions": [
+            {
+              "default": "q.all_animations_finished || q.modified_move_speed > 0.1 || !q.is_on_ground"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}

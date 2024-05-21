@@ -1,0 +1,26 @@
+{
+  "format_version": "1.20.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "sf_nba:alligator_egg",
+      "menu_category": {
+        "category": "items",
+        "group": "naturalist"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "texture": "sf_nba.alligator_egg"
+      },
+      "minecraft:allow_off_hand": {
+        "value": false
+      },
+      "minecraft:can_destroy_in_creative": {
+        "value": true
+      },
+      "minecraft:display_name": {
+        "value": "item.sf_nba:alligator_egg.name"
+      }
+    }
+  }
+}

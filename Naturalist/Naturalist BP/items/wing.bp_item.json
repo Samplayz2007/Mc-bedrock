@@ -1,0 +1,23 @@
+{
+  "format_version": "1.20.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "sf_nba:wing",
+      "menu_category": {
+        "category": "items",
+        "group": "naturalist"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "texture": "sf_nba.wing"
+      },
+      "minecraft:display_name": {
+        "value": "item.sf_nba:wing.name"
+      },
+      "minecraft:can_destroy_in_creative": {
+        "value": true
+      }
+    }
+  }
+}

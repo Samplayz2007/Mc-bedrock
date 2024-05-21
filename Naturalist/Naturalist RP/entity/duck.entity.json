@@ -1,0 +1,55 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:duck",
+      "render_controllers": [
+        "controller.render.sf_nba.duck"
+      ],
+      "geometry": {
+        "default": "geometry.sf_nba.duck"
+      },
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "duck": "textures/sf/nba/entity/duck/duck",
+        "queso": "textures/sf/nba/entity/duck/queso",
+        "baby": "textures/sf/nba/entity/duck/baby"
+      },
+      "animations": {
+        "main_controller": "controller.animation.sf_nba.duck.main",
+        "flap_controller": "controller.animation.sf_nba.duck.flap",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "idle": "animation.sf_nba.duck.idle",
+        "walk": "animation.sf_nba.duck.walk",
+        "swim": "animation.sf_nba.duck.swim",
+        "flap": "animation.sf_nba.duck.flap",
+        "hurt": "animation.sf_nba.duck.hurt"
+      },
+      "scripts": {
+        "initialize": [
+          "v.wet = 0;"
+        ],
+        "pre_animation": [
+          "v.wet = q.is_shaking_wetness;"
+        ],
+        "animate": [
+          "main_controller",
+          "flap_controller"
+        ]
+      },
+      "spawn_egg": {
+        "base_color": "#FFD700",
+        "overlay_color": "#8B4513"
+      },
+      "sound_effects": {
+        "swim": "sf_nba.duck.swim",
+        "wing": "sf_nba.duck.wing",
+        "step": "sf_nba.step.waterbird",
+        "step_-6dB": "sf_nba.step.waterbird_-6dB",
+        "step_-12dB": "sf_nba.step.waterbird_-12dB"
+      }
+    }
+  }
+}

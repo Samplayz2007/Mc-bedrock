@@ -1,0 +1,21 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "sf_nba:furnace_crab_meat"
+    },
+    "unlock": [
+      {
+        "item": "sf_nba:crab_meat"
+      }
+    ],
+    "tags": [
+      "furnace",
+      "smoker",
+      "campfire",
+      "soul_campfire"
+    ],
+    "input": "sf_nba:crab_meat",
+    "output": "sf_nba:cooked_crab_meat"
+  }
+}

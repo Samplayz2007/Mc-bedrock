@@ -1,0 +1,49 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:emperor_penguin",
+      "render_controllers": [
+        "controller.render.sf_nba.emperor_penguin"
+      ],
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "adult": "textures/sf/nba/entity/emperor_penguin/emperor_penguin",
+        "baby": "textures/sf/nba/entity/emperor_penguin/baby"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.emperor_penguin"
+      },
+      "animations": {
+        "main_controller": "controller.animation.sf_nba.emperor_penguin.main",
+        "idle": "animation.sf_nba.emperor_penguin.idle",
+        "idle_event": "animation.sf_nba.emperor_penguin.idle_event",
+        "walk": "animation.sf_nba.emperor_penguin.walk",
+        "run": "animation.sf_nba.emperor_penguin.run",
+        "swim": "animation.sf_nba.emperor_penguin.swim",
+        "fall": "animation.sf_nba.emperor_penguin.fall",
+        "slide": "animation.sf_nba.emperor_penguin.slide",
+        "look_at_target": "animation.sf_nba.look_at_target"
+      },
+      "scripts": {
+        "animate": [
+          "main_controller"
+        ]
+      },
+      "spawn_egg": {
+        "base_color": "#514A50",
+        "overlay_color": "#FF8912"
+      },
+      "sound_effects": {
+        "fall": "sf_nba.emperor_penguin.fall",
+        "cry": "sf_nba.emperor_penguin.extra",
+        "step": "sf_nba.step.waterbird",
+        "step_-6dB": "sf_nba.step.waterbird_-6dB",
+        "step_-12dB": "sf_nba.step.waterbird_-12dB",
+        "swim": "sf_nba.otter.swim"
+      }
+    }
+  }
+}

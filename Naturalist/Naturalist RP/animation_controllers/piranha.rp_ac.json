@@ -1,0 +1,137 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.piranha.main": {
+      "states": {
+        "default": {
+          "animations": [
+            "idle"
+          ],
+          "transitions": [
+            {
+              "flop": "v.out_of_water"
+            },
+            {
+              "swim": "q.modified_move_speed > 0.2"
+            },
+            {
+              "swim_fast": "q.modified_move_speed > 1.2"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "swim": {
+          "animations": [
+            "swim"
+          ],
+          "transitions": [
+            {
+              "flop": "v.out_of_water"
+            },
+            {
+              "swim_fast": "q.modified_move_speed > 1.2"
+            },
+            {
+              "default": "q.modified_move_speed <= 0.2"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "swim_fast": {
+          "animations": [
+            "swim_fast"
+          ],
+          "transitions": [
+            {
+              "flop": "v.out_of_water"
+            },
+            {
+              "swim": "q.modified_move_speed > 0.2"
+            },
+            {
+              "default": "q.modified_move_speed <= 0.2"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "flop": {
+          "animations": [
+            "flop"
+          ],
+          "transitions": [
+            {
+              "swim_fast": "!v.out_of_water && q.modified_move_speed > 1.2"
+            },
+            {
+              "swim": "!v.out_of_water && q.modified_move_speed > 0.2"
+            },
+            {
+              "default": "!v.out_of_water"
+            }
+          ],
+          "blend_transition": 0.5
+        }
+      }
+    },
+    "controller.animation.sf_nba.piranha.attack": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "attack": "q.is_delayed_attacking"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "attack": {
+          "animations": [
+            "attack"
+          ],
+          "transitions": [
+            {
+              "default": "!q.is_delayed_attacking && q.all_animations_finished"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    },
+    "controller.animation.sf_nba.piranha.var.out_of_water": {
+      "states": {
+        "default": {
+          "on_entry": [
+            "v.out_of_water = 0.0;"
+          ],
+          "transitions": [
+            {
+              "wait": "!q.is_in_water"
+            }
+          ]
+        },
+        "wait": {
+          "on_entry": [
+            "v.wait_time = q.life_time;"
+          ],
+          "transitions": [
+            {
+              "default": "q.is_in_water"
+            },
+            {
+              "out_of_water": "q.life_time >= (v.wait_time + 0.3)"
+            }
+          ]
+        },
+        "out_of_water": {
+          "on_entry": [
+            "v.out_of_water = 1.0;"
+          ],
+          "transitions": [
+            {
+              "default": "q.is_in_water"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

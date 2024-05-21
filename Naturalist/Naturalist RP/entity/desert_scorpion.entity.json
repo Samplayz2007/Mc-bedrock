@@ -1,0 +1,42 @@
+{
+  "format_version": "1.20.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:desert_scorpion",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/scorpion/desert_scorpion"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.desert_scorpion"
+      },
+      "sound_effects": {
+        "attack": "sf_nba.desert_scorpion.attack",
+        "step": "sf_nba.desert_scorpion.step"
+      },
+      "animations": {
+        "controller.scorpion": "controller.animation.sf_nba.scorpion",
+        "controller.scorpion.attack": "controller.animation.sf_nba.scorpion.attack",
+        "idle": "animation.sf_nba.desert_scorpion.idle",
+        "walk": "animation.sf_nba.desert_scorpion.walk",
+        "run": "animation.sf_nba.desert_scorpion.run",
+        "attack": "animation.sf_nba.desert_scorpion.attack"
+      },
+      "scripts": {
+        "animate": [
+          "controller.scorpion.attack",
+          "controller.scorpion"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "spawn_egg": {
+        "base_color": "#8A633A",
+        "overlay_color": "#e3dab7"
+      }
+    }
+  }
+}

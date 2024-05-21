@@ -1,0 +1,20 @@
+{
+  "format_version": "1.20.20",
+  "minecraft:item": {
+    "description": {
+      "identifier": "sf_nba:glow_goop",
+      "menu_category": {
+        "category": "items",
+        "group": "naturalist"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "texture": "sf_nba.glow_goop"
+      },
+      "minecraft:display_name": {
+        "value": "item.sf_nba:glow_goop.name"
+      }
+    }
+  }
+}

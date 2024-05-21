@@ -1,0 +1,25 @@
+{
+  "format_version": "1.20.0",
+  "render_controllers": {
+    "controller.render.sf_nba.monkey": {
+      "geometry": "geometry.default",
+      "materials": [
+        {
+          "*": "material.default"
+        }
+      ],
+      "arrays": {
+        "textures": {
+          "array.skins": [
+            "texture.black",
+            "texture.brown",
+            "texture.lemur"
+          ]
+        }
+      },
+      "textures": [
+        "array.skins[q.variant]"
+      ]
+    }
+  }
+}

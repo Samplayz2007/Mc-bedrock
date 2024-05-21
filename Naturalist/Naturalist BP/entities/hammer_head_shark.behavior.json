@@ -1,0 +1,377 @@
+{
+  "format_version": "1.20.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "sf_nba:hammer_head_shark",
+      "is_spawnable": true,
+      "is_summonable": true
+    },
+    "component_groups": {
+      "sf_nba:despawn": {
+        "minecraft:instant_despawn": {}
+      },
+      "sf_nba:as_baby": {
+        "minecraft:is_baby": {},
+        "minecraft:scale": {
+          "value": 0.5
+        }
+      },
+      "sf_nba:is_in_water": {
+        "minecraft:movement.sway": {
+          "sway_amplitude": 0
+        },
+        "minecraft:underwater_movement": {
+          "value": 0.05
+        },
+        "minecraft:navigation.generic": {
+          "is_amphibious": false,
+          "can_path_over_water": true,
+          "can_swim": true,
+          "can_walk": false,
+          "can_breach": false,
+          "can_sink": false
+        },
+        "minecraft:attack": {
+          "damage": 14
+        },
+        "minecraft:behavior.hurt_by_target": {
+          "priority": 0
+        },
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 1,
+          "reselect_targets": true,
+          "must_see": true,
+          "within_radius": 12,
+          "must_see_forget_duration": 5,
+          "persist_time": 0.5,
+          "attack_interval": 45,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "in_water",
+                    "subject": "other"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "sf_nba:shark"
+                  },
+                  {
+                    "any_of": [
+                      {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "player"
+                      },
+                      {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "fish"
+                      },
+                      {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "dolphin"
+                      },
+                      {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "squid"
+                      },
+                      {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "sf_nba:octupus"
+                      },
+                      {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "sf_nba:jellyfish"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "max_dist": 16
+            }
+          ]
+        },
+        "minecraft:behavior.delayed_attack": {
+          "priority": 2,
+          "attack_once": false,
+          "track_target": true,
+          "require_complete_path": false,
+          "random_stop_interval": 0,
+          "reach_multiplier": 1.9,
+          "speed_multiplier": 2.25,
+          "attack_duration": 0.7,
+          "hit_delay_pct": 0.25
+        },
+        "minecraft:behavior.random_swim": {
+          "priority": 4,
+          "speed_multiplier": 1.0,
+          "xz_dist": 16,
+          "y_dist": 4,
+          "avoid_surface": false,
+          "interval": 1
+        },
+        "minecraft:behavior.swim_wander": {
+          "priority": 5,
+          "interval": 1.0,
+          "look_ahead": 2.0,
+          "speed_multiplier": 1.0,
+          "wander_time": 5.0
+        }
+      },
+      "sf_nba:out_of_water": {
+        "minecraft:movement.basic": {
+          "max_turn": 30
+        },
+        "minecraft:movement": {
+          "value": 0.225
+        },
+        "minecraft:navigation.generic": {
+          "is_amphibious": true,
+          "can_path_over_water": true,
+          "can_break_doors": false,
+          "can_swim": true,
+          "can_walk": true,
+          "avoid_sun": false,
+          "can_path_from_air": false
+        }
+      },
+      "sf_nba:body_hitbox_adult": {
+        "minecraft:addrider": {
+          "entity_type": "sf_nba:custom_hit_test",
+          "spawn_event": "sf_nba:shark_hitbox"
+        },
+        "minecraft:timer": {
+          "time": 0.1,
+          "looping": false,
+          "time_down_event": {
+            "event": "sf_nba:add_head_hitbox",
+            "target": "self"
+          }
+        }
+      },
+      "sf_nba:head_hitbox_adult": {
+        "minecraft:addrider": {
+          "entity_type": "sf_nba:custom_hit_test",
+          "spawn_event": "sf_nba:shark_head_hitbox"
+        },
+        "minecraft:timer": {
+          "time": 0.1,
+          "looping": false,
+          "time_down_event": {
+            "event": "sf_nba:add_penducle_hitbox",
+            "target": "self"
+          }
+        }
+      },
+      "sf_nba:penducle_hitbox_adult": {
+        "minecraft:addrider": {
+          "entity_type": "sf_nba:custom_hit_test",
+          "spawn_event": "sf_nba:shark_penducle_hitbox"
+        },
+        "minecraft:timer": {
+          "time": 0.1,
+          "looping": false,
+          "time_down_event": {
+            "event": "sf_nba:add_caudal_hitbox",
+            "target": "self"
+          }
+        }
+      },
+      "sf_nba:caudal_fin_hitbox_adult": {
+        "minecraft:addrider": {
+          "entity_type": "sf_nba:custom_hit_test",
+          "spawn_event": "sf_nba:shark_caudal_hitbox"
+        }
+      }
+    },
+    "components": {
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:type_family": {
+        "family": [
+          "sf_nba:hammer_head_shark",
+          "sf_nba:shark",
+          "mob"
+        ]
+      },
+      "minecraft:health": {
+        "value": 40,
+        "max": 40
+      },
+      "minecraft:rideable": {
+        "seat_count": 4,
+        "family_types": [
+          "sf_nba:custom_hit_test"
+        ],
+        "seats": [
+          {
+            "position": [
+              0,
+              0,
+              1.1
+            ]
+          },
+          {
+            "position": [
+              0,
+              0,
+              2.4
+            ]
+          },
+          {
+            "position": [
+              0,
+              0,
+              -1.3
+            ]
+          },
+          {
+            "position": [
+              0,
+              0,
+              -2.8
+            ]
+          }
+        ]
+      },
+      "minecraft:knockback_resistance": {
+        "value": 0.75
+      },
+      "minecraft:collision_box": {
+        "width": 1.4,
+        "height": 1.6
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0,
+        "breathes_air": false,
+        "breathes_water": true
+      },
+      "minecraft:environment_sensor": {
+        "triggers": [
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "in_water"
+                },
+                {
+                  "test": "has_component",
+                  "operator": "!=",
+                  "value": "minecraft:behavior.swim_wander"
+                }
+              ]
+            },
+            "event": "sf_nba:shark_in_water"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "in_water",
+                  "value": false
+                },
+                {
+                  "test": "has_component",
+                  "value": "minecraft:behavior.swim_wander"
+                }
+              ]
+            },
+            "event": "sf_nba:shark_out_of_water"
+          }
+        ]
+      },
+      "minecraft:behavior.move_to_water": {
+        "priority": 0,
+        "search_range": 16,
+        "search_height": 5,
+        "search_count": 1,
+        "goal_radius": 0.1
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:conditional_bandwidth_optimization": {}
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "sequence": [
+          {
+            "trigger": "sf_nba:shark_in_water"
+          },
+          {
+            "trigger": "sf_nba:shark_remove_attack_cooldown"
+          }
+        ]
+      },
+      "sf_nba:despawn": {
+        "add": {
+          "component_groups": [
+            "sf_nba:despawn"
+          ]
+        }
+      },
+      "sf_nba:shark_as_baby": {
+        "add": {
+          "component_groups": [
+            "sf_nba:as_baby"
+          ]
+        }
+      },
+      "sf_nba:shark_in_water": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:out_of_water"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "sf_nba:is_in_water"
+          ]
+        }
+      },
+      "sf_nba:shark_out_of_water": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:is_in_water"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "sf_nba:out_of_water"
+          ]
+        }
+      },
+      "sf_nba:add_head_hitbox": {
+        "add": {
+          "component_groups": [
+            "sf_nba:head_hitbox_adult"
+          ]
+        }
+      },
+      "sf_nba:add_penducle_hitbox": {
+        "add": {
+          "component_groups": [
+            "sf_nba:penducle_hitbox_adult"
+          ]
+        }
+      },
+      "sf_nba:add_caudal_hitbox": {
+        "add": {
+          "component_groups": [
+            "sf_nba:caudal_fin_hitbox_adult"
+          ]
+        }
+      }
+    }
+  }
+}

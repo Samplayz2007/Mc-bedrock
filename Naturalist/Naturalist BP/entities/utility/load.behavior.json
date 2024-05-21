@@ -1,0 +1,36 @@
+{
+  "format_version": "1.18.10",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "sf_nba:load",
+      "is_spawnable": false,
+      "is_summonable": false,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "sf_nba:despawn": {
+        "minecraft:instant_despawn": {}
+      }
+    },
+    "components": {
+      "minecraft:scheduler": {
+        "min_delay_secs": 0,
+        "max_delay_secs": 0,
+        "scheduled_events": [
+          {
+            "event": "sf_nba:despawn"
+          }
+        ]
+      }
+    },
+    "events": {
+      "sf_nba:despawn": {
+        "add": {
+          "component_groups": [
+            "sf_nba:despawn"
+          ]
+        }
+      }
+    }
+  }
+}

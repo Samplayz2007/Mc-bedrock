@@ -1,0 +1,55 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:tree_frog",
+      "render_controllers": [
+        "controller.render.sf_nba.tree_frog"
+      ],
+      "geometry": {
+        "default": "geometry.sf_nba.tree_frog"
+      },
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "green": "textures/sf/nba/entity/tree_frog/green",
+        "red_eyed": "textures/sf/nba/entity/tree_frog/red_eyed",
+        "blue_dart": "textures/sf/nba/entity/tree_frog/blue_dart",
+        "red_dart": "textures/sf/nba/entity/tree_frog/red_dart",
+        "strawberry_dart": "textures/sf/nba/entity/tree_frog/strawberry_dart",
+        "yellow_dart": "textures/sf/nba/entity/tree_frog/yellow_dart"
+      },
+      "animations": {
+        "cont_main": "controller.animation.sf_nba.tree_frog.main",
+        "cont_croak": "controller.animation.sf_nba.tree_frog.croak",
+        "cont_climb": "controller.animation.sf_nba.tree_frog.climb",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "idle": "animation.sf_nba.tree_frog.idle",
+        "croak": "animation.sf_nba.tree_frog.croak",
+        "walk": "animation.sf_nba.tree_frog.walk",
+        "jump": "animation.sf_nba.tree_frog.jump",
+        "climb": "animation.sf_nba.tree_frog.climb"
+      },
+      "scripts": {
+        "animate": [
+          "cont_main",
+          "cont_croak",
+          "cont_climb",
+          "look_at_target"
+        ]
+      },
+      "sound_effects": {
+        "jump": "sf_nba.tree_frog.jump",
+        "idle_event": "sf_nba.tree_frog.idle_event",
+        "step": "sf_nba.step.waterbird",
+        "step_-6dB": "sf_nba.step.waterbird_-6dB",
+        "step_-12dB": "sf_nba.step.waterbird_-12dB"
+      },
+      "spawn_egg": {
+        "base_color": "#B0E236",
+        "overlay_color": "#FFD349"
+      }
+    }
+  }
+}

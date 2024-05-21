@@ -1,0 +1,56 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.bear.move": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            "idle"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "walk": "q.ground_speed >= 0.5"
+            }
+          ]
+        },
+        "walk": {
+          "animations": [
+            "walk"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "q.ground_speed < 0.5"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.bear.eating": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "eating": "q.property('sf_nba:is_eating')"
+            }
+          ]
+        },
+        "eating": {
+          "animations": [
+            "eat"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "eating": "!q.property('sf_nba:is_eating')"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:flamingo",
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "geometry": {
+        "default": "geometry.sf_nba.flamingo"
+      },
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/flamingo"
+      },
+      "animations": {
+        "main_controller": "controller.animation.sf_nba.flamingo.main",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "idle": "animation.sf_nba.flamingo.idle",
+        "idle_event": "animation.sf_nba.flamingo.idle_event",
+        "swim": "animation.sf_nba.flamingo.swim",
+        "run": "animation.sf_nba.flamingo.run_B",
+        "walk": "animation.sf_nba.flamingo.walk",
+        "baby_transform": "animation.sf_nba.flamingo.baby_transform"
+      },
+      "scripts": {
+        "initialize": [
+          "v.walk_lower_boundary = 0;",
+          "v.walk_upper_boundary = 0;",
+          "v.running_lower_boundary = 0;",
+          "v.anim_speed_multiplier = 0.0;",
+          "v.anim_speed_movement_max = 0.0;"
+        ],
+        "pre_animation": [
+          "v.walk_lower_boundary = 0.005;",
+          "v.walk_upper_boundary = 0.75;",
+          "v.running_lower_boundary = 0.858;",
+          "v.anim_speed_multiplier = 1.53125;",
+          "v.anim_speed_movement_max = 0.5;"
+        ],
+        "animate": [
+          "main_controller",
+          "look_at_target",
+          {
+            "baby_transform": "q.is_baby"
+          }
+        ]
+      },
+      "spawn_egg": {
+        "base_color": "#ff7ad9",
+        "overlay_color": "#1d1d1d83"
+      },
+      "sound_effects": {
+        "swim": "sf_nba.flamingo.swim",
+        "wing": "sf_nba.flamingo.wing",
+        "eat": "sf_nba.bird.eat",
+        "step": "sf_nba.step.waterbird",
+        "step_-6dB": "sf_nba.step.waterbird_-6dB",
+        "step_-12dB": "sf_nba.step.waterbird_-12dB"
+      }
+    }
+  }
+}

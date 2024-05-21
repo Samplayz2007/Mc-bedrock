@@ -1,0 +1,51 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.clam.launch": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "before_open": "q.property('sf_nba:before_open')"
+            }
+          ]
+        },
+        "before_open": {
+          "on_entry": [
+            "/scriptevent sf_nba:clam_launch"
+          ],
+          "transitions": [
+            {
+              "default": "!q.property('sf_nba:before_open')"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.clam.took_item": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "has_item": "q.property('sf_nba:has_item')"
+            }
+          ]
+        },
+        "has_item": {
+          "transitions": [
+            {
+              "took_item": "q.property('sf_nba:took_item')"
+            }
+          ]
+        },
+        "took_item": {
+          "on_entry": [
+            "/replaceitem entity @s slot.weapon.mainhand 0 minecraft:air"
+          ]
+        }
+      }
+    }
+  }
+}

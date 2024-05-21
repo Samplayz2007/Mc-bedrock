@@ -1,0 +1,43 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:small_jellyfish",
+      "render_controllers": [
+        "controller.render.sf_nba.jellyfish"
+      ],
+      "geometry": {
+        "default": "geometry.sf_nba.small_jellyfish"
+      },
+      "materials": {
+        "default": "entity_alphatest",
+        "inflation": "entity_alphablend"
+      },
+      "textures": {
+        "white": "textures/sf/nba/entity/small_jellyfish/white",
+        "yellow": "textures/sf/nba/entity/small_jellyfish/yellow",
+        "pink": "textures/sf/nba/entity/small_jellyfish/pink",
+        "blue": "textures/sf/nba/entity/small_jellyfish/blue",
+        "green": "textures/sf/nba/entity/small_jellyfish/green"
+      },
+      "animations": {
+        "idle": "animation.sf_nba.small_jellyfish.idle",
+        "swim": "animation.sf_nba.small_jellyfish.swim",
+        "idle_event": "animation.sf_nba.small_jellyfish.idle_event",
+        "controller": "controller.animation.sf_nba.jellyfish.main"
+      },
+      "scripts": {
+        "animate": [
+          "controller"
+        ]
+      },
+      "spawn_egg": {
+        "base_color": "#FFC0CB",
+        "overlay_color": "#ADD8E6"
+      },
+      "sound_effects": {
+        "swim": "sf_nba.jelly.swim"
+      }
+    }
+  }
+}

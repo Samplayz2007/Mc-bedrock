@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.bird.move": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            {
+              "fly": "!q.is_on_ground && !q.is_riding"
+            }
+          ],
+          "transitions": [
+            {
+              "sitting": "q.is_sitting"
+            }
+          ]
+        },
+        "sitting": {
+          "animations": [
+            "sit"
+          ],
+          "transitions": [
+            {
+              "default": "!q.is_sitting"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:cage",
+      "render_controllers": [
+        "controller.render.sf_nba.cage"
+      ],
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "black": "textures/sf/nba/entity/cage/black",
+        "blue": "textures/sf/nba/entity/cage/blue",
+        "brown": "textures/sf/nba/entity/cage/brown",
+        "copper": "textures/sf/nba/entity/cage/copper",
+        "cyan": "textures/sf/nba/entity/cage/cyan",
+        "glow": "textures/sf/nba/entity/cage/glow",
+        "gray": "textures/sf/nba/entity/cage/gray",
+        "green": "textures/sf/nba/entity/cage/green",
+        "light_blue": "textures/sf/nba/entity/cage/light_blue",
+        "light_gray": "textures/sf/nba/entity/cage/silver",
+        "lime": "textures/sf/nba/entity/cage/lime",
+        "magenta": "textures/sf/nba/entity/cage/magenta",
+        "orange": "textures/sf/nba/entity/cage/orange",
+        "pink": "textures/sf/nba/entity/cage/pink",
+        "purple": "textures/sf/nba/entity/cage/purple",
+        "red": "textures/sf/nba/entity/cage/red",
+        "white": "textures/sf/nba/entity/cage/white",
+        "yellow": "textures/sf/nba/entity/cage/yellow"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.cage"
+      },
+      "animations": {
+        "cardinal_orientation": "animation.sf_nba.generic.cardinal_orientation"
+      },
+      "spawn_egg": {
+        "base_color": "#6f2c00",
+        "overlay_color": "#2e2e2e"
+      },
+      "scripts": {
+        "animate": [
+          "cardinal_orientation"
+        ]
+      }
+    }
+  }
+}

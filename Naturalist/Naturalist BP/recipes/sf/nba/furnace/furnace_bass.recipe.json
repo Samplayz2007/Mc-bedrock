@@ -1,0 +1,21 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "sf_nba:furnace_bass"
+    },
+    "unlock": [
+      {
+        "item": "sf_nba:bass"
+      }
+    ],
+    "tags": [
+      "furnace",
+      "smoker",
+      "campfire",
+      "soul_campfire"
+    ],
+    "input": "sf_nba:bass",
+    "output": "sf_nba:cooked_bass"
+  }
+}

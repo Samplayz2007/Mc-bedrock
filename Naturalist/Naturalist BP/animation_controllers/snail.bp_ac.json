@@ -1,0 +1,78 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.snail.crush_check": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "test": "q.property('sf_nba:was_stepped_on')"
+            }
+          ]
+        },
+        "test": {
+          "on_entry": [
+            "/scriptevent sf_nba:snail_crush_check"
+          ],
+          "transitions": [
+            {
+              "default": "!q.property('sf_nba:was_stepped_on')"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.snail.catch_check": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "test": "q.property('sf_nba:was_caught')"
+            }
+          ]
+        },
+        "test": {
+          "on_entry": [
+            "/scriptevent sf_nba:snail_bucket"
+          ],
+          "transitions": [
+            {
+              "default": "!q.property('sf_nba:was_caught')"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.snail.lay_egg": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "ready": "q.is_pregnant"
+            }
+          ]
+        },
+        "ready": {
+          "transitions": [
+            {
+              "done": "!q.is_pregnant"
+            }
+          ]
+        },
+        "done": {
+          "on_entry": [
+            "/scriptevent sf_nba:snailegg_formed"
+          ],
+          "transitions": [
+            {
+              "default": "1"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+    "format_version": "1.20.10",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "sf_nba:info_book"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": [
+            {
+                "item": "minecraft:dirt",
+                "count": 1
+            },
+            {
+                "item": "minecraft:stick",
+                "count": 1
+            }
+        ],
+        "result": {
+            "item": "sf_nba:info_book_spawn_egg",
+            "count": 1
+        },
+        "unlock": [
+
+            {
+                "item": "minecraft:dirt",
+                "count": 1
+            },
+            {
+                "item": "minecraft:stick",
+                "count": 1
+            }
+        ]
+    }
+}

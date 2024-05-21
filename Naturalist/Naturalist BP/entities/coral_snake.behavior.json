@@ -1,0 +1,670 @@
+{
+  "format_version": "1.18.20",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "sf_nba:coral_snake",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false,
+      "properties": {
+        "sf_nba:is_bellied": {
+          "type": "bool",
+          "default": false
+        },
+        "sf_nba:digested_item": {
+          "type": "bool",
+          "default": false
+        }
+      },
+      "scripts": {
+        "animate": [
+          "food_check",
+          "digest"
+        ]
+      },
+      "animations": {
+        "food_check": "controller.animation.sf_nba.snake.food_check",
+        "digest": "controller.animation.sf_nba.snake.digest"
+      }
+    },
+    "component_groups": {
+      "sf_nba:snake_angry": {
+        "minecraft:angry": {
+          "duration": 30,
+          "duration_delta": 10,
+          "broadcast_anger": true,
+          "broadcast_range": 1,
+          "calm_event": {
+            "event": "sf_nba:become_calm",
+            "target": "self"
+          }
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 2,
+          "speed_multiplier": 1.2,
+          "track_target": true,
+          "reach_multiplier": 1.5
+        }
+      },
+      "sf_nba:snake_empty_belly": {
+        "minecraft:movement": {
+          "value": 0.13
+        }
+      },
+      "sf_nba:snake_bellied": {
+        "minecraft:movement": {
+          "value": 0.05
+        },
+        "minecraft:damage_sensor": {
+          "triggers": {
+            "cause": "all",
+            "on_damage": {
+              "event": "sf_nba:snake_on_hurt",
+              "target": "self"
+            }
+          }
+        },
+        "minecraft:timer": {
+          "looping": false,
+          "time": 300,
+          "time_down_event": {
+            "event": "sf_nba:snake_on_eat"
+          }
+        }
+      },
+      "sf_nba:snake_pickup": {
+        "minecraft:behavior.pickup_items": {
+          "priority": 2,
+          "max_dist": 8,
+          "goal_radius": 1.5,
+          "speed_multiplier": 1.2
+        }
+      },
+      "sf_nba:snake_pickup_delay": {
+        "minecraft:attack_cooldown": {
+          "attack_cooldown_time": 4,
+          "attack_cooldown_complete_event": {
+            "event": "sf_nba:pickup_delay_complete",
+            "target": "self"
+          }
+        }
+      },
+      "sf_nba:snake_wild": {
+        "minecraft:tameable": {
+          "probability": 0.5,
+          "tame_items": "spider_eye",
+          "tame_event": {
+            "event": "sf_nba:on_tame",
+            "target": "self"
+          }
+        }
+      },
+      "sf_nba:snake_awake": {
+        "minecraft:navigation.climb": {
+          "can_path_over_water": true,
+          "can_jump": false
+        },
+        "minecraft:can_climb": {}
+      },
+      "sf_nba:snake_asleep": {
+        "minecraft:movement": {
+          "value": 0.0
+        },
+        "minecraft:navigation.generic": {
+          "can_walk": false,
+          "can_jump": false
+        }
+      },
+      "sf_nba:snake_tame": {
+        "minecraft:is_tamed": {},
+        "minecraft:behavior.follow_owner": {
+          "priority": 3,
+          "speed_multiplier": 1.0,
+          "start_distance": 10,
+          "stop_distance": 2
+        },
+        "minecraft:attack": {
+          "damage": 4
+        },
+        "minecraft:behavior.owner_hurt_by_target": {
+          "priority": 1
+        },
+        "minecraft:behavior.owner_hurt_target": {
+          "priority": 2
+        },
+        "minecraft:sittable": {},
+        "minecraft:behavior.stay_while_sitting": {
+          "priority": 1
+        }
+      }
+    },
+    "components": {
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:experience_reward": {
+        "on_death": "query.last_hit_by_player ? 5 : 0"
+      },
+      "minecraft:nameable": {},
+      "minecraft:type_family": {
+        "family": [
+          "sf_nba:snake",
+          "sf_nba:coral_snake",
+          "mob"
+        ]
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:equip_item": {},
+      "minecraft:equipment": {
+        "table": "loot_tables/entities/snake_equipment.loot.json"
+      },
+      "minecraft:collision_box": {
+        "width": 0.6,
+        "height": 0.7
+      },
+      "minecraft:health": {
+        "value": 10,
+        "max": 10
+      },
+      "minecraft:movement": {
+        "value": 0.13
+      },
+      "minecraft:inventory": {
+        "inventory_size": 1,
+        "private": true
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": {
+              "test": "in_lava",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:jump.static": {},
+      "minecraft:attack": {
+        "damage": 4
+      },
+      "minecraft:shareables": {
+        "singular_pickup": true,
+        "items": [
+          {
+            "item": "minecraft:chicken",
+            "admire": true,
+            "pickup_limit": 1
+          },
+          {
+            "item": "minecraft:rabbit",
+            "admire": true,
+            "pickup_limit": 1
+          },
+          {
+            "item": "minecraft:rabbit_foot",
+            "admire": true,
+            "pickup_limit": 1
+          },
+          {
+            "item": "minecraft:slime_ball",
+            "admire": true,
+            "pickup_limit": 1
+          },
+          {
+            "item": "minecraft:egg",
+            "admire": true,
+            "pickup_limit": 1
+          },
+          {
+            "item": "sf_nba:snail_shell",
+            "admire": true,
+            "pickup_limit": 1
+          }
+        ]
+      },
+      "minecraft:behavior.admire_item": {
+        "priority": 2
+      },
+      "minecraft:admire_item": {
+        "duration": 3,
+        "cooldown_after_being_attacked": 10
+      },
+      "minecraft:despawn": {
+        "despawn_from_distance": {}
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.hurt_by_target": {
+        "priority": 1
+      },
+      "minecraft:behavior.nearest_attackable_target": {
+        "priority": 2,
+        "entity_types": {
+          "filters": {
+            "all_of": {
+              "test": "bool_property",
+              "operator": "!=",
+              "domain": "sf_nba:is_bellied"
+            },
+            "any_of": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "rabbit"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "chicken"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "silverfish"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "snail"
+              },
+              {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "slime"
+                  },
+                  {
+                    "test": "is_variant",
+                    "subject": "other",
+                    "value": 1
+                  }
+                ]
+              }
+            ]
+          },
+          "max_dist": 10
+        }
+      },
+      "minecraft:behavior.equip_item": {
+        "priority": 2
+      },
+      "minecraft:behavior.nap": {
+        "priority": 4,
+        "cooldown_min": 2.0,
+        "cooldown_max": 4.0,
+        "can_nap_filters": {
+          "all_of": [
+            {
+              "test": "has_component",
+              "operator": "!=",
+              "value": "minecraft:angry"
+            },
+            {
+              "test": "in_block",
+              "operator": "!=",
+              "value": "water"
+            }
+          ],
+          "any_of": [
+            {
+              "test": "hourly_clock_time",
+              "operator": "<",
+              "value": 4000
+            },
+            {
+              "test": "hourly_clock_time",
+              "operator": ">",
+              "value": 12000
+            }
+          ],
+          "none_of": {
+            "all_of": [
+              {
+                "test": "hourly_clock_time",
+                "operator": ">",
+                "value": 18000
+              },
+              {
+                "test": "hourly_clock_time",
+                "operator": "<",
+                "value": 23000
+              }
+            ]
+          }
+        }
+      },
+      "minecraft:behavior.random_stroll": {
+        "priority": 5,
+        "speed_multiplier": "!q.is_sleeping"
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 6,
+        "look_distance": 6.0,
+        "probability": 0.02
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 6
+      },
+      "minecraft:on_target_acquired": {
+        "event": "sf_nba:become_angry"
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:follow_range": {
+        "value": 20
+      },
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:scheduler": {
+        "min_delay_secs": 0,
+        "max_delay_secs": 0,
+        "scheduled_events": [
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "none_of": [
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "value": "chicken"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "value": "rabbit"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "value": "rabbit_foot"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "value": "slime_ball"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "value": "egg"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "value": "feather"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "value": "sf_nba:snail_shell"
+                    }
+                  ]
+                },
+                {
+                  "test": "bool_property",
+                  "domain": "sf_nba:is_bellied",
+                  "value": true
+                }
+              ]
+            },
+            "event": "sf_nba:is_contracted"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "any_of": [
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "value": "chicken"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "value": "rabbit"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "value": "rabbit_foot"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "value": "slime_ball"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "value": "egg"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "value": "feather"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "value": "sf_nba:snail_shell"
+                    }
+                  ]
+                },
+                {
+                  "test": "bool_property",
+                  "domain": "sf_nba:is_bellied",
+                  "value": false
+                }
+              ]
+            },
+            "event": "sf_nba:is_bellied"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_sleeping",
+                  "value": false
+                },
+                {
+                  "test": "has_component",
+                  "operator": "!=",
+                  "value": "minecraft:can_climb"
+                }
+              ]
+            },
+            "event": "sf_nba:is_awake"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_sleeping",
+                  "value": true
+                },
+                {
+                  "test": "has_component",
+                  "operator": "==",
+                  "value": "minecraft:can_climb"
+                }
+              ]
+            },
+            "event": "sf_nba:is_asleep"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "all_slots_empty"
+                },
+                {
+                  "test": "has_component",
+                  "operator": "!=",
+                  "value": "minecraft:behavior.pickup_items"
+                },
+                {
+                  "test": "has_component",
+                  "operator": "!=",
+                  "value": "minecraft:attack_cooldown"
+                }
+              ]
+            },
+            "event": "sf_nba:pickup_delay_complete"
+          }
+        ]
+      }
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "sf_nba:snake_wild"
+          ]
+        }
+      },
+      "sf_nba:become_angry": {
+        "add": {
+          "component_groups": [
+            "sf_nba:snake_angry"
+          ]
+        }
+      },
+      "sf_nba:become_calm": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:snake_angry"
+          ]
+        }
+      },
+      "sf_nba:is_contracted": {
+        "set_property": {
+          "sf_nba:is_bellied": false
+        },
+        "remove": {
+          "component_groups": [
+            "sf_nba:snake_bellied"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "sf_nba:snake_empty_belly"
+          ]
+        }
+      },
+      "sf_nba:is_bellied": {
+        "set_property": {
+          "sf_nba:is_bellied": true
+        },
+        "add": {
+          "component_groups": [
+            "sf_nba:snake_bellied"
+          ]
+        },
+        "trigger": "sf_nba:become_calm"
+      },
+      "sf_nba:pickup_delay_complete": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:snake_pickup_delay"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "sf_nba:snake_pickup"
+          ]
+        }
+      },
+      "sf_nba:snake_on_hurt": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:snake_pickup"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "sf_nba:snake_pickup_delay"
+          ]
+        }
+      },
+      "sf_nba:is_awake": {
+        "sequence": [
+          {
+            "add": {
+              "component_groups": [
+                "sf_nba:snake_awake"
+              ]
+            },
+            "remove": {
+              "component_groups": [
+                "sf_nba:snake_asleep"
+              ]
+            }
+          },
+          {
+            "filters": {
+              "test": "bool_property",
+              "domain": "sf_nba:is_bellied",
+              "value": true
+            },
+            "trigger": "sf_nba:is_bellied"
+          },
+          {
+            "filters": {
+              "test": "bool_property",
+              "domain": "sf_nba:is_bellied",
+              "value": false
+            },
+            "trigger": "sf_nba:is_contracted"
+          }
+        ]
+      },
+      "sf_nba:is_asleep": {
+        "add": {
+          "component_groups": [
+            "sf_nba:snake_asleep"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "sf_nba:snake_awake"
+          ]
+        }
+      },
+      "sf_nba:snake_on_eat": {
+        "set_property": {
+          "sf_nba:digested_item": true
+        }
+      },
+      "sf_nba:snake_on_finish_eat": {
+        "set_property": {
+          "sf_nba:digested_item": false
+        },
+        "trigger": "sf_nba:is_contracted"
+      },
+      "sf_nba:on_tame": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:snake_wild"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "sf_nba:snake_tame"
+          ]
+        }
+      }
+    }
+  }
+}

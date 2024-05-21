@@ -1,0 +1,36 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.sf_nba.lion": {
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Texture.default"
+      ],
+      "part_visibility": [
+        {
+          "mane": "q.property('sf_nba:is_male') && !q.is_baby"
+        },
+        {
+          "body_male": "q.property('sf_nba:is_male') && !q.is_baby"
+        },
+        {
+          "body_female": "!q.property('sf_nba:is_male') || q.is_baby"
+        },
+        {
+          "sleep": "q.is_sleeping"
+        },
+        {
+          "head_not_angry": "!q.has_target || q.is_sleeping"
+        },
+        {
+          "head_angry": "q.has_target && !q.is_sleeping"
+        }
+      ]
+    }
+  }
+}

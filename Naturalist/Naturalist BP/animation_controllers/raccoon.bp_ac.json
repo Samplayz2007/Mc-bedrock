@@ -1,0 +1,32 @@
+{
+	"format_version": "1.20.0",
+	"animation_controllers": {
+		"controller.animation.sf_nba.raccoon": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{ "is_searching_item": "q.property('sf_nba:search_state') == 'searching_item'" }
+					]
+				},
+
+				"is_searching_item": {
+					"on_entry": ["/scriptevent sf_nba:raccoon_searching_item"],
+
+					"transitions": [
+						{ "cancel_searching_item": "q.property('sf_nba:search_state') == 'cancel_searching_item'" },
+						{ "default": "q.property('sf_nba:search_state') != 'searching_item'" }
+					]
+				},
+
+				"cancel_searching_item": {
+					"on_entry": ["/scriptevent sf_nba:raccoon_cancel_searching_item"],
+
+					"transitions": [
+						{ "default": "q.property('sf_nba:search_state') != 'cancel_searching_item'" }
+					]
+				}
+			}
+		}
+	}
+}

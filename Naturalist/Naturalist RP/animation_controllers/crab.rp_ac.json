@@ -1,0 +1,54 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.sf_nba.crab": {
+			"initial_state": "idle",
+			"states": {
+				"idle": {
+					"animations": [
+						"idle",
+						{ "swing_right": "q.property('sf_nba:sand_block_interaction_state') == 'try_collect_sand' || v.attack_time > 0.0" },
+						{ "holding_weapon": "v.weapon_or_tool_equipped" }
+					],
+					"transitions": [
+						{ "walk": "q.modified_move_speed > 0.1 && !q.property('sf_nba:is_dancing')" },
+						{ "dance": "q.property('sf_nba:is_dancing') && q.is_alive" }
+					],
+					
+					"blend_via_shortest_path": true,
+					"blend_transition": 0.2
+				},
+
+				"walk": {
+					"animations": [
+						"walk",
+						{ "swing_right": "q.property('sf_nba:sand_block_interaction_state') == 'try_collect_sand' || v.attack_time > 0.0" },
+						{ "holding_weapon": "v.weapon_or_tool_equipped" }
+					],
+					"transitions": [
+						{ "idle": "q.modified_move_speed <= 0.1 && !q.property('sf_nba:is_dancing')" },
+						{ "dance": "q.property('sf_nba:is_dancing') && q.is_alive" }
+					],
+
+					"blend_via_shortest_path": true,
+					"blend_transition": 0.2
+				},
+
+				"dance": {
+					"animations": [
+						"dance",
+						{ "swing_right": "q.property('sf_nba:sand_block_interaction_state') == 'try_collect_sand' || v.attack_time > 0.0" },
+						{ "holding_weapon": "v.weapon_or_tool_equipped" }
+					],
+					"transitions": [
+						{ "idle": "(q.modified_move_speed <= 0.1 && !q.property('sf_nba:is_dancing')) || !q.is_alive" },
+						{ "walk": "q.modified_move_speed > 0.1 && !q.property('sf_nba:is_dancing')" }
+					],
+
+					"blend_via_shortest_path": true,
+					"blend_transition": 0.2
+				}
+			}
+		}
+	}
+}

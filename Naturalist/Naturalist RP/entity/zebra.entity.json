@@ -1,0 +1,35 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:zebra",
+      "render_controllers": [
+        "controller.render.sf_nba.zebra"
+      ],
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/zebra"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.zebra"
+      },
+      "animations": {
+        "main_controller": "controller.animation.sf_nba.zebra.main",
+        "idle": "animation.sf_nba.zebra.idle",
+        "walk": "animation.sf_nba.zebra.walk",
+        "run": "animation.sf_nba.zebra.run"
+      },
+      "spawn_egg": {
+        "base_color": "#FFFFFF",
+        "overlay_color": "#000000"
+      },
+      "scripts": {
+        "animate": [
+          "main_controller"
+        ]
+      }
+    }
+  }
+}

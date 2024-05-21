@@ -1,0 +1,167 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.giraffe.move": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            "idle"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "run": "v.is_sprinting"
+            },
+            {
+              "walk": "v.is_moving"
+            }
+          ]
+        },
+        "walk": {
+          "animations": [
+            "walk"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "!v.is_moving"
+            },
+            {
+              "run": "v.is_sprinting"
+            }
+          ]
+        },
+        "run": {
+          "animations": [
+            "run"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "!v.is_moving"
+            },
+            {
+              "walk": "!v.is_sprinting"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.giraffe.eat": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "on_entry": [
+            "v.health = q.health;"
+          ],
+          "transitions": [
+            {
+              "eat": "(v.health ?? 0) < q.health"
+            },
+            {
+              "damage": "q.health < (v.health ?? 0)"
+            }
+          ]
+        },
+        "damage": {
+          "transitions": [
+            {
+              "default": "1.0"
+            }
+          ]
+        },
+        "eat": {
+          "animations": [
+            "eat"
+          ],
+          "transitions": [
+            {
+              "default": "q.all_animations_finished"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.giraffe.breed": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "breedable": "!q.is_in_love"
+            }
+          ]
+        },
+        "breedable": {
+          "transitions": [
+            {
+              "eat": "q.is_in_love"
+            }
+          ]
+        },
+        "eat": {
+          "animations": [
+            "eat"
+          ],
+          "transitions": [
+            {
+              "default": "q.all_animations_finished"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.giraffe.tame": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "wild": "!q.is_tamed"
+            },
+            {
+              "tame": "q.is_tamed"
+            }
+          ]
+        },
+        "wild": {
+          "transitions": [
+            {
+              "eat": "q.is_tamed"
+            }
+          ]
+        },
+        "eat": {
+          "animations": [
+            "eat"
+          ],
+          "transitions": [
+            {
+              "tame": "q.all_animations_finished"
+            }
+          ]
+        },
+        "tame": {
+          "transitions": [
+            {
+              "tame_timeout": "!q.is_tamed"
+            }
+          ]
+        },
+        "tame_timeout": {
+          "sound_effects": [
+            {
+              "effect": "mad"
+            }
+          ],
+          "transitions": [
+            {
+              "wild": "1.0"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

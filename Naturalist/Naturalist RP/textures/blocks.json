@@ -1,0 +1,23 @@
+{
+  "sf_nba:chrysalis_stage0": {
+    "sound": "grass"
+  },
+  "sf_nba:chrysalis_stage1": {
+    "sound": "grass"
+  },
+  "sf_nba:chrysalis_stage2": {
+    "sound": "grass"
+  },
+  "sf_nba:cut_shellstone": {
+    "sound": "stone"
+  },
+  "sf_nba:shellstone": {
+    "sound": "stone"
+  },
+  "sf_nba:shellstone_bricks": {
+    "sound": "stone"
+  },
+  "sf_nba:smooth_shellstone": {
+    "sound": "stone"
+  }
+}

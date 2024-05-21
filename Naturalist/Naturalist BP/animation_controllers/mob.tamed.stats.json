@@ -1,0 +1,22 @@
+{
+  "format_version": "1.20.40",
+  "animation_controllers": {
+    "controller.animation.sf_nba.tamed_bird.stats": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "is_tamed": "query.is_tamed"
+            }
+          ]
+        },
+        "is_tamed": {
+          "on_entry": [
+            "/function sf/nba/tamed_bird_stat_add"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.sf_nba.ostrich": {
+      "geometry": "geometry.default",
+      "materials": [
+        {
+          "*": "material.default"
+        }
+      ],
+      "textures": [
+        "q.is_baby ? texture.baby : texture.default"
+      ],
+      "part_visibility": [
+        {
+          "saddle": "q.is_saddled"
+        },
+        {
+          "rightWing": "!q.is_baby"
+        },
+        {
+          "leftWing": "!q.is_baby"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "sf_nba:furnace_duck_egg"
+    },
+    "unlock": [
+      {
+        "item": "sf_nba:duck_egg"
+      }
+    ],
+    "tags": [
+      "furnace",
+      "smoker",
+      "campfire",
+      "soul_campfire"
+    ],
+    "input": "sf_nba:duck_egg",
+    "output": "sf_nba:cooked_egg"
+  }
+}

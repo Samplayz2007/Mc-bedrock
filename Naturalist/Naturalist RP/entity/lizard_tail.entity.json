@@ -1,0 +1,35 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:lizard_tail",
+      "render_controllers": [
+        "controller.render.sf_nba.lizard_tail"
+      ],
+      "geometry": {
+        "default": "geometry.sf_nba.lizard_tail"
+      },
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "beardie": "textures/sf/nba/entity/lizard/beardie_tail",
+        "brown": "textures/sf/nba/entity/lizard/brown_tail",
+        "green": "textures/sf/nba/entity/lizard/green_tail",
+        "leopard_gecko": "textures/sf/nba/entity/lizard/leopard_gecko_tail"
+      },
+      "animations": {
+        "flop": "animation.sf_nba.lizard_tail.flop"
+      },
+      "scripts": {
+        "scale": "0.75",
+        "animate": [
+          "flop"
+        ]
+      },
+      "sound_effects": {
+        "flop": "sf_nba.lizard_tail.flop"
+      }
+    }
+  }
+}

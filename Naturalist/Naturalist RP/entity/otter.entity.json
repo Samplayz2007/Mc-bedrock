@@ -1,0 +1,64 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:otter",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/otter"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.otter"
+      },
+      "animations": {
+        "cont_main": "controller.animation.sf_nba.otter.main",
+        "cont_hold_item": "controller.animation.sf_nba.otter.hold_item",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "idle": "animation.sf_nba.otter.idle",
+        "walk": "animation.sf_nba.otter.walk",
+        "run": "animation.sf_nba.otter.run",
+        "swim": "animation.sf_nba.otter.swim",
+        "float": "animation.sf_nba.otter.float",
+        "sleep": "animation.sf_nba.otter.sleep",
+        "item_adjust": "animation.sf_nba.otter.item_adjust",
+        "play_with_item": "animation.sf_nba.otter.play_with_item",
+        "nap_with_item": "animation.sf_nba.otter.nap_with_item",
+        "baby_transform": "animation.sf_nba.otter.baby_transform"
+      },
+      "scripts": {
+        "initialize": [
+          "v.walk_threshold = 0.15;",
+          "v.run_threshold = 0.3;",
+          "v.swim_threshold = 0.075;"
+        ],
+        "animate": [
+          "cont_main",
+          "cont_hold_item",
+          {
+            "look_at_target": "!(q.property('sf_nba:floating')) && !q.is_sleeping"
+          },
+          {
+            "baby_transform": "q.is_baby"
+          }
+        ]
+      },
+      "sound_effects": {
+        "swim": "sf_nba.otter.swim",
+        "sleep": "sf_nba.otter.sleep",
+        "squeak": "sf_nba.otter.squeak",
+        "step": "sf_nba.step.medpaw",
+        "step_-6dB": "sf_nba.step.medpaw_-6dB",
+        "step_-12dB": "sf_nba.step.medpaw_-12dB"
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.otter"
+      ],
+      "spawn_egg": {
+        "base_color": "#C59E7D",
+        "overlay_color": "#76533E"
+      }
+    }
+  }
+}

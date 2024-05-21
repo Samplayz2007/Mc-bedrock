@@ -1,0 +1,43 @@
+{
+  "format_version": "1.20.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:jungle_scorpion",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "black": "textures/sf/nba/entity/scorpion/black_jungle_scorpion",
+        "green": "textures/sf/nba/entity/scorpion/green_jungle_scorpion"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.jungle_scorpion"
+      },
+      "sound_effects": {
+        "attack": "sf_nba.jungle_scorpion.attack",
+        "step": "sf_nba.jungle_scorpion.step"
+      },
+      "animations": {
+        "controller.scorpion": "controller.animation.sf_nba.scorpion",
+        "controller.scorpion.attack": "controller.animation.sf_nba.scorpion.attack",
+        "idle": "animation.sf_nba.jungle_scorpion.idle",
+        "walk": "animation.sf_nba.jungle_scorpion.walk",
+        "run": "animation.sf_nba.jungle_scorpion.run",
+        "attack": "animation.sf_nba.jungle_scorpion.attack"
+      },
+      "scripts": {
+        "animate": [
+          "controller.scorpion.attack",
+          "controller.scorpion"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.jungle_scorpion"
+      ],
+      "spawn_egg": {
+        "base_color": "#070707",
+        "overlay_color": "#282332"
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:snake",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/snake/snake"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.snake"
+      },
+      "animations": {
+        "bellied": "animation.sf_nba.snake.bellied",
+        "climb": "animation.sf_nba.snake.climb",
+        "move": "animation.sf_nba.snake.move",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "sleep": "animation.sf_nba.snake.sleep",
+        "tongue": "animation.sf_nba.snake.tongue",
+        "attack": "animation.sf_nba.snake.attack",
+        "general": "controller.animation.sf_nba.snake.general",
+        "bite": "controller.animation.sf_nba.snake.bite",
+        "ambient": "controller.animation.sf_nba.snake.ambient"
+      },
+      "scripts": {
+        "animate": [
+          "general",
+          "bite",
+          "ambient",
+          {
+            "bellied": "q.is_item_equipped"
+          }
+        ]
+      },
+      "sound_effects": {
+        "idle": "sf_nba.snake.idle",
+        "attack": "sf_nba.snake.attack",
+        "rattle": "sf_nba.snake.rattle",
+        "rattleshort": "sf_nba.snake.rattleshort"
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.snake"
+      ],
+      "spawn_egg": {
+        "base_color": "#8A7D23",
+        "overlay_color": "#C5AC6E"
+      }
+    }
+  }
+}

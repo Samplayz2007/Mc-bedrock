@@ -1,0 +1,66 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:mammoth",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/mammoth"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.mammoth"
+      },
+      "animations": {
+        "walk": "animation.sf_nba.mammoth.walk",
+        "look_at_target": "animation.sf_nba.mammoth.look_at_target",
+        "baby_transform": "animation.sf_nba.mammoth.baby_transform",
+        "idle": "animation.sf_nba.mammoth.idle",
+        "water": "animation.sf_nba.mammoth.water",
+        "swing": "animation.sf_nba.mammoth.swing",
+        "drink": "animation.sf_nba.mammoth.drink",
+        "move": "controller.animation.sf_nba.mammoth.move",
+        "attack": "controller.animation.sf_nba.mammoth.attack",
+        "drinking": "controller.animation.sf_nba.mammoth.drinking"
+      },
+      "scripts": {
+        "initialize": [
+          "v.anim_speed_multiplier = 0;",
+          "v.anim_speed_movement_max = 0;"
+        ],
+        "pre_animation": [
+          "v.anim_speed_multiplier = 1.53125;",
+          "v.anim_speed_movement_max = 0.5;"
+        ],
+        "animate": [
+          {
+            "baby_transform": "q.is_baby"
+          },
+          "look_at_target",
+          "move",
+          "attack",
+          "drinking"
+        ]
+      },
+      "particle_effects": {
+        "dirt": "sf_nba:elephant_dirt"
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.mammoth"
+      ],
+      "spawn_egg": {
+        "base_color": "#332017",
+        "overlay_color": "#543A28"
+      },
+      "sound_effects": {
+        "water": "sf_nba.elephant.water",
+        "drink": "sf_nba.elephant.drink",
+        "attack": "sf_nba.elephant.attack",
+        "step": "sf_nba.step.largehoof",
+        "step_-6dB": "sf_nba.step.largehoof_-6dB",
+        "step_-12dB": "sf_nba.step.largehoof_-12dB"
+      }
+    }
+  }
+}

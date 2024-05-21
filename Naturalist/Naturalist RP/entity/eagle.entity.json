@@ -1,0 +1,47 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:eagle",
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "geometry": {
+        "default": "geometry.sf_nba.eagle"
+      },
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/eagle"
+      },
+      "animations": {
+        "cont_main": "controller.animation.sf_nba.corvid.main",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "idle": "animation.sf_nba.eagle.idle",
+        "fly": "animation.sf_nba.eagle.fly",
+        "walk": "animation.sf_nba.eagle.walk",
+        "baby_transform": "animation.sf_nba.eagle.baby_transform"
+      },
+      "scripts": {
+        "animate": [
+          "cont_main",
+          "look_at_target",
+          {
+            "baby_transform": "q.is_baby"
+          }
+        ]
+      },
+      "sound_effects": {
+        "wing": "sf_nba.eagle.wing",
+        "step": "sf_nba.step.smallbird",
+        "step_-6dB": "sf_nba.step.smallbird_-6dB",
+        "step_-12dB": "sf_nba.step.smallbird_-12dB"
+      },
+      "spawn_egg": {
+        "base_color": "#8B4513",
+        "overlay_color": "#FFD700"
+      }
+    }
+  }
+}

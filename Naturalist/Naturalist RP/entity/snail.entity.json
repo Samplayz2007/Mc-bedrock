@@ -1,0 +1,55 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:snail",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/snail/snail",
+        "white": "textures/sf/nba/entity/snail/white",
+        "orange": "textures/sf/nba/entity/snail/orange",
+        "magenta": "textures/sf/nba/entity/snail/magenta",
+        "light_blue": "textures/sf/nba/entity/snail/light_blue",
+        "yellow": "textures/sf/nba/entity/snail/yellow",
+        "lime": "textures/sf/nba/entity/snail/lime",
+        "pink": "textures/sf/nba/entity/snail/pink",
+        "gray": "textures/sf/nba/entity/snail/gray",
+        "light_gray": "textures/sf/nba/entity/snail/light_gray",
+        "cyan": "textures/sf/nba/entity/snail/cyan",
+        "purple": "textures/sf/nba/entity/snail/purple",
+        "blue": "textures/sf/nba/entity/snail/blue",
+        "brown": "textures/sf/nba/entity/snail/brown",
+        "green": "textures/sf/nba/entity/snail/green",
+        "red": "textures/sf/nba/entity/snail/red",
+        "black": "textures/sf/nba/entity/snail/black"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.snail"
+      },
+      "animations": {
+        "move": "animation.sf_nba.snail.move",
+        "retreat": "animation.sf_nba.snail.hide",
+        "general": "controller.animation.sf_nba.snail.general"
+      },
+      "scripts": {
+        "animate": [
+          "general"
+        ]
+      },
+      "sound_effects": {
+        "forward": "sf_nba.snail.forward",
+        "back": "sf_nba.snail.back",
+        "hide": "sf_nba.snail.hide"
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.snail"
+      ],
+      "spawn_egg": {
+        "base_color": "#534539",
+        "overlay_color": "#867566"
+      }
+    }
+  }
+}

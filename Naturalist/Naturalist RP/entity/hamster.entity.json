@@ -1,0 +1,55 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:hamster",
+      "render_controllers": [
+        "controller.render.sf_nba.hamster"
+      ],
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "black": "textures/sf/nba/entity/hamster/black",
+        "black_white": "textures/sf/nba/entity/hamster/black_white",
+        "brown": "textures/sf/nba/entity/hamster/brown",
+        "grey_white": "textures/sf/nba/entity/hamster/grey_white",
+        "orange": "textures/sf/nba/entity/hamster/orange",
+        "peaches_and_cream": "textures/sf/nba/entity/hamster/peaches_and_cream",
+        "white": "textures/sf/nba/entity/hamster/white"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.hamster"
+      },
+      "animations": {
+        "main_controller": "controller.animation.sf_nba.hamster.main",
+        "idle": "animation.sf_nba.hamster.idle",
+        "walk": "animation.sf_nba.hamster.walk",
+        "run": "animation.sf_nba.hamster.run",
+        "sleep": "animation.sf_nba.hamster.sleep",
+        "standing": "animation.sf_nba.hamster.standing",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "cardinal_orientation": "animation.sf_nba.generic.cardinal_orientation",
+        "baby_transform": "animation.sf_nba.hamster.baby_transform"
+      },
+      "scripts": {
+        "animate": [
+          "main_controller",
+          {
+            "baby_transform": "q.is_baby"
+          }
+        ]
+      },
+      "spawn_egg": {
+        "texture": "sf_nba.hamster_black_white"
+      },
+      "sound_effects": {
+        "standing": "sf_nba.hamster.standing",
+        "sleep": "sf_nba.hamster.sleep",
+        "step": "sf_nba.step.medpaw",
+        "step_-6dB": "sf_nba.step.medpaw_-6dB",
+        "step_-12dB": "sf_nba.step.medpaw_-12dB"
+      }
+    }
+  }
+}

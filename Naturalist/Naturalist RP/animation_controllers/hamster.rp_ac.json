@@ -1,0 +1,152 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.hamster.main": {
+      "states": {
+        "default": {
+          "animations": [
+            "idle",
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "in_hamster_wheel": "q.property('sf_nba:in_hamster_wheel')"
+            },
+            {
+              "sleep": "q.is_sleeping"
+            },
+            {
+              "run": "q.modified_move_speed > 0.14"
+            },
+            {
+              "walk": "q.modified_move_speed > 0.05"
+            },
+            {
+              "standing": "q.is_interested"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "walk": {
+          "animations": [
+            "walk",
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "in_hamster_wheel": "q.property('sf_nba:in_hamster_wheel')"
+            },
+            {
+              "sleep": "q.is_sleeping"
+            },
+            {
+              "run": "q.modified_move_speed > 0.14"
+            },
+            {
+              "standing": "q.modified_move_speed <= 0.05 && q.is_interested"
+            },
+            {
+              "default": "q.modified_move_speed <= 0.05"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "run": {
+          "animations": [
+            "run",
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "in_hamster_wheel": "q.property('sf_nba:in_hamster_wheel')"
+            },
+            {
+              "sleep": "q.is_sleeping"
+            },
+            {
+              "standing": "q.modified_move_speed <= 0.05 && q.is_interested"
+            },
+            {
+              "default": "q.modified_move_speed <= 0.05"
+            },
+            {
+              "walk": "q.modified_move_speed <= 0.14"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "standing": {
+          "animations": [
+            "standing",
+            "look_at_target"
+          ],
+          "transitions": [
+            {
+              "in_hamster_wheel": "q.property('sf_nba:in_hamster_wheel')"
+            },
+            {
+              "sleep": "q.is_sleeping"
+            },
+            {
+              "run": "q.modified_move_speed > 0.14"
+            },
+            {
+              "walk": "q.modified_move_speed > 0.05"
+            },
+            {
+              "default": "!q.is_interested"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "sleep": {
+          "animations": [
+            "sleep"
+          ],
+          "transitions": [
+            {
+              "in_hamster_wheel": "q.property('sf_nba:in_hamster_wheel')"
+            },
+            {
+              "run": "!q.is_sleeping && q.modified_move_speed > 0.14"
+            },
+            {
+              "walk": "!q.is_sleeping && q.modified_move_speed > 0.05"
+            },
+            {
+              "standing": "!q.is_sleeping && q.is_interested"
+            },
+            {
+              "default": "!q.is_sleeping"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "in_hamster_wheel": {
+          "animations": [
+            "run",
+            "cardinal_orientation"
+          ],
+          "transitions": [
+            {
+              "sleep": "!q.property('sf_nba:in_hamster_wheel') && q.is_sleeping"
+            },
+            {
+              "run": "!q.property('sf_nba:in_hamster_wheel') && q.modified_move_speed > 0.14"
+            },
+            {
+              "walk": "!q.property('sf_nba:in_hamster_wheel') && q.modified_move_speed > 0.05"
+            },
+            {
+              "standing": "!q.property('sf_nba:in_hamster_wheel') && q.is_interested"
+            },
+            {
+              "default": "!q.property('sf_nba:in_hamster_wheel')"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}

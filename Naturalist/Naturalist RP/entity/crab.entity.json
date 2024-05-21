@@ -1,0 +1,52 @@
+{
+  "format_version": "1.20.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:crab",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+
+      "textures": {
+        "default": "textures/sf/nba/entity/crab/blue",
+        "brown": "textures/sf/nba/entity/crab/brown",
+        "orange": "textures/sf/nba/entity/crab/orange",
+        "red": "textures/sf/nba/entity/crab/red",
+        "yellow": "textures/sf/nba/entity/crab/yellow"
+      },
+
+      "geometry": {
+        "default": "geometry.sf_nba.crab"
+      },
+
+      "sound_effects": {
+        "crab.step": "sf_nba.crab.step",
+        "sf_nba.crab.run": "sf_nba.crab.run",
+        "sf_nba.crab.pincer": "sf_nba.crab.pincer"
+      },
+
+      "animations": {
+        "controller.crab": "controller.animation.sf_nba.crab",
+        "idle": "animation.sf_nba.crab.idle",
+        "walk": "animation.sf_nba.crab.walk",
+        "dance": "animation.sf_nba.crab.dance",
+        "holding_weapon": "animation.sf_nba.crab.holding_weapon",
+        "swing_right": "animation.sf_nba.crab.swing_right"
+      },
+
+      "scripts": {
+        "pre_animation": [
+          "variable.weapon_or_tool_equipped = q.is_item_name_any('slot.weapon.mainhand', 0, 'minecraft:diamond_sword', 'minecraft:golden_sword', 'minecraft:iron_sword', 'minecraft:netherite_sword', 'minecraft:stone_sword', 'minecraft:wooden_sword', 'minecraft:diamond_pickaxe', 'minecraft:golden_pickaxe', 'minecraft:iron_pickaxe', 'minecraft:netherite_pickaxe', 'minecraft:stone_pickaxe', 'minecraft:wooden_pickaxe', 'minecraft:diamond_axe', 'minecraft:golden_axe', 'minecraft:iron_axe', 'minecraft:netherite_axe', 'minecraft:stone_axe', 'minecraft:wooden_axe', 'minecraft:diamond_shovel', 'minecraft:golden_shovel', 'minecraft:iron_shovel', 'minecraft:netherite_shovel', 'minecraft:stone_shovel', 'minecraft:wooden_shovel', 'minecraft:diamond_hoe', 'minecraft:golden_hoe', 'minecraft:iron_hoe', 'minecraft:netherite_hoe', 'minecraft:stone_hoe', 'minecraft:wooden_hoe', 'minecraft:fishing_rod', 'minecraft:carrot_on_a_stick', 'minecraft:warped_fungus_on_a_stick', 'minecraft:stick', 'minecraft:blaze_rod');"
+        ],
+        "animate": ["controller.crab"]
+      },
+
+      "render_controllers": ["controller.render.sf_nba.crab"],
+
+      "spawn_egg": {
+        "base_color": "#1E3145",
+        "overlay_color": "#9DD9F9"
+      }
+    }
+  }
+}

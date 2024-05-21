@@ -1,0 +1,101 @@
+{
+  "format_version": "1.19.0",
+  "animations": {
+    "animation.sf_nba.generic.cardinal_orientation": {
+      "loop": true,
+      "bones": {
+        "root": {
+          "rotation": [
+            0,
+            "(Math.round(q.body_y_rotation / 90) * 90) -q.body_y_rotation",
+            0
+          ]
+        }
+      }
+    },
+    "animation.sf_nba.generic.face_player_camera": {
+      "loop": true,
+      "bones": {
+        "root": {
+          "rotation": [
+            "q.camera_rotation(0)",
+            "q.camera_rotation(1)",
+            0
+          ]
+        }
+      }
+    },
+    "animation.sf_nba.generic.no_rotate.root": {
+      "loop": true,
+      "bones": {
+        "root": {
+          "rotation": [
+            0,
+            "-q.body_y_rotation",
+            0
+          ]
+        }
+      }
+    },
+    "animation.sf_nba.generic.no_rotate.specific_bones": {
+      "loop": true,
+      "bones": {
+        "no_rotate": {
+          "rotation": [
+            0,
+            "-q.body_y_rotation",
+            0
+          ]
+        }
+      }
+    },
+    "animation.sf_nba.generic.rotate.specific_bones": {
+      "loop": true,
+      "bones": {
+        "rotate": {
+          "rotation": [
+            0,
+            "-q.body_y_rotation+q.head_y_rotation(0)",
+            0
+          ]
+        }
+      }
+    },
+    "animation.sf_nba.generic.rotate.travelling_direction": {
+      "loop": true,
+      "bones": {
+        "root": {
+          "rotation": [
+            "v.pitch",
+            "-q.body_y_rotation + v.yaw + 180",
+            0
+          ]
+        }
+      }
+    },
+    "animation.sf_nba.generic.rotate.projectile_move": {
+      "loop": true,
+      "bones": {
+        "root": {
+          "rotation": [
+            "-q.target_x_rotation",
+            "-q.target_y_rotation",
+            0
+          ]
+        }
+      }
+    },
+    "animation.sf_nba.generic.face_player_camera.y": {
+      "loop": true,
+      "bones": {
+        "face_player_camera_y": {
+          "rotation": [
+            0,
+            "q.camera_rotation(1)",
+            0
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "sf_nba:flamingo",
+      "population_control": "animal"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_on_block_filter": [
+          "minecraft:grass",
+          "minecraft:mud",
+          "minecraft:sand",
+          "minecraft:mangrove_roots",
+          "minecraft:muddy_mangrove_roots"
+        ],
+        "minecraft:brightness_filter": {
+          "min": 7,
+          "max": 15,
+          "adjust_for_weather": false
+        },
+        "minecraft:weight": {
+          "default": 8
+        },
+        "minecraft:herd": {
+          "min_size": 3,
+          "max_size": 6,
+          "event": "sf_nba:entity_born",
+          "event_skip_count": 1
+        },
+        "minecraft:biome_filter": {
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "swamp"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "mangrove_swamp"
+            },
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "beach"
+            }
+          ],
+          "none_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "cold_beach"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

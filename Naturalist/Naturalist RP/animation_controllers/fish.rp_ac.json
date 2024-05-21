@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.fish.move": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            "swim"
+          ],
+          "transitions": [
+            {
+              "flopping": "!q.is_in_water"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "flopping": {
+          "animations": [
+            "flop"
+          ],
+          "transitions": [
+            {
+              "default": "q.is_in_water"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}

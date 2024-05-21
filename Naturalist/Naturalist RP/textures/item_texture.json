@@ -1,0 +1,417 @@
+{
+  "resource_pack_name": "sf_nba",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "sf_nba.alligator_egg": {
+      "textures": "textures/sf/nba/items/alligator_egg"
+    },
+    "sf_nba.antivenom_potion": {
+      "textures": "textures/sf/nba/items/antivenom_potion"
+    },
+    "sf_nba.antler": {
+      "textures": "textures/sf/nba/items/antler"
+    },
+    "sf_nba.bear_fur": {
+      "textures": "textures/sf/nba/items/bear_fur"
+    },
+    "sf_nba.blue_morpho": {
+      "textures": "textures/sf/nba/items/blue_morpho"
+    },
+    "sf_nba.chrysalis": {
+      "textures": "textures/sf/nba/items/chrysalis"
+    },
+    "sf_nba.caterpillar": {
+      "textures": "textures/sf/nba/items/caterpillar"
+    },
+    "sf_nba.clouded_yellow": {
+      "textures": "textures/sf/nba/items/clouded_yellow"
+    },
+    "sf_nba.cabbage_white": {
+      "textures": "textures/sf/nba/items/cabbage_white"
+    },
+    "sf_nba.monarch": {
+      "textures": "textures/sf/nba/items/monarch"
+    },
+    "sf_nba.snail_shell": {
+      "textures": "textures/sf/nba/items/snail_shell"
+    },
+    "sf_nba.cooked_duck": {
+      "textures": "textures/sf/nba/items/cooked_duck"
+    },
+    "sf_nba.cooked_egg": {
+      "textures": "textures/sf/nba/items/cooked_egg"
+    },
+    "sf_nba.raw_lizard_tail": {
+      "textures": "textures/sf/nba/items/lizard_tail"
+    },
+    "sf_nba.cooked_lizard_tail": {
+      "textures": "textures/sf/nba/items/cooked_lizard_tail"
+    },
+    "sf_nba.cooked_crab_meat": {
+      "textures": "textures/sf/nba/items/cooked_crab_meat"
+    },
+    "sf_nba.cooked_venison": {
+      "textures": "textures/sf/nba/items/cooked_venison"
+    },
+    "sf_nba.crab_meat": {
+      "textures": "textures/sf/nba/items/crab_meat"
+    },
+    "sf_nba.duck_egg": {
+      "textures": "textures/sf/nba/items/duck_egg"
+    },
+    "sf_nba.duck": {
+      "textures": "textures/sf/nba/items/duck"
+    },
+    "sf_nba.raw_venison": {
+      "textures": "textures/sf/nba/items/venison"
+    },
+    "sf_nba.cooked_bass": {
+      "textures": "textures/sf/nba/items/cooked_bass"
+    },
+    "sf_nba.raw_bass": {
+      "textures": "textures/sf/nba/items/bass"
+    },
+    "sf_nba.cooked_catfish": {
+      "textures": "textures/sf/nba/items/cooked_catfish"
+    },
+    "sf_nba.raw_catfish": {
+      "textures": "textures/sf/nba/items/catfish"
+    },
+    "sf_nba.glow_goop": {
+      "textures": "textures/sf/nba/items/glow_goop"
+    },
+    "sf_nba.cooked_goose": {
+      "textures": "textures/sf/nba/items/goose_cooked"
+    },
+    "sf_nba.goose_egg": {
+      "textures": "textures/sf/nba/items/goose_egg"
+    },
+    "sf_nba.raw_goose": {
+      "textures": "textures/sf/nba/items/goose_raw"
+    },
+    "sf_nba.cooked_mammoth_meat": {
+      "textures": "textures/sf/nba/items/mammoth_meat_cooked"
+    },
+    "sf_nba.raw_mammoth_meat": {
+      "textures": "textures/sf/nba/items/mammoth_meat_raw"
+    },
+    "sf_nba.ostrich_egg": {
+      "textures": "textures/sf/nba/items/ostrich_egg"
+    },
+    "sf_nba.penguin_egg": {
+      "textures": "textures/sf/nba/items/penguin_egg"
+    },
+    "sf_nba.scorpion_poison_gland": {
+      "textures": "textures/sf/nba/items/scorpion_poison_gland"
+    },
+    "sf_nba.snail_eggs": {
+      "textures": "textures/sf/nba/items/snail_eggs"
+    },
+    "sf_nba.swallowtail": {
+      "textures": "textures/sf/nba/items/swallowtail"
+    },
+    "sf_nba.tortoise_egg": {
+      "textures": "textures/sf/nba/items/tortoise_egg"
+    },
+    "sf_nba.bucket_white_small_jellyfish": {
+      "textures": "textures/sf/nba/items/bucket_white_small_jellyfish"
+    },
+    "sf_nba.bucket_yellow_small_jellyfish": {
+      "textures": "textures/sf/nba/items/bucket_yellow_small_jellyfish"
+    },
+    "sf_nba.bucket_pink_small_jellyfish": {
+      "textures": "textures/sf/nba/items/bucket_pink_small_jellyfish"
+    },
+    "sf_nba.bucket_blue_small_jellyfish": {
+      "textures": "textures/sf/nba/items/bucket_blue_small_jellyfish"
+    },
+    "sf_nba.bucket_green_small_jellyfish": {
+      "textures": "textures/sf/nba/items/bucket_green_small_jellyfish"
+    },
+    "sf_nba.bucket_white_jellyfish": {
+      "textures": "textures/sf/nba/items/bucket_white_jellyfish"
+    },
+    "sf_nba.bucket_yellow_jellyfish": {
+      "textures": "textures/sf/nba/items/bucket_yellow_jellyfish"
+    },
+    "sf_nba.bucket_pink_jellyfish": {
+      "textures": "textures/sf/nba/items/bucket_pink_jellyfish"
+    },
+    "sf_nba.bucket_blue_jellyfish": {
+      "textures": "textures/sf/nba/items/bucket_blue_jellyfish"
+    },
+    "sf_nba.bucket_green_jellyfish": {
+      "textures": "textures/sf/nba/items/bucket_green_jellyfish"
+    },
+    "sf_nba.bucket_brown_crab": {
+      "textures": "textures/sf/nba/items/bucket_brown_crab"
+    },
+    "sf_nba.bucket_blue_crab": {
+      "textures": "textures/sf/nba/items/bucket_blue_crab"
+    },
+    "sf_nba.bucket_orange_crab": {
+      "textures": "textures/sf/nba/items/bucket_orange_crab"
+    },
+    "sf_nba.bucket_red_crab": {
+      "textures": "textures/sf/nba/items/bucket_red_crab"
+    },
+    "sf_nba.bucket_yellow_crab": {
+      "textures": "textures/sf/nba/items/bucket_yellow_crab"
+    },
+    "sf_nba.bucket_bass": {
+      "textures": "textures/sf/nba/items/bucket_bass"
+    },
+    "sf_nba.bucket_catfish": {
+      "textures": "textures/sf/nba/items/bucket_catfish"
+    },
+    "sf_nba.bucket_piranha": {
+      "textures": "textures/sf/nba/items/bucket_piranha"
+    },
+    "sf_nba.raw_moose_meat": {
+      "textures": "textures/sf/nba/items/moose_raw"
+    },
+    "sf_nba.cooked_moose_meat": {
+      "textures": "textures/sf/nba/items/moose_cooked"
+    },
+    "sf_nba.piranha": {
+      "textures": "textures/sf/nba/items/piranha_raw"
+    },
+    "sf_nba.piranha_cooked": {
+      "textures": "textures/sf/nba/items/piranha_cooked"
+    },
+    "sf_nba.bucket_snail": {
+      "textures": "textures/sf/nba/items/bucket_snail"
+    },
+    "sf_nba.bucket_white_snail": {
+      "textures": "textures/sf/nba/items/bucket_white_snail"
+    },
+    "sf_nba.bucket_orange_snail": {
+      "textures": "textures/sf/nba/items/bucket_orange_snail"
+    },
+    "sf_nba.bucket_magenta_snail": {
+      "textures": "textures/sf/nba/items/bucket_magenta_snail"
+    },
+    "sf_nba.bucket_light_blue_snail": {
+      "textures": "textures/sf/nba/items/bucket_light_blue_snail"
+    },
+    "sf_nba.bucket_yellow_snail": {
+      "textures": "textures/sf/nba/items/bucket_yellow_snail"
+    },
+    "sf_nba.bucket_lime_snail": {
+      "textures": "textures/sf/nba/items/bucket_lime_snail"
+    },
+    "sf_nba.bucket_pink_snail": {
+      "textures": "textures/sf/nba/items/bucket_pink_snail"
+    },
+    "sf_nba.bucket_gray_snail": {
+      "textures": "textures/sf/nba/items/bucket_gray_snail"
+    },
+    "sf_nba.bucket_light_gray_snail": {
+      "textures": "textures/sf/nba/items/bucket_light_gray_snail"
+    },
+    "sf_nba.bucket_cyan_snail": {
+      "textures": "textures/sf/nba/items/bucket_cyan_snail"
+    },
+    "sf_nba.bucket_purple_snail": {
+      "textures": "textures/sf/nba/items/bucket_purple_snail"
+    },
+    "sf_nba.bucket_blue_snail": {
+      "textures": "textures/sf/nba/items/bucket_blue_snail"
+    },
+    "sf_nba.bucket_brown_snail": {
+      "textures": "textures/sf/nba/items/bucket_brown_snail"
+    },
+    "sf_nba.bucket_green_snail": {
+      "textures": "textures/sf/nba/items/bucket_green_snail"
+    },
+    "sf_nba.bucket_red_snail": {
+      "textures": "textures/sf/nba/items/bucket_red_snail"
+    },
+    "sf_nba.bucket_black_snail": {
+      "textures": "textures/sf/nba/items/bucket_black_snail"
+    },
+    "sf_nba.hamster_black": {
+      "textures": "textures/sf/nba/items/hamster_black"
+    },
+    "sf_nba.hamster_black_white": {
+      "textures": "textures/sf/nba/items/hamster_black_white"
+    },
+    "sf_nba.hamster_brown": {
+      "textures": "textures/sf/nba/items/hamster_brown"
+    },
+    "sf_nba.hamster_grey_white": {
+      "textures": "textures/sf/nba/items/hamster_grey_white"
+    },
+    "sf_nba.hamster_orange": {
+      "textures": "textures/sf/nba/items/hamster_orange"
+    },
+    "sf_nba.hamster_peach_cream": {
+      "textures": "textures/sf/nba/items/hamster_peach_cream"
+    },
+    "sf_nba.hamster_white": {
+      "textures": "textures/sf/nba/items/hamster_white"
+    },
+    "sf_nba.capture_net": {
+      "textures": "textures/sf/nba/items/capture_net"
+    },
+    "sf_nba.beetle_yellow": {
+      "textures": "textures/sf/nba/items/beetle_yellow"
+    },
+    "sf_nba.beetle_brown": {
+      "textures": "textures/sf/nba/items/beetle_brown"
+    },
+    "sf_nba.beetle_green": {
+      "textures": "textures/sf/nba/items/beetle_green"
+    },
+    "sf_nba.beetle_red": {
+      "textures": "textures/sf/nba/items/beetle_red"
+    },
+    "sf_nba.beetle_black": {
+      "textures": "textures/sf/nba/items/beetle_black"
+    },
+    "sf_nba.termite": {
+      "textures": "textures/sf/nba/items/termite"
+    },
+    "sf_nba.ostrich_raw": {
+      "textures": "textures/sf/nba/items/ostrich_raw"
+    },
+    "sf_nba.ostrich_cooked": {
+      "textures": "textures/sf/nba/items/ostrich_cooked"
+    },
+    "sf_nba.black_cage": {
+      "textures": "textures/sf/nba/items/cage/black"
+    },
+    "sf_nba.blue_cage": {
+      "textures": "textures/sf/nba/items/cage/blue"
+    },
+    "sf_nba.brown_cage": {
+      "textures": "textures/sf/nba/items/cage/brown"
+    },
+    "sf_nba.copper_cage": {
+      "textures": "textures/sf/nba/items/cage/copper"
+    },
+    "sf_nba.cyan_cage": {
+      "textures": "textures/sf/nba/items/cage/cyan"
+    },
+    "sf_nba.glow_cage": {
+      "textures": "textures/sf/nba/items/cage/glow"
+    },
+    "sf_nba.gray_cage": {
+      "textures": "textures/sf/nba/items/cage/gray"
+    },
+    "sf_nba.green_cage": {
+      "textures": "textures/sf/nba/items/cage/green"
+    },
+    "sf_nba.light_blue_cage": {
+      "textures": "textures/sf/nba/items/cage/light_blue"
+    },
+    "sf_nba.light_gray_cage": {
+      "textures": "textures/sf/nba/items/cage/silver"
+    },
+    "sf_nba.lime_cage": {
+      "textures": "textures/sf/nba/items/cage/lime"
+    },
+    "sf_nba.magenta_cage": {
+      "textures": "textures/sf/nba/items/cage/magenta"
+    },
+    "sf_nba.orange_cage": {
+      "textures": "textures/sf/nba/items/cage/orange"
+    },
+    "sf_nba.pink_cage": {
+      "textures": "textures/sf/nba/items/cage/pink"
+    },
+    "sf_nba.purple_cage": {
+      "textures": "textures/sf/nba/items/cage/purple"
+    },
+    "sf_nba.red_cage": {
+      "textures": "textures/sf/nba/items/cage/red"
+    },
+    "sf_nba.white_cage": {
+      "textures": "textures/sf/nba/items/cage/white"
+    },
+    "sf_nba.yellow_cage": {
+      "textures": "textures/sf/nba/items/cage/yellow"
+    },
+    "sf_nba.black_hamster_wheel": {
+      "textures": "textures/sf/nba/items/hamster_wheel/black"
+    },
+    "sf_nba.blue_hamster_wheel": {
+      "textures": "textures/sf/nba/items/hamster_wheel/blue"
+    },
+    "sf_nba.brown_hamster_wheel": {
+      "textures": "textures/sf/nba/items/hamster_wheel/brown"
+    },
+    "sf_nba.copper_hamster_wheel": {
+      "textures": "textures/sf/nba/items/hamster_wheel/copper"
+    },
+    "sf_nba.cyan_hamster_wheel": {
+      "textures": "textures/sf/nba/items/hamster_wheel/cyan"
+    },
+    "sf_nba.glow_hamster_wheel": {
+      "textures": "textures/sf/nba/items/hamster_wheel/glow"
+    },
+    "sf_nba.gray_hamster_wheel": {
+      "textures": "textures/sf/nba/items/hamster_wheel/gray"
+    },
+    "sf_nba.green_hamster_wheel": {
+      "textures": "textures/sf/nba/items/hamster_wheel/green"
+    },
+    "sf_nba.light_blue_hamster_wheel": {
+      "textures": "textures/sf/nba/items/hamster_wheel/light_blue"
+    },
+    "sf_nba.light_gray_hamster_wheel": {
+      "textures": "textures/sf/nba/items/hamster_wheel/silver"
+    },
+    "sf_nba.lime_hamster_wheel": {
+      "textures": "textures/sf/nba/items/hamster_wheel/lime"
+    },
+    "sf_nba.magenta_hamster_wheel": {
+      "textures": "textures/sf/nba/items/hamster_wheel/magenta"
+    },
+    "sf_nba.orange_hamster_wheel": {
+      "textures": "textures/sf/nba/items/hamster_wheel/orange"
+    },
+    "sf_nba.pink_hamster_wheel": {
+      "textures": "textures/sf/nba/items/hamster_wheel/pink"
+    },
+    "sf_nba.purple_hamster_wheel": {
+      "textures": "textures/sf/nba/items/hamster_wheel/purple"
+    },
+    "sf_nba.red_hamster_wheel": {
+      "textures": "textures/sf/nba/items/hamster_wheel/red"
+    },
+    "sf_nba.white_hamster_wheel": {
+      "textures": "textures/sf/nba/items/hamster_wheel/white"
+    },
+    "sf_nba.yellow_hamster_wheel": {
+      "textures": "textures/sf/nba/items/hamster_wheel/yellow"
+    },
+    "sf_nba.talon": {
+      "textures": "textures/sf/nba/items/talon"
+    },
+    "sf_nba.wing": {
+      "textures": "textures/sf/nba/items/bug_wing"
+    },
+    "sf_nba.beaver_pelt": {
+      "textures": "textures/sf/nba/items/beaver_pelt"
+    },
+    "sf_nba.pink_feather": {
+      "textures": "textures/sf/nba/items/pink_feather"
+    },
+    "sf_nba.ray_stinger": {
+      "textures": "textures/sf/nba/items/ray_stinger"
+    },
+    "sf_nba.stun_splash_potion": {
+      "textures": "textures/sf/nba/items/stun_splash_potion"
+    },
+    "sf_nba.acorn": {
+      "textures": "textures/sf/nba/items/acorn"
+    },
+    "sf_nba.info_book": {
+      "textures": "textures/sf/nba/items/info_book"
+    },
+    "sf_nba.gooseducken": {
+      "textures": "textures/sf/nba/items/gooseducken"
+    }
+  }
+}

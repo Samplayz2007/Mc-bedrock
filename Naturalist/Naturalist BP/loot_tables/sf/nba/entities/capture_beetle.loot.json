@@ -1,0 +1,79 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "has_variant",
+          "value": 0
+        }
+      ],
+      "entries": [
+        {
+          "type": "item",
+          "name": "sf_nba:beetle_yellow"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "has_variant",
+          "value": 1
+        }
+      ],
+      "entries": [
+        {
+          "type": "item",
+          "name": "sf_nba:beetle_brown"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "has_variant",
+          "value": 2
+        }
+      ],
+      "entries": [
+        {
+          "type": "item",
+          "name": "sf_nba:beetle_green"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "has_variant",
+          "value": 3
+        }
+      ],
+      "entries": [
+        {
+          "type": "item",
+          "name": "sf_nba:beetle_red"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "has_variant",
+          "value": 4
+        }
+      ],
+      "entries": [
+        {
+          "type": "item",
+          "name": "sf_nba:beetle_black"
+        }
+      ]
+    }
+  ]
+}

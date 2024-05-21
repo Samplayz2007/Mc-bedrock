@@ -1,0 +1,62 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:hippo",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/hippo"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.hippo"
+      },
+      "animations": {
+        "walk": "animation.sf_nba.hippo.walk",
+        "run": "animation.sf_nba.hippo.run",
+        "swim": "animation.sf_nba.hippo.swim",
+        "look_at_target": "animation.sf_nba.hippo.look_at_target",
+        "baby_transform": "animation.sf_nba.hippo.baby_transform",
+        "idle": "animation.sf_nba.hippo.idle",
+        "bite": "animation.sf_nba.hippo.bite",
+        "move": "controller.animation.sf_nba.hippo.move",
+        "eat": "controller.animation.sf_nba.hippo.eat",
+        "attack": "controller.animation.sf_nba.hippo.attack"
+      },
+      "scripts": {
+        "initialize": [
+          "v.is_biting = 0;"
+        ],
+        "animate": [
+          {
+            "baby_transform": "q.is_baby"
+          },
+          "look_at_target",
+          "move",
+          "eat",
+          "attack"
+        ]
+      },
+      "particle_effects": {
+        "bite": "sf_nba:hippo_melon_bite",
+        "slice": "sf_nba:hippo_melon_slice"
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.hippo"
+      ],
+      "spawn_egg": {
+        "base_color": "#EF9A9A",
+        "overlay_color": "#896562"
+      },
+      "sound_effects": {
+        "swim": "sf_nba.hippo.swim",
+        "bite": "sf_nba.hippo.bite",
+        "fart": "sf_nba.hippo.fart",
+        "step": "sf_nba.step.largehoof",
+        "step_-6dB": "sf_nba.step.largehoof_-6dB",
+        "step_-12dB": "sf_nba.step.largehoof_-12dB"
+      }
+    }
+  }
+}

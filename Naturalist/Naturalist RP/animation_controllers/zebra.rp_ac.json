@@ -1,0 +1,51 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.zebra.main": {
+      "states": {
+        "default": {
+          "animations": [
+            "idle"
+          ],
+          "transitions": [
+            {
+              "run": "q.modified_move_speed > 0.5"
+            },
+            {
+              "walk": "q.modified_move_speed > 0.1"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "walk": {
+          "animations": [
+            "walk"
+          ],
+          "transitions": [
+            {
+              "run": "q.modified_move_speed > 0.5"
+            },
+            {
+              "default": "q.modified_move_speed <= 0.1"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "run": {
+          "animations": [
+            "run"
+          ],
+          "transitions": [
+            {
+              "default": "q.modified_move_speed <= 0.1"
+            },
+            {
+              "walk": "q.modified_move_speed <= 0.5"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "format_version": "1.20.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "sf_nba:cooked_crab_meat",
+      "menu_category": {
+        "category": "equipment",
+        "group": "itemGroup.name.cookedFood"
+      }
+    },
+    "components": {
+      "minecraft:food": {
+        "nutrition": 6,
+        "is_meat": true
+      },
+      "minecraft:use_modifiers": {
+        "use_duration": 1.6
+      },
+      "minecraft:icon": {
+        "texture": "sf_nba.cooked_crab_meat"
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:display_name": {
+        "value": "item.sf_nba:cooked_crab_meat.name"
+      },
+      "minecraft:tags": {
+        "tags": [
+          "minecraft:is_food",
+          "minecraft:is_meat",
+          "minecraft:is_cooked"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:giraffe",
+      "materials": {
+        "default": "entity_alphatest",
+        "tail": "entity_alphatest_one_sided"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/giraffe"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.giraffe"
+      },
+      "animations": {
+        "walk": "animation.sf_nba.giraffe.walk",
+        "run": "animation.sf_nba.giraffe.run",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "baby_transform": "animation.sf_nba.giraffe.baby_transform",
+        "idle": "animation.sf_nba.giraffe.idle",
+        "eat": "animation.sf_nba.giraffe.eat",
+        "move": "controller.animation.sf_nba.giraffe.move",
+        "eating": "controller.animation.sf_nba.giraffe.eat",
+        "breed": "controller.animation.sf_nba.giraffe.breed",
+        "tame": "controller.animation.sf_nba.giraffe.tame"
+      },
+      "scripts": {
+        "initialize": [
+          "v.anim_speed_multiplier = 0;",
+          "v.anim_speed_movement_max = 0;",
+          "v.is_moving = 0;",
+          "v.is_sprinting = 0;"
+        ],
+        "pre_animation": [
+          "v.anim_speed_multiplier = 0.558;",
+          "v.anim_speed_movement_max = 0.18;",
+          "v.is_moving = q.modified_move_speed >= 0.05;",
+          "v.is_sprinting = (q.modified_move_speed * (q.is_baby ? 0.7 : 1) - (q.distance_from_camera * 0.000001)) >= 0.50 ? 1;"
+        ],
+        "animate": [
+          {
+            "baby_transform": "q.is_baby"
+          },
+          "look_at_target",
+          "move",
+          "eating",
+          "breed",
+          "tame"
+        ]
+      },
+      "sound_effects": {
+        "mad": "sf_nba.giraffe.mad",
+        "eat": "sf_nba.giraffe.eat",
+        "step": "sf_nba.step.medhoof",
+        "step_-6dB": "sf_nba.step.medhoof_-6dB",
+        "step_-12dB": "sf_nba.step.medhoof_-12dB"
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.giraffe"
+      ],
+      "spawn_egg": {
+        "base_color": "#DAA86F",
+        "overlay_color": "#744420"
+      }
+    }
+  }
+}

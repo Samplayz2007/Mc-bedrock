@@ -1,0 +1,37 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:dragonfly",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "blue": "textures/sf/nba/entity/dragonfly/blue",
+        "red": "textures/sf/nba/entity/dragonfly/red",
+        "green": "textures/sf/nba/entity/dragonfly/green"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.dragonfly"
+      },
+      "animations": {
+        "fly": "animation.sf_nba.dragonfly.fly"
+      },
+      "scripts": {
+        "animate": [
+          "fly"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.dragonfly"
+      ],
+      "spawn_egg": {
+        "base_color": "#A13F00",
+        "overlay_color": "#FFCE00"
+      },
+      "sound_effects": {
+        "fly": "sf_nba.dragonfly.fly"
+      }
+    }
+  }
+}

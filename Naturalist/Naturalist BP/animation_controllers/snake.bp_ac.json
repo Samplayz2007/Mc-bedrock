@@ -1,0 +1,51 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.snake.digest": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "digest": "q.property('sf_nba:digested_item')"
+            }
+          ]
+        },
+        "digest": {
+          "on_entry": [
+            "/replaceitem entity @s slot.inventory 0 air",
+            "/replaceitem entity @s slot.weapon.mainhand 0 air",
+            "@s sf_nba:snake_on_finish_eat"
+          ],
+          "transitions": [
+            {
+              "default": "1"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.snake.food_check": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "test": "q.is_item_equipped(0)"
+            }
+          ]
+        },
+        "test": {
+          "on_entry": [
+            "/scriptevent sf_nba:snake_check"
+          ],
+          "transitions": [
+            {
+              "default": "!q.is_item_equipped(0)"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

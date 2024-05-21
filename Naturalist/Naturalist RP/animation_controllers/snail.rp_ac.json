@@ -1,0 +1,46 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.snail.general": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "move": "q.ground_speed > 0"
+            },
+            {
+              "retreat": "q.is_avoiding_mobs"
+            }
+          ]
+        },
+        "move": {
+          "animations": [
+            "move"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "q.ground_speed <= 0"
+            },
+            {
+              "retreat": "q.is_avoiding_mobs"
+            }
+          ]
+        },
+        "retreat": {
+          "animations": [
+            "retreat"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "!q.is_avoiding_mobs"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

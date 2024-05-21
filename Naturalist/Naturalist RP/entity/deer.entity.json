@@ -1,0 +1,63 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:deer",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/deer/deer",
+        "white": "textures/sf/nba/entity/deer/white_deer"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.deer"
+      },
+      "animations": {
+        "walk": "animation.sf_nba.deer.walk",
+        "run": "animation.sf_nba.deer.run",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "baby_transform": "animation.sf_nba.deer.baby_transform",
+        "idle": "animation.sf_nba.deer.idle",
+        "ear_flick": "animation.sf_nba.deer.ear_flick",
+        "eat": "animation.sf_nba.deer.eat",
+        "move": "controller.animation.sf_nba.deer.move",
+        "ambient": "controller.animation.sf_nba.deer.ambient"
+      },
+      "scripts": {
+        "initialize": [
+          "v.anim_speed_multiplier = 0.0;",
+          "v.anim_speed_movement_max = 0.0;",
+          "v.is_moving = 0;",
+          "v.is_sprinting = 0;"
+        ],
+        "pre_animation": [
+          "v.anim_speed_multiplier = 1.53125;",
+          "v.anim_speed_movement_max = 0.5;",
+          "v.is_moving = q.modified_move_speed >= 0.1;",
+          "v.is_sprinting = (q.modified_move_speed * (q.is_baby ? 0.7 : 1) - (q.distance_from_camera * 0.000001)) >= 0.9 ? 1;"
+        ],
+        "animate": [
+          {
+            "baby_transform": "q.is_baby"
+          },
+          "move",
+          "ambient"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.deer"
+      ],
+      "spawn_egg": {
+        "base_color": "#9D7155",
+        "overlay_color": "#DDBA88"
+      },
+      "sound_effects": {
+        "step": "sf_nba.step.medhoof",
+        "step_-6dB": "sf_nba.step.medhoof_-6dB",
+        "step_-12dB": "sf_nba.step.medhoof_-12dB",
+        "eat": "sf_nba.deer.eat"
+      }
+    }
+  }
+}

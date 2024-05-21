@@ -1,0 +1,33 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.sf_nba.zebra": {
+      "geometry": "geometry.default",
+      "part_visibility": [
+        {
+          "saddle": "q.is_saddled"
+        },
+        {
+          "Bit*": "q.is_saddled"
+        },
+        {
+          "Bridle": "q.is_saddled"
+        },
+        {
+          "Reins*": "q.is_saddled && q.has_rider"
+        },
+        {
+          "chest*": "q.is_chested"
+        }
+      ],
+      "materials": [
+        {
+          "*": "material.default"
+        }
+      ],
+      "textures": [
+        "texture.default"
+      ]
+    }
+  }
+}

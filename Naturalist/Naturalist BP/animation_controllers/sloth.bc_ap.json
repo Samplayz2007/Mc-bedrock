@@ -1,0 +1,27 @@
+{
+  "format_version": "1.20.50",
+  "animation_controllers": {
+    "controller.animation.sf_nba.sloth_state_check": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "state_check": "math.abs(q.position_delta(0)) > 0.01 || math.abs(q.position_delta(1)) > 0.01 || math.abs(q.position_delta(2)) > 0.01"
+            }
+          ]
+        },
+        "state_check": {
+          "on_entry": [
+            "/scriptevent sf_nba:sloth_state_check"
+          ],
+          "transitions": [
+            {
+              "default": "(1.0)"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

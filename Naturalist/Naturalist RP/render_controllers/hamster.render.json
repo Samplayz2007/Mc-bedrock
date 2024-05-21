@@ -1,0 +1,37 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.sf_nba.hamster": {
+      "arrays": {
+        "textures": {
+          "array.skins": [
+            "texture.black",
+            "texture.black_white",
+            "texture.brown",
+            "texture.grey_white",
+            "texture.orange",
+            "texture.peaches_and_cream",
+            "texture.white"
+          ]
+        }
+      },
+      "geometry": "geometry.default",
+      "materials": [
+        {
+          "*": "material.default"
+        }
+      ],
+      "textures": [
+        "array.skins[q.variant]"
+      ],
+      "part_visibility": [
+        {
+          "sleep": "q.is_sleeping"
+        },
+        {
+          "cheeks": "!q.is_baby"
+        }
+      ]
+    }
+  }
+}

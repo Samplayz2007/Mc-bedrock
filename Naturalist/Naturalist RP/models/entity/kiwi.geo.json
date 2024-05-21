@@ -1,0 +1,205 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.sf_nba.kiwi",
+        "texture_width": 64,
+        "texture_height": 32,
+        "visible_bounds_width": 2,
+        "visible_bounds_height": 2.5,
+        "visible_bounds_offset": [
+          0,
+          0.75,
+          0
+        ]
+      },
+      "bones": [
+        {
+          "name": "root",
+          "pivot": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "pivot": [
+            0,
+            6,
+            -1
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -3,
+                3,
+                -4
+              ],
+              "size": [
+                6,
+                6,
+                7
+              ],
+              "uv": [
+                34,
+                17
+              ]
+            }
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "pivot": [
+            0,
+            7,
+            -3
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -1.5,
+                6,
+                -6
+              ],
+              "size": [
+                3,
+                4,
+                3
+              ],
+              "uv": [
+                0,
+                13
+              ]
+            },
+            {
+              "origin": [
+                -0.5,
+                8,
+                -9
+              ],
+              "size": [
+                1,
+                1,
+                3
+              ],
+              "uv": [
+                19,
+                0
+              ]
+            }
+          ],
+          "locators": {
+            "lead": [
+              0,
+              7,
+              -3
+            ]
+          }
+        },
+        {
+          "name": "sleep",
+          "parent": "head",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                1.525,
+                8,
+                -6
+              ],
+              "size": [
+                0,
+                1,
+                2
+              ],
+              "uv": [
+                2,
+                21
+              ]
+            },
+            {
+              "origin": [
+                -1.525,
+                8,
+                -6
+              ],
+              "size": [
+                0,
+                1,
+                2
+              ],
+              "uv": [
+                2,
+                21
+              ],
+              "mirror": true
+            }
+          ]
+        },
+        {
+          "name": "left_leg",
+          "parent": "root",
+          "pivot": [
+            1.5,
+            3,
+            1
+          ],
+          "cubes": [
+            {
+              "origin": [
+                0,
+                0,
+                -2
+              ],
+              "size": [
+                3,
+                3,
+                3
+              ],
+              "uv": [
+                13,
+                13
+              ]
+            }
+          ]
+        },
+        {
+          "name": "right_leg",
+          "parent": "root",
+          "pivot": [
+            -1.5,
+            3,
+            1
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -3,
+                0,
+                -2
+              ],
+              "size": [
+                3,
+                3,
+                3
+              ],
+              "uv": [
+                13,
+                13
+              ],
+              "mirror": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

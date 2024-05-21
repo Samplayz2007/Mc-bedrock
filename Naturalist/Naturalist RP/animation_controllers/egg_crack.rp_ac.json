@@ -1,0 +1,31 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.egg.crack_sound": {
+      "states": {
+        "default": {
+          "on_entry": [
+            "v.current_variant = q.variant;"
+          ],
+          "transitions": [
+            {
+              "crack": "v.current_variant != q.variant"
+            }
+          ]
+        },
+        "crack": {
+          "sound_effects": [
+            {
+              "effect": "crack"
+            }
+          ],
+          "transitions": [
+            {
+              "default": "1"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

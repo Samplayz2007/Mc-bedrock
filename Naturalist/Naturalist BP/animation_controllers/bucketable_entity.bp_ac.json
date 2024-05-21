@@ -1,0 +1,22 @@
+{
+  "format_version": "1.20.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.bucketable_entity": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "on_bucket": "q.has_any_family('sf_nba:bucketable_entity') && q.property('sf_nba:on_bucket')"
+            }
+          ]
+        },
+        "on_bucket": {
+          "on_entry": [
+            "/scriptevent sf_nba:bucketable_entity_interaction @initiator"
+          ]
+        }
+      }
+    }
+  }
+}

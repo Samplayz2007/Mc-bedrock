@@ -1,0 +1,115 @@
+{
+  "format_version": "1.20.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.whale": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": [
+            "idle"
+          ],
+          "transitions": [
+            {
+              "flop_wait": "!q.is_in_water && q.is_on_ground"
+            },
+            {
+              "swim": "q.is_in_water && q.modified_move_speed > 0.1"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "swim": {
+          "animations": [
+            "swim"
+          ],
+          "transitions": [
+            {
+              "flop_wait": "!q.is_in_water && q.is_on_ground"
+            },
+            {
+              "idle": "!q.is_in_water || q.modified_move_speed <= 0.1"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "flop_wait": {
+          "on_entry": [
+            "v.wait_time = q.life_time;"
+          ],
+          "transitions": [
+            {
+              "idle": "q.is_in_water"
+            },
+            {
+              "flop": "q.life_time >= (v.wait_time + 0.05) && q.is_on_ground"
+            }
+          ]
+        },
+        "flop": {
+          "animations": [
+            "flop"
+          ],
+          "transitions": [
+            {
+              "idle": "q.is_in_water && q.modified_move_speed <= 0.1"
+            },
+            {
+              "swim": "q.is_in_water && q.modified_move_speed > 0.1"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    },
+    "controller.animation.sf_nba.whale.idle_event": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "on_entry": [
+            "v.delay = Math.random_integer(10, 28);",
+            "v.current_delay = q.life_time;"
+          ],
+          "transitions": [
+            {
+              "idle_event": "(q.life_time - v.current_delay >= v.delay) && q.modified_move_speed <= 0.1 && q.is_in_water"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "idle_event": {
+          "animations": [
+            "idle_event"
+          ],
+          "transitions": [
+            {
+              "default": "q.all_animations_finished || q.modified_move_speed > 0.1 || !q.is_in_water"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    },
+    "controller.animation.sf_nba.whale.particle": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "blowhole": "q.property('sf_nba:can_particle') && (math.random_integer(0,200) == 0)"
+            }
+          ]
+        },
+        "blowhole": {
+          "animations": [
+            "particle"
+          ],
+          "transitions": [
+            {
+              "default": "q.all_animations_finished"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

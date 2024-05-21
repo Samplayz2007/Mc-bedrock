@@ -1,0 +1,27 @@
+{
+  "format_version": "1.20.40",
+  "animation_controllers": {
+    "controller.animation.sf_nba.alligator.evict_riders": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "eject_rider": "query.has_target"
+            }
+          ]
+        },
+        "eject_rider": {
+          "transitions": [
+            {
+              "default": "(1.0)"
+            }
+          ],
+          "on_entry": [
+            "/ride @s evict_riders"
+          ]
+        }
+      }
+    }
+  }
+}

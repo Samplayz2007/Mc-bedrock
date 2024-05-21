@@ -1,0 +1,62 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:rhino",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/rhino"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.rhino"
+      },
+      "animations": {
+        "walk": "animation.sf_nba.rhino.walk",
+        "run": "animation.sf_nba.rhino.run",
+        "look_at_target": "animation.sf_nba.rhino.look_at_target",
+        "baby_transform": "animation.sf_nba.rhino.baby_transform",
+        "idle": "animation.sf_nba.rhino.idle",
+        "attack": "animation.sf_nba.rhino.attack",
+        "foot": "animation.sf_nba.rhino.foot",
+        "stunned": "animation.sf_nba.rhino.stunned",
+        "move": "controller.animation.sf_nba.rhino.move",
+        "charge": "controller.animation.sf_nba.rhino.charge"
+      },
+      "scripts": {
+        "initialize": [
+          "v.is_moving = 0;",
+          "v.is_sprinting = 0;"
+        ],
+        "pre_animation": [
+          "v.is_moving = q.modified_move_speed >= 0.1;",
+          "v.is_sprinting = (q.modified_move_speed * (q.is_baby ? 0.7 : 1) - (q.distance_from_camera * 0.000001)) >= 1.25 ? 1;"
+        ],
+        "animate": [
+          {
+            "baby_transform": "q.is_baby"
+          },
+          "move",
+          "charge"
+        ]
+      },
+      "sound_effects": {
+        "scrape": "sf_nba.rhino.scrape",
+        "attack": "sf_nba.rhino.attack",
+        "charge": "sf_nba.rhino.charge",
+        "stun": "sf_nba.rhino.stun",
+        "step": "sf_nba.step.largehoof",
+        "step_-6dB": "sf_nba.step.largehoof_-6dB",
+        "step_-12dB": "sf_nba.step.largehoof_-12dB"
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.rhino"
+      ],
+      "spawn_egg": {
+        "base_color": "#74605A",
+        "overlay_color": "#A79289"
+      }
+    }
+  }
+}

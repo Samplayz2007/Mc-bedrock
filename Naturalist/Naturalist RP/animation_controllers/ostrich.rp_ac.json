@@ -1,0 +1,100 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.ostrich.main": {
+      "states": {
+        "default": {
+          "animations": [
+            "idle"
+          ],
+          "transitions": [
+            {
+              "run": "q.modified_move_speed > 0.5"
+            },
+            {
+              "walk": "q.modified_move_speed > 0.1"
+            },
+            {
+              "bury_head": "q.is_avoiding_mobs && !q.is_interested"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "walk": {
+          "animations": [
+            "walk"
+          ],
+          "transitions": [
+            {
+              "run": "q.modified_move_speed > 0.5"
+            },
+            {
+              "bury_head": "q.modified_move_speed <= 0.1 && q.is_avoiding_mobs && !q.is_interested"
+            },
+            {
+              "default": "q.modified_move_speed <= 0.1"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "run": {
+          "animations": [
+            "run"
+          ],
+          "transitions": [
+            {
+              "bury_head": "q.modified_move_speed <= 0.1 && q.is_avoiding_mobs && !q.is_interested"
+            },
+            {
+              "default": "q.modified_move_speed <= 0.1"
+            },
+            {
+              "walk": "q.modified_move_speed <= 0.5"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "bury_head": {
+          "animations": [
+            "bury_head"
+          ],
+          "transitions": [
+            {
+              "run": "!q.is_avoiding_mobs && q.modified_move_speed > 0.5"
+            },
+            {
+              "walk": "!q.is_avoiding_mobs && q.modified_move_speed > 0.1"
+            },
+            {
+              "default": "!q.is_avoiding_mobs || q.is_interested"
+            }
+          ],
+          "blend_transition": 0.5
+        }
+      }
+    },
+    "controller.animation.sf_nba.ostrich.attack": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "attack": "q.is_delayed_attacking"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "attack": {
+          "animations": [
+            "attack"
+          ],
+          "transitions": [
+            {
+              "default": "!q.is_delayed_attacking && q.all_animations_finished"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}

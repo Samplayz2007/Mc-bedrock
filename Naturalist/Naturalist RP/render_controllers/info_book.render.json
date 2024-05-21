@@ -1,0 +1,235 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.sf_nba.info_book": {
+      "arrays": {
+        "textures": {
+          "Array.pages": [
+            "Texture.page1",
+            "Texture.page2",
+            "Texture.page3",
+            "Texture.page4",
+            "Texture.page5",
+            "Texture.page6",
+            "Texture.page7a",
+            "Texture.page8a",
+            "Texture.page9",
+            "Texture.page10a",
+            "Texture.page11",
+            "Texture.page12",
+            "Texture.page13",
+            "Texture.page14a",
+            "Texture.page15a",
+            "Texture.page16a",
+            "Texture.page17a",
+            "Texture.page18a",
+            "Texture.page19a",
+            "Texture.page20",
+            "Texture.page21",
+            "Texture.page22",
+            "Texture.page23a",
+            "Texture.page24",
+            "Texture.page25",
+            "Texture.page26",
+            "Texture.page27a",
+            "Texture.page28a",
+            "Texture.page29",
+            "Texture.page30a",
+            "Texture.page31a",
+            "Texture.page32",
+            "Texture.page33",
+            "Texture.page34a",
+            "Texture.page35",
+            "Texture.page36a",
+            "Texture.page37",
+            "Texture.page38a",
+            "Texture.page39",
+            "Texture.page40",
+            "Texture.page41",
+            "Texture.page42a",
+            "Texture.page43",
+            "Texture.page44",
+            "Texture.page45",
+            "Texture.page46a",
+            "Texture.page47",
+            "Texture.page48",
+            "Texture.page49a",
+            "Texture.page50a",
+            "Texture.page51",
+            "Texture.page52",
+            "Texture.page53a",
+            "Texture.page54a",
+            "Texture.page55",
+            "Texture.page56a",
+            "Texture.page57a",
+            "Texture.page58a",
+            "Texture.page59a",
+            "Texture.page60",
+            "Texture.page61",
+            "Texture.page62",
+            "Texture.page63"
+          ],
+          "Array.page7": [
+            "Texture.page7a",
+            "Texture.page7b",
+            "Texture.page7c",
+            "Texture.page7d",
+            "Texture.page7e"
+          ],
+          "Array.page8": [
+            "Texture.page8a",
+            "Texture.page8b",
+            "Texture.page8c",
+            "Texture.page8d",
+            "Texture.page8e",
+            "Texture.page8f"
+          ],
+          "Array.page10": [
+            "Texture.page10a",
+            "Texture.page10b",
+            "Texture.page10c",
+            "Texture.page10d",
+            "Texture.page10e"
+          ],
+          "Array.page14": [
+            "Texture.page14a",
+            "Texture.page14b"
+          ],
+          "Array.page15": [
+            "Texture.page15a",
+            "Texture.page15b"
+          ],
+          "Array.page16": [
+            "Texture.page16a",
+            "Texture.page16b",
+            "Texture.page16c",
+            "Texture.page16d",
+            "Texture.page16e"
+          ],
+          "Array.page17": [
+            "Texture.page17a",
+            "Texture.page17b"
+          ],
+          "Array.page18": [
+            "Texture.page18a",
+            "Texture.page18b"
+          ],
+          "Array.page19": [
+            "Texture.page19a",
+            "Texture.page19b",
+            "Texture.page19c"
+          ],
+          "Array.page23": [
+            "Texture.page23a",
+            "Texture.page23b",
+            "Texture.page23c",
+            "Texture.page23d"
+          ],
+          "Array.page27": [
+            "Texture.page27a",
+            "Texture.page27b"
+          ],
+          "Array.page28": [
+            "Texture.page28a",
+            "Texture.page28b",
+            "Texture.page28c",
+            "Texture.page28d",
+            "Texture.page28e",
+            "Texture.page28f",
+            "Texture.page28g"
+          ],
+          "Array.page30": [
+            "Texture.page30a",
+            "Texture.page30b",
+            "Texture.page30c",
+            "Texture.page30d",
+            "Texture.page30e"
+          ],
+          "Array.page31": [
+            "Texture.page31a",
+            "Texture.page31b",
+            "Texture.page31c",
+            "Texture.page31d",
+            "Texture.page31e"
+          ],
+          "Array.page34": [
+            "Texture.page34a",
+            "Texture.page34b",
+            "Texture.page34c",
+            "Texture.page34d"
+          ],
+          "Array.page36": [
+            "Texture.page36a",
+            "Texture.page36b",
+            "Texture.page36c"
+          ],
+          "Array.page38": [
+            "Texture.page38a",
+            "Texture.page38b",
+            "Texture.page38c"
+          ],
+          "Array.page42": [
+            "Texture.page42a",
+            "Texture.page42b"
+          ],
+          "Array.page46": [
+            "Texture.page46a",
+            "Texture.page46b",
+            "Texture.page46c"
+          ],
+          "Array.page49": [
+            "Texture.page49a",
+            "Texture.page49b"
+          ],
+          "Array.page50": [
+            "Texture.page50a",
+            "Texture.page50b"
+          ],
+          "Array.page53": [
+            "Texture.page53a",
+            "Texture.page53b",
+            "Texture.page53c"
+          ],
+          "Array.page54": [
+            "Texture.page54a",
+            "Texture.page54b",
+            "Texture.page54c"
+          ],
+          "Array.page56": [
+            "Texture.page56a",
+            "Texture.page56b",
+            "Texture.page56c",
+            "Texture.page56d"
+          ],
+          "Array.page57": [
+            "Texture.page57a",
+            "Texture.page57b",
+            "Texture.page57c"
+          ],
+          "Array.page58": [
+            "Texture.page58a",
+            "Texture.page58b",
+            "Texture.page58c"
+          ],
+          "Array.page59": [
+            "Texture.page59a",
+            "Texture.page59b",
+            "Texture.page59c",
+            "Texture.page59d",
+            "Texture.page59e",
+            "Texture.page59f"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "textures": [
+        "v.page == 6 ? Array.page7[v.frame] : (v.page == 7 ? Array.page8[v.frame] : (v.page == 9 ? Array.page10[v.frame] : (v.page == 13 ? Array.page14[v.frame] : (v.page == 14 ? Array.page15[v.frame] : (v.page == 15 ? Array.page16[v.frame] : (v.page == 16 ? Array.page17[v.frame] : (v.page == 17 ? Array.page18[v.frame] : (v.page == 18 ? Array.page19[v.frame] : (v.page == 22 ? Array.page23[v.frame] : (v.page == 26 ? Array.page27[v.frame] : (v.page == 27 ? Array.page28[v.frame] : (v.page == 29 ? Array.page30[v.frame] : (v.page == 30 ? Array.page31[v.frame] : (v.page == 33 ? Array.page34[v.frame] : (v.page == 35 ? Array.page36[v.frame] : (v.page == 37 ? Array.page38[v.frame] : (v.page == 41 ? Array.page42[v.frame] : (v.page == 45 ? Array.page46[v.frame] : (v.page == 48 ? Array.page49[v.frame] : (v.page == 49 ? Array.page50[v.frame] : (v.page == 52 ? Array.page53[v.frame] : (v.page == 53 ? Array.page54[v.frame] : (v.page == 55 ? Array.page56[v.frame] : (v.page == 56 ? Array.page57[v.frame] : (v.page == 57 ? Array.page58[v.frame] : (v.page == 58 ? Array.page59[v.frame] : Array.pages[v.page]))))))))))))))))))))))))))"
+      ],
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ]
+    }
+  }
+}

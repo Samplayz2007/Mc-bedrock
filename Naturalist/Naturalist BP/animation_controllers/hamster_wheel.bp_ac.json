@@ -1,0 +1,22 @@
+{
+  "format_version": "1.20.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.hamster_wheel.initialize": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "initialize": "!q.property('sf_nba:initialized')"
+            }
+          ]
+        },
+        "initialize": {
+          "on_entry": [
+            "/function sf/nba/cardinal_orientation",
+            "@s sf_nba:initialized"
+          ]
+        }
+      }
+    }
+  }
+}

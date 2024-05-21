@@ -1,0 +1,44 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.sloth.main": {
+      "states": {
+        "default": {
+          "animations": [
+            "idle"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "walk": "q.modified_move_speed > 0.04 && !q.is_in_water"
+            },
+            {
+              "hang": "q.property('sf_nba:hanging') == true"
+            }
+          ]
+        },
+        "walk": {
+          "animations": [
+            "walk"
+          ],
+          "transitions": [
+            {
+              "default": "q.modified_move_speed < 0.05 || q.is_in_water"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "hang": {
+          "animations": [
+            "hang"
+          ],
+          "transitions": [
+            {
+              "default": "q.property('sf_nba:hanging') == false"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

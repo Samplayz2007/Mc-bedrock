@@ -1,0 +1,31 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.sf_nba.tiger": {
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.black_panther",
+            "Texture.leopard",
+            "Texture.tiger",
+            "Texture.white_tiger"
+          ]
+        }
+      },
+      "part_visibility": [
+        {
+          "sleep": "q.is_sleeping"
+        }
+      ],
+      "textures": [
+        "Array.skins[q.variant]"
+      ]
+    }
+  }
+}

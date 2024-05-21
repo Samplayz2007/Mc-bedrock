@@ -1,0 +1,173 @@
+{
+  "format_version": "1.20.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "sf_nba:ostrich_egg",
+      "animations": {
+        "controller.animation.sf_nba.ostrich_egg.on_hatch": "controller.animation.sf_nba.ostrich_egg.on_hatch"
+      },
+      "scripts": {
+        "animate": [
+          "controller.animation.sf_nba.ostrich_egg.on_hatch"
+        ]
+      },
+      "is_summonable": true
+    },
+    "components": {
+      "minecraft:collision_box": {
+        "width": 0.4,
+        "height": 0.4
+      },
+      "minecraft:health": {
+        "value": 1,
+        "max": 1
+      },
+      "minecraft:knockback_resistance": {
+        "value": 1
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:physics": {},
+      "minecraft:type_family": {
+        "family": [
+          "sf_nba:ostrich_egg",
+          "inanimate"
+        ]
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "entity_attack",
+            "on_damage": {
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "player"
+              },
+              "event": "sf_nba:drop"
+            },
+            "deals_damage": false
+          },
+          {
+            "cause": "all",
+            "deals_damage": false
+          }
+        ]
+      }
+    },
+    "component_groups": {
+      "sf_nba:stage_0": {
+        "minecraft:variant": {
+          "value": 0
+        }
+      },
+      "sf_nba:stage_1": {
+        "minecraft:variant": {
+          "value": 1
+        }
+      },
+      "sf_nba:stage_2": {
+        "minecraft:variant": {
+          "value": 2
+        }
+      },
+      "sf_nba:hatch_timer": {
+        "minecraft:timer": {
+          "looping": true,
+          "time": 200,
+          "time_down_event": {
+            "event": "sf_nba:next_stage"
+          }
+        }
+      },
+      "sf_nba:hatch": {
+        "minecraft:transformation": {
+          "into": "sf_nba:ostrich<minecraft:entity_born>",
+          "keep_owner": true,
+          "delay": 0.2
+        }
+      },
+      "sf_nba:drop": {
+        "minecraft:instant_despawn": {},
+        "minecraft:spawn_entity": {
+          "entities": [
+            {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "spawn_item": "sf_nba:ostrich_egg"
+            }
+          ]
+        }
+      }
+    },
+    "events": {
+      "minecraft:entity_born": {
+        "trigger": "minecraft:entity_spawned"
+      },
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "sf_nba:hatch_timer",
+            "sf_nba:stage_0"
+          ]
+        }
+      },
+      "sf_nba:next_stage": {
+        "sequence": [
+          {
+            "filters": {
+              "test": "is_variant",
+              "value": 2
+            },
+            "add": {
+              "component_groups": [
+                "sf_nba:hatch"
+              ]
+            }
+          },
+          {
+            "filters": {
+              "test": "is_variant",
+              "value": 1
+            },
+            "remove": {
+              "component_groups": [
+                "sf_nba:stage_1"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "sf_nba:stage_2"
+              ]
+            }
+          },
+          {
+            "filters": {
+              "test": "is_variant",
+              "value": 0
+            },
+            "remove": {
+              "component_groups": [
+                "sf_nba:stage_0"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "sf_nba:stage_1"
+              ]
+            }
+          }
+        ]
+      },
+      "sf_nba:drop": {
+        "add": {
+          "component_groups": [
+            "sf_nba:drop"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,335 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "sf_nba:deer",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "sf_nba:cherry_deer": {
+        "minecraft:variant": {
+          "value": 1
+        }
+      },
+      "sf_nba:deer_baby": {
+        "minecraft:is_baby": {},
+        "minecraft:scale": {
+          "value": 0.5
+        },
+        "minecraft:ageable": {
+          "duration": 1200,
+          "feed_items": "apple",
+          "grow_up": {
+            "event": "minecraft:ageable_grow_up",
+            "target": "self"
+          }
+        },
+        "minecraft:behavior.follow_parent": {
+          "priority": 5,
+          "speed_multiplier": 1.25
+        }
+      },
+      "sf_nba:deer_adult": {
+        "minecraft:experience_reward": {
+          "on_bred": "Math.Random(1,7)",
+          "on_death": "query.last_hit_by_player ? Math.Random(1,3) : 0"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/sf/nba/entities/deer.loot.json"
+        },
+        "minecraft:behavior.breed": {
+          "priority": 2,
+          "speed_multiplier": 1
+        },
+        "minecraft:breedable": {
+          "require_tame": false,
+          "breed_cooldown": 300,
+          "breed_items": "apple",
+          "breeds_with": {
+            "mate_type": "sf_nba:deer",
+            "baby_type": "sf_nba:deer",
+            "breed_event": {
+              "event": "sf_nba:entity_born",
+              "target": "baby"
+            }
+          }
+        }
+      },
+      "sf_nba:deer_panic": {
+        "minecraft:behavior.panic": {
+          "priority": 1,
+          "speed_multiplier": 2,
+          "force": true
+        },
+        "minecraft:behavior.random_stroll": {
+          "priority": 1,
+          "speed_multiplier": 2,
+          "interval": 0,
+          "z_dist": 20
+        },
+        "minecraft:timer": {
+          "looping": false,
+          "time": [
+            5,
+            10
+          ],
+          "time_down_event": {
+            "event": "sf_nba:stop_panicking",
+            "target": "self"
+          }
+        }
+      }
+    },
+    "components": {
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:type_family": {
+        "family": [
+          "sf_nba:deer",
+          "mob"
+        ]
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:collision_box": {
+        "width": 1.3,
+        "height": 1.6
+      },
+      "minecraft:nameable": {},
+      "minecraft:health": {
+        "value": 8,
+        "max": 8
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": {
+              "test": "in_lava",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "cause": "entity_attack",
+          "on_damage": {
+            "event": "sf_nba:start_panicking"
+          }
+        }
+      },
+      "minecraft:entity_sensor": {
+        "sensor_range": 8,
+        "relative_range": false,
+        "event_filters": [
+          {
+            "test": "is_family",
+            "subject": "other",
+            "value": "deer"
+          },
+          {
+            "test": "has_component",
+            "subject": "other",
+            "value": "minecraft:behavior.panic"
+          },
+          {
+            "test": "has_component",
+            "operator": "!=",
+            "value": "minecraft:behavior.panic"
+          }
+        ],
+        "event": "sf_nba:start_panicking"
+      },
+      "minecraft:movement": {
+        "value": 0.2
+      },
+      "minecraft:navigation.walk": {
+        "can_path_over_water": true,
+        "avoid_water": true
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:jump.static": {},
+      "minecraft:can_climb": {},
+      "minecraft:leashable": {
+        "soft_distance": 4,
+        "hard_distance": 6,
+        "max_distance": 10
+      },
+      "minecraft:balloonable": {
+        "mass": 0.75
+      },
+      "minecraft:despawn": {
+        "despawn_from_distance": {}
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.tempt": {
+        "priority": 3,
+        "speed_multiplier": 1.25,
+        "can_get_scared": true,
+        "items": [
+          "apple"
+        ]
+      },
+      "minecraft:behavior.avoid_mob_type": {
+        "priority": 4,
+        "entity_types": [
+          {
+            "filters": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "player"
+              },
+              {
+                "test": "is_sneaking",
+                "subject": "other",
+                "value": false
+              }
+            ],
+            "max_dist": 8,
+            "walk_speed_multiplier": 1.5,
+            "sprint_speed_multiplier": 2
+          },
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "monster"
+            },
+            "max_dist": 4,
+            "walk_speed_multiplier": 1.5,
+            "sprint_speed_multiplier": 2
+          },
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "grizzly_bear"
+            },
+            "max_dist": 10,
+            "walk_speed_multiplier": 1.5,
+            "sprint_speed_multiplier": 2
+          }
+        ]
+      },
+      "minecraft:behavior.eat_block": {
+        "priority": 6,
+        "success_chance": "q.is_baby ? 0.02 : 0.001",
+        "time_until_eat": 1.8,
+        "eat_and_replace_block_pairs": [
+          {
+            "eat_block": "grass",
+            "replace_block": "dirt"
+          },
+          {
+            "eat_block": "tallgrass",
+            "replace_block": "air"
+          }
+        ]
+      },
+      "minecraft:behavior.random_stroll": {
+        "priority": 7,
+        "speed_multiplier": 1
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 8,
+        "look_distance": 6,
+        "probability": 0.02
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 9
+      },
+      "minecraft:variable_max_auto_step": {
+        "base_value": 2
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:conditional_bandwidth_optimization": {}
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "sequence": [
+          {
+            "add": {
+              "component_groups": [
+                "sf_nba:cherry_deer"
+              ]
+            },
+            "filters": {
+              "any_of": [
+                {
+                  "test": "has_biome_tag",
+                  "value": "cherry_grove"
+                }
+              ]
+            }
+          },
+          {
+            "randomize": [
+              {
+                "weight": 95,
+                "trigger": "sf_nba:spawn_adult"
+              },
+              {
+                "weight": 5,
+                "trigger": "sf_nba:entity_born"
+              }
+            ]
+          }
+        ]
+      },
+      "sf_nba:spawn_adult": {
+        "add": {
+          "component_groups": [
+            "sf_nba:deer_adult"
+          ]
+        }
+      },
+      "sf_nba:entity_born": {
+        "add": {
+          "component_groups": [
+            "sf_nba:deer_baby"
+          ]
+        }
+      },
+      "sf_nba:ageable_grow_up": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:deer_baby"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "sf_nba:deer_adult"
+          ]
+        }
+      },
+      "sf_nba:start_panicking": {
+        "add": {
+          "component_groups": [
+            "sf_nba:deer_panic"
+          ]
+        }
+      },
+      "sf_nba:stop_panicking": {
+        "remove": {
+          "component_groups": [
+            "sf_nba:deer_panic"
+          ]
+        }
+      }
+    }
+  }
+}

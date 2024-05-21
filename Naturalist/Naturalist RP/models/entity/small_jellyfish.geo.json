@@ -1,0 +1,388 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.sf_nba.small_jellyfish",
+        "texture_width": 32,
+        "texture_height": 32,
+        "visible_bounds_width": 3,
+        "visible_bounds_height": 2.5,
+        "visible_bounds_offset": [
+          0,
+          0.75,
+          0
+        ]
+      },
+      "bones": [
+        {
+          "name": "root",
+          "pivot": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -3,
+                8,
+                -3
+              ],
+              "size": [
+                6,
+                4,
+                6
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ],
+          "locators": {
+            "lead": [
+              0,
+              8,
+              0
+            ]
+          }
+        },
+        {
+          "name": "inflation",
+          "parent": "body",
+          "pivot": [
+            0,
+            0.25,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -3,
+                8.5,
+                -3
+              ],
+              "size": [
+                6,
+                4,
+                6
+              ],
+              "inflate": 0.75,
+              "uv": [
+                0,
+                14
+              ]
+            }
+          ]
+        },
+        {
+          "name": "tentacles",
+          "parent": "body",
+          "pivot": [
+            0,
+            8,
+            2.5
+          ]
+        },
+        {
+          "name": "frontTentacle",
+          "parent": "tentacles",
+          "pivot": [
+            0,
+            8,
+            -2.5
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -0.5,
+                4,
+                -2.5
+              ],
+              "size": [
+                1,
+                4,
+                1
+              ],
+              "pivot": [
+                0,
+                6,
+                -2
+              ],
+              "rotation": [
+                0,
+                -90,
+                0
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "leftTentacle",
+          "parent": "tentacles",
+          "pivot": [
+            2.5,
+            8,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                1.5,
+                4,
+                -0.5
+              ],
+              "size": [
+                1,
+                4,
+                1
+              ],
+              "pivot": [
+                2,
+                6,
+                0
+              ],
+              "rotation": [
+                0,
+                180,
+                0
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "rightTentacle",
+          "parent": "tentacles",
+          "pivot": [
+            -2.5,
+            8,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -2.5,
+                4,
+                -0.5
+              ],
+              "size": [
+                1,
+                4,
+                1
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "backTentacle",
+          "parent": "tentacles",
+          "pivot": [
+            0,
+            8,
+            2.5
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -0.5,
+                4,
+                1.5
+              ],
+              "size": [
+                1,
+                4,
+                1
+              ],
+              "pivot": [
+                0,
+                6,
+                2
+              ],
+              "rotation": [
+                0,
+                90,
+                0
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "leftMidFrontTentacle",
+          "parent": "tentacles",
+          "pivot": [
+            2,
+            8,
+            -2.5
+          ],
+          "cubes": [
+            {
+              "origin": [
+                1.5,
+                4,
+                -2.5
+              ],
+              "size": [
+                1,
+                4,
+                1
+              ],
+              "pivot": [
+                2,
+                4,
+                -2
+              ],
+              "rotation": [
+                0,
+                -90,
+                0
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "rightMidFrontTentacle",
+          "parent": "tentacles",
+          "pivot": [
+            -2,
+            8,
+            -2.5
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -2.5,
+                4,
+                -2.5
+              ],
+              "size": [
+                1,
+                4,
+                1
+              ],
+              "pivot": [
+                -2,
+                4,
+                -2
+              ],
+              "rotation": [
+                0,
+                90,
+                0
+              ],
+              "uv": [
+                0,
+                0
+              ],
+              "mirror": true
+            }
+          ]
+        },
+        {
+          "name": "rightMidBackTentacle",
+          "parent": "tentacles",
+          "pivot": [
+            -2,
+            8,
+            2.5
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -2.5,
+                4,
+                1.5
+              ],
+              "size": [
+                1,
+                4,
+                1
+              ],
+              "pivot": [
+                -2,
+                4,
+                2
+              ],
+              "rotation": [
+                0,
+                90,
+                0
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "leftMidBackTentacle",
+          "parent": "tentacles",
+          "pivot": [
+            2,
+            8,
+            2.5
+          ],
+          "cubes": [
+            {
+              "origin": [
+                1.5,
+                4,
+                1.5
+              ],
+              "size": [
+                1,
+                4,
+                1
+              ],
+              "pivot": [
+                2,
+                4,
+                2
+              ],
+              "rotation": [
+                0,
+                -90,
+                0
+              ],
+              "uv": [
+                0,
+                0
+              ],
+              "mirror": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

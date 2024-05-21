@@ -1,0 +1,62 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:beaver",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/beaver"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.beaver"
+      },
+      "animations": {
+        "idle": "animation.sf_nba.beaver.idle",
+        "walk": "animation.sf_nba.beaver.walk",
+        "tail_slap": "animation.sf_nba.beaver.tail_slap",
+        "nibbling": "animation.sf_nba.beaver.nibbling",
+        "run": "animation.sf_nba.beaver.run",
+        "swim": "animation.sf_nba.beaver.swim",
+        "baby_transform": "animation.sf_nba.beaver.baby_transform",
+        "move": "controller.animation.sf_nba.beaver.main"
+      },
+      "scripts": {
+        "initialize": [
+          "v.anim_speed_multiplier = 0;",
+          "v.anim_speed_movement_max = 0;",
+          "v.run_anim_speed_multiplier = 0;",
+          "v.run_speed_movement_max = 0;",
+          "v.walk_threshold = 0.05;"
+        ],
+        "pre_animation": [
+          "v.anim_speed_multiplier = 2.5;",
+          "v.anim_speed_movement_max = 0.2;",
+          "v.run_anim_speed_multiplier = 2.0;",
+          "v.run_speed_movement_max = 0.5;"
+        ],
+        "animate": [
+          "move",
+          {
+            "baby_transform": "q.is_baby"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "sound_effects": {
+        "nibble": "sf_nba.beaver.nibble",
+        "tailslap": "sf_nba.beaver.tailslap",
+        "step": "sf_nba.step.medpaw",
+        "step_-6dB": "sf_nba.step.medpaw_-6dB",
+        "step_-12dB": "sf_nba.step.medpaw_-12dB"
+      },
+      "spawn_egg": {
+        "base_color": "#8B4513",
+        "overlay_color": "#D2B48C"
+      }
+    }
+  }
+}

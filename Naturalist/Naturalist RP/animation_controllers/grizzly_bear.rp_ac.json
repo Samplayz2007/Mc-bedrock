@@ -1,0 +1,126 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.grizzly_bear.move": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            {
+              "idle": "!q.is_interested"
+            },
+            {
+              "sniff": "q.is_interested"
+            },
+            "look_at_target"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "walk": "q.modified_move_speed >= 0.1"
+            },
+            {
+              "sleeping": "q.is_sleeping"
+            },
+            {
+              "sitting": "q.property('sf_nba:is_sitting')"
+            },
+            {
+              "eating": "q.property('sf_nba:is_eating')"
+            }
+          ]
+        },
+        "walk": {
+          "animations": [
+            {
+              "sniff": "q.is_interested"
+            },
+            {
+              "walk": "!(q.is_angry && q.has_target && !q.is_baby)"
+            },
+            {
+              "run": "q.is_angry && q.has_target && !q.is_baby"
+            },
+            "look_at_target"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "q.modified_move_speed < 0.1"
+            },
+            {
+              "sleeping": "q.is_sleeping"
+            },
+            {
+              "sitting": "q.property('sf_nba:is_sitting')"
+            },
+            {
+              "eating": "q.property('sf_nba:is_eating')"
+            }
+          ]
+        },
+        "sleeping": {
+          "animations": [
+            "sleep"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "!q.is_sleeping"
+            }
+          ]
+        },
+        "sitting": {
+          "animations": [
+            "sit"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "!q.property('sf_nba:is_sitting')"
+            },
+            {
+              "eating": "q.property('sf_nba:is_eating')"
+            }
+          ]
+        },
+        "eating": {
+          "animations": [
+            "eat"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "!q.property('sf_nba:is_sitting')"
+            },
+            {
+              "sitting": "q.property('sf_nba:is_sitting') && !q.property('sf_nba:is_eating')"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.grizzly_bear.attack_time": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "attack_time": "v.attack_time > 0"
+            }
+          ]
+        },
+        "attack_time": {
+          "animations": [
+            "attack"
+          ],
+          "transitions": [
+            {
+              "default": "v.attack_time <= 0 && q.all_animations_finished"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

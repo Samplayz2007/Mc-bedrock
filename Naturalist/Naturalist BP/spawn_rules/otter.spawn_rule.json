@@ -1,0 +1,56 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "sf_nba:otter",
+      "population_control": "water_animal"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_underwater": {},
+        "minecraft:spawns_on_block_filter": [
+          "minecraft:grass",
+          "minecraft:water"
+        ],
+        "minecraft:herd": {
+          "min_size": 3,
+          "max_size": 5,
+          "event": "sf_nba:entity_born",
+          "event_skip_count": 1
+        },
+        "minecraft:weight": {
+          "default": 9
+        },
+        "minecraft:biome_filter": [
+          {
+            "any_of": [
+              {
+                "test": "has_biome_tag",
+                "operator": "==",
+                "value": "river"
+              },
+              {
+                "test": "has_biome_tag",
+                "operator": "==",
+                "value": "swampland"
+              },
+              {
+                "test": "has_biome_tag",
+                "operator": "==",
+                "value": "mangrove_swamp"
+              }
+            ],
+            "none_of": [
+              {
+                "test": "has_biome_tag",
+                "operator": "==",
+                "value": "frozen_river"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

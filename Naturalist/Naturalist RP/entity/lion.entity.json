@@ -1,0 +1,63 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:lion",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/lion"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.lion"
+      },
+      "animations": {
+        "walk": "animation.sf_nba.lion.walk",
+        "run": "animation.sf_nba.lion.run",
+        "prey": "animation.sf_nba.lion.prey",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "baby_transform": "animation.sf_nba.lion.baby_transform",
+        "idle": "animation.sf_nba.lion.idle",
+        "sleep": "animation.sf_nba.lion.sleep",
+        "sleep2": "animation.sf_nba.lion.sleep2",
+        "swing": "animation.sf_nba.lion.swing",
+        "move": "controller.animation.sf_nba.lion.move",
+        "attack": "controller.animation.sf_nba.lion.attack"
+      },
+      "scripts": {
+        "initialize": [
+          "v.anim_speed_multiplier = 0;",
+          "v.anim_speed_movement_max = 0;",
+          "v.is_moving = 0;",
+          "v.is_sprinting = 0;"
+        ],
+        "pre_animation": [
+          "v.is_moving = q.modified_move_speed >= 0.1;",
+          "v.is_sprinting = !q.is_sneaking && q.has_target && (v.is_moving ?? 0);"
+        ],
+        "animate": [
+          {
+            "baby_transform": "q.is_baby"
+          },
+          "move",
+          "attack"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.lion"
+      ],
+      "spawn_egg": {
+        "base_color": "#E4BD82",
+        "overlay_color": "#663A11"
+      },
+      "sound_effects": {
+        "step": "sf_nba.lion.step",
+        "step_-6dB": "sf_nba.lion.step_-6dB",
+        "attack": "sf_nba.lion.attack",
+        "swing": "sf_nba.lion.swing",
+        "sleep": "sf_nba.lion.sleep"
+      }
+    }
+  }
+}

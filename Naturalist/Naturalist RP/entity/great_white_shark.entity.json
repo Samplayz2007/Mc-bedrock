@@ -1,0 +1,45 @@
+{
+  "format_version": "1.20.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:great_white_shark",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/shark/great_white_shark"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.shark"
+      },
+      "sound_effects": {
+        "swim": "sf_nba.shark.swim",
+        "swim_fast": "sf_nba.shark.swim_fast",
+        "attack": "sf_nba.shark.attack",
+        "flop": "sf_nba.shark.flop"
+      },
+      "animations": {
+        "controller.shark": "controller.animation.sf_nba.shark",
+        "controller.shark.attack": "controller.animation.sf_nba.shark.attack",
+        "idle": "animation.sf_nba.shark.idle",
+        "swim": "animation.sf_nba.shark.swim",
+        "swim_fast": "animation.sf_nba.shark.swim_fast",
+        "attack": "animation.sf_nba.shark.attack",
+        "flop": "animation.sf_nba.shark.flop"
+      },
+      "scripts": {
+        "animate": [
+          "controller.shark.attack",
+          "controller.shark"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "spawn_egg": {
+        "base_color": "#39464A",
+        "overlay_color": "#E3EDED"
+      }
+    }
+  }
+}

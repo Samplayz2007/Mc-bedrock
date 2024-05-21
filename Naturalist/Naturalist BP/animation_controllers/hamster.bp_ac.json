@@ -1,0 +1,47 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.hamster.riding_hamster_wheel": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "on_entry": [
+            "v.launch_min_time = 0;"
+          ],
+          "transitions": [
+            {
+              "riding": "q.is_riding"
+            }
+          ]
+        },
+        "riding": {
+          "on_entry": [
+            "/execute if entity @e[type=sf_nba:hamster_wheel,r=0.25] run event entity @s sf_nba:in_hamster_wheel",
+            "v.launch_min_time = q.life_time;"
+          ],
+          "on_exit": [
+            "@s sf_nba:remove_in_hamster_wheel"
+          ],
+          "transitions": [
+            {
+              "default": "!q.is_riding"
+            },
+            {
+              "launch": "q.property('sf_nba:in_hamster_wheel') && q.life_time >= (v.launch_min_time + 24) && math.random_integer(0, 800) == 0"
+            }
+          ]
+        },
+        "launch": {
+          "on_entry": [
+            "/scriptevent sf_nba:hamster_in_wheel_launch"
+          ],
+          "transitions": [
+            {
+              "default": "1"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "format_version": "1.20.40",
+  "animation_controllers": {
+    "controller.animation.sf_nba.termite.chew_watcher": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "chewing": "q.property('sf_nba:is_chewing')"
+            }
+          ]
+        },
+        "chewing": {
+          "on_exit": [
+            "/scriptevent sf_nba:termite_chew"
+          ],
+          "transitions": [
+            {
+              "default": "!q.property('sf_nba:is_chewing')"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.sf_nba.butterfly": {
+      "arrays": {
+        "textures": {
+          "array.skins": [
+            "texture.cabbage_white",
+            "texture.monarch",
+            "texture.clouded_yellow",
+            "texture.swallowtail",
+            "texture.blue_morpho"
+          ]
+        }
+      },
+      "geometry": "geometry.default",
+      "materials": [
+        {
+          "*": "material.default"
+        }
+      ],
+      "textures": [
+        "array.skins[q.variant]"
+      ]
+    }
+  }
+}

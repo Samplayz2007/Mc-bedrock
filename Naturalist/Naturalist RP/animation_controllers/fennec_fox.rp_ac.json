@@ -1,0 +1,234 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.fennec_fox.main": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            "idle"
+          ],
+          "blend_transition": 0.2,
+          "transitions": [
+            {
+              "run": "((q.modified_move_speed >= (v.walk_threshold ?? 0)) && q.is_avoiding_mobs) || (q.modified_move_speed >= (v.run_threshold ?? 0))"
+            },
+            {
+              "sneak": "q.is_stalking && (q.modified_move_speed >= (v.walk_threshold ?? 0))"
+            },
+            {
+              "walk": "!q.is_avoiding_mobs && (q.modified_move_speed >= (v.walk_threshold ?? 0))"
+            },
+            {
+              "crouch": "q.is_stalking"
+            },
+            {
+              "stuck": "q.is_stunned"
+            },
+            {
+              "wiggle": "query.is_interested"
+            },
+            {
+              "sleep": "q.is_sleeping"
+            }
+          ]
+        },
+        "sleep": {
+          "animations": [
+            "sleep"
+          ],
+          "blend_transition": 0.2,
+          "transitions": [
+            {
+              "default": "!q.is_sleeping"
+            }
+          ]
+        },
+        "walk": {
+          "animations": [
+            "walk"
+          ],
+          "blend_transition": 0.2,
+          "transitions": [
+            {
+              "sneak": "q.is_stalking"
+            },
+            {
+              "default": "q.modified_move_speed < (v.walk_threshold ?? 0)"
+            },
+            {
+              "run": "q.is_avoiding_mobs || (q.modified_move_speed >= (v.run_threshold ?? 0))"
+            },
+            {
+              "stuck": "q.is_stunned"
+            },
+            {
+              "wiggle": "query.is_interested"
+            },
+            {
+              "sleep": "q.is_sleeping"
+            }
+          ]
+        },
+        "crouch": {
+          "animations": [
+            "crouch"
+          ],
+          "blend_transition": 0.2,
+          "transitions": [
+            {
+              "default": "!q.is_stalking"
+            },
+            {
+              "sneak": "q.modified_move_speed >= (v.walk_threshold ?? 0)"
+            },
+            {
+              "run": "q.modified_move_speed >= (v.run_threshold ?? 0)"
+            },
+            {
+              "stuck": "q.is_stunned"
+            },
+            {
+              "wiggle": "query.is_interested"
+            },
+            {
+              "sleep": "q.is_sleeping"
+            }
+          ]
+        },
+        "sneak": {
+          "animations": [
+            "crouch",
+            "walk"
+          ],
+          "blend_transition": 0.2,
+          "transitions": [
+            {
+              "crouch": "q.modified_move_speed < (v.walk_threshold ?? 0)"
+            },
+            {
+              "walk": "!q.is_stalking"
+            },
+            {
+              "run": "(q.modified_move_speed >= (v.run_threshold ?? 0)) || q.is_avoiding_mobs"
+            },
+            {
+              "stuck": "q.is_stunned"
+            },
+            {
+              "wiggle": "query.is_interested"
+            },
+            {
+              "sleep": "q.is_sleeping"
+            }
+          ]
+        },
+        "run": {
+          "animations": [
+            "run"
+          ],
+          "blend_transition": 0.2,
+          "transitions": [
+            {
+              "sneak": "q.is_stalking && q.in_range(q.modified_move_speed, (v.walk_threshold ?? 0), (v.run_threshold ?? 0))"
+            },
+            {
+              "walk": "!q.is_avoiding_mobs && !q.is_stalking && q.in_range(q.modified_move_speed, (v.walk_threshold ?? 0), (v.run_threshold ?? 0))"
+            },
+            {
+              "default": "!(q.modified_move_speed >= (v.walk_threshold ?? 0))"
+            },
+            {
+              "stuck": "q.is_stunned"
+            },
+            {
+              "wiggle": "query.is_interested"
+            },
+            {
+              "sleep": "q.is_sleeping"
+            }
+          ]
+        },
+        "wiggle": {
+          "animations": [
+            "wiggle"
+          ],
+          "blend_transition": 0.2,
+          "transitions": [
+            {
+              "default": "!q.has_target && q.is_on_ground"
+            },
+            {
+              "sneak": "q.is_stalking && q.in_range(q.modified_move_speed, (v.walk_threshold ?? 0), (v.run_threshold ?? 0))"
+            },
+            {
+              "pounce": "!q.is_on_ground"
+            },
+            {
+              "stuck": "q.is_stunned"
+            },
+            {
+              "sleep": "q.is_sleeping"
+            }
+          ]
+        },
+        "pounce": {
+          "animations": [
+            "pounce",
+            "walk"
+          ],
+          "blend_transition": 0.15,
+          "transitions": [
+            {
+              "default": "query.is_on_ground"
+            },
+            {
+              "stuck": "q.is_stunned"
+            }
+          ]
+        },
+        "stuck": {
+          "animations": [
+            "stuck"
+          ],
+          "blend_transition": 0.2,
+          "transitions": [
+            {
+              "default": "!q.is_stunned"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.fennec_fox.shake": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "prepare": "q.is_in_water_or_rain"
+            }
+          ]
+        },
+        "prepare": {
+          "transitions": [
+            {
+              "shake": "!q.is_in_water_or_rain"
+            }
+          ]
+        },
+        "shake": {
+          "animations": [
+            "shake"
+          ],
+          "transitions": [
+            {
+              "default": "q.any_animation_finished"
+            }
+          ],
+          "blend_transition": 0.5
+        }
+      }
+    }
+  }
+}

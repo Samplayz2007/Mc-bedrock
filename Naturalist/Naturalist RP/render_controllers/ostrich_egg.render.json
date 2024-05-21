@@ -1,0 +1,16 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.sf_nba.ostrich_egg": {
+      "geometry": "geometry.default",
+      "materials": [
+        {
+          "*": "material.default"
+        }
+      ],
+      "textures": [
+        "q.variant == 0 ? texture.stage_0 : (q.variant == 1 ? texture.stage_1 : texture.stage_2)"
+      ]
+    }
+  }
+}

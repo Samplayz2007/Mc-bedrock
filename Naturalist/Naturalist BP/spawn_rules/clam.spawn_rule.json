@@ -1,0 +1,35 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "sf_nba:clam",
+      "population_control": "animal"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_underwater": {},
+        "minecraft:brightness_filter": {
+          "min": 9,
+          "max": 15,
+          "adjust_for_weather": false
+        },
+        "minecraft:weight": {
+          "default": 20
+        },
+        "minecraft:herd": {
+          "min_size": 1,
+          "max_size": 3
+        },
+        "minecraft:biome_filter": {
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "ocean"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

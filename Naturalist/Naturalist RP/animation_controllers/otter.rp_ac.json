@@ -1,0 +1,159 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.otter.main": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            "idle"
+          ],
+          "blend_transition": 0.5,
+          "on_entry": [
+            "v.float_delay = q.life_time + 1;"
+          ],
+          "transitions": [
+            {
+              "float": "(q.life_time > (v.float_delay ?? 0)) && q.is_item_equipped(0) && q.is_in_water && (math.random_integer(1,100) == 100)"
+            },
+            {
+              "walk": "!q.has_target && (q.modified_move_speed >= (v.walk_threshold ?? 0))"
+            },
+            {
+              "run": "q.has_target && (q.modified_move_speed >= (v.walk_threshold ?? 0))"
+            },
+            {
+              "swim": "q.is_in_water && (q.modified_move_speed >= (v.swim_threshold ?? 0))"
+            },
+            {
+              "sleep": "q.is_sleeping && !q.is_in_water"
+            }
+          ]
+        },
+        "float": {
+          "animations": [
+            "float"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "!q.is_item_equipped(0) || !q.is_in_water"
+            },
+            {
+              "walk": "!q.has_target && (q.modified_move_speed >= (v.walk_threshold ?? 0))"
+            },
+            {
+              "run": "q.has_target && (q.modified_move_speed >= (v.walk_threshold ?? 0))"
+            },
+            {
+              "swim": "q.is_in_water && (q.modified_move_speed >= (v.swim_threshold ?? 0))"
+            }
+          ]
+        },
+        "walk": {
+          "animations": [
+            "walk"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "q.modified_move_speed < (v.walk_threshold ?? 0)"
+            },
+            {
+              "run": "q.has_target || q.is_interested"
+            },
+            {
+              "swim": "q.is_in_water"
+            }
+          ]
+        },
+        "run": {
+          "animations": [
+            "run"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "q.modified_move_speed < (v.walk_threshold ?? 0)"
+            },
+            {
+              "walk": "!q.has_target && !q.is_interested"
+            },
+            {
+              "swim": "q.is_in_water"
+            }
+          ]
+        },
+        "sleep": {
+          "animations": [
+            "sleep"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "!q.is_sleeping || q.is_in_water"
+            }
+          ]
+        },
+        "swim": {
+          "animations": [
+            "swim"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "q.modified_move_speed < (v.swim_threshold ?? 0)"
+            },
+            {
+              "run": "q.has_target && !q.is_in_water"
+            },
+            {
+              "walk": "!q.has_target && !q.is_in_water"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.otter.hold_item": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            "item_adjust"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "play_with_item": "(q.property('sf_nba:floating'))"
+            },
+            {
+              "nap_with_item": "q.is_sleeping"
+            }
+          ]
+        },
+        "play_with_item": {
+          "animations": [
+            "play_with_item"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "!(q.property('sf_nba:floating'))"
+            }
+          ]
+        },
+        "nap_with_item": {
+          "animations": [
+            "nap_with_item"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "!q.is_sleeping"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

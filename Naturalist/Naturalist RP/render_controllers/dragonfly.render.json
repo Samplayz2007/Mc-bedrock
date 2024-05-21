@@ -1,0 +1,25 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.sf_nba.dragonfly": {
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.blue",
+            "Texture.red",
+            "Texture.green"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.skins[q.variant]"
+      ]
+    }
+  }
+}

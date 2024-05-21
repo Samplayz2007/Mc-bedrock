@@ -1,0 +1,73 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.info_book.general": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "spawn": "query.is_ignited"
+            },
+            {
+              "scroll": "Math.abs(variable.page - query.property('sf_nba:recipe_page')) > 2"
+            },
+            {
+              "turn_page": "variable.page < query.property('sf_nba:recipe_page')"
+            },
+            {
+              "previous_page": "variable.page > query.property('sf_nba:recipe_page')"
+            },
+            {
+              "pickup": "query.is_shaking"
+            }
+          ]
+        },
+        "spawn": {
+          "animations": [
+            "spawn"
+          ],
+          "transitions": [
+            {
+              "default": "query.all_animations_finished"
+            }
+          ]
+        },
+        "turn_page": {
+          "animations": [
+            "turn_page"
+          ],
+          "transitions": [
+            {
+              "default": "query.any_animation_finished"
+            }
+          ]
+        },
+        "previous_page": {
+          "animations": [
+            "previous_page"
+          ],
+          "transitions": [
+            {
+              "default": "query.any_animation_finished"
+            }
+          ]
+        },
+        "scroll": {
+          "animations": [
+            "scroll"
+          ],
+          "transitions": [
+            {
+              "default": "query.any_animation_finished"
+            }
+          ]
+        },
+        "pickup": {
+          "animations": [
+            "pickup"
+          ]
+        }
+      }
+    }
+  }
+}

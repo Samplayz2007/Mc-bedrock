@@ -1,0 +1,63 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:grizzly_bear",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/bear/bear"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.bear"
+      },
+      "animations": {
+        "walk": "animation.sf_nba.bear.walk",
+        "run": "animation.sf_nba.bear.run",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "baby_transform": "animation.sf_nba.bear.baby_transform",
+        "idle": "animation.sf_nba.bear.idle",
+        "sleep": "animation.sf_nba.bear.sleep",
+        "sniff": "animation.sf_nba.bear.sniff",
+        "sit": "animation.sf_nba.bear.sit",
+        "eat": "animation.sf_nba.bear.eat",
+        "attack": "animation.sf_nba.bear.attack",
+        "move": "controller.animation.sf_nba.grizzly_bear.move",
+        "attack_time": "controller.animation.sf_nba.grizzly_bear.attack_time"
+      },
+      "scripts": {
+        "initialize": [
+          "v.anim_speed_multiplier = 1.8;",
+          "v.anim_speed_movement_max = 0.2;"
+        ],
+        "pre_animation": [
+          "v.is_eating = q.is_item_name_any('slot.weapon.mainhand', 'minecraft:sweet_berries') ? 1 : q.is_item_name_any('slot.weapon.mainhand', 'minecraft:honeycomb') ? 2 : 0;"
+        ],
+        "animate": [
+          {
+            "baby_transform": "q.is_baby"
+          },
+          "move",
+          "attack_time"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.grizzly_bear"
+      ],
+      "spawn_egg": {
+        "base_color": "#392517",
+        "overlay_color": "#6E4E38"
+      },
+      "sound_effects": {
+        "sleep": "sf_nba.grizzly_bear.sleep",
+        "sniff": "sf_nba.grizzly_bear.sniff",
+        "eat": "sf_nba.grizzly_bear.eat",
+        "attack": "sf_nba.grizzly_bear.attack",
+        "step": "sf_nba.lion.step",
+        "step_-6dB": "sf_nba.lion.step_-6dB",
+        "step_-12dB": "sf_nba.lion.step_-12dB"
+      }
+    }
+  }
+}

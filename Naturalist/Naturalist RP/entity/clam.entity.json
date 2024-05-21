@@ -1,0 +1,41 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:clam",
+      "render_controllers": [
+        "controller.render.sf_nba.clam"
+      ],
+      "geometry": {
+        "default": "geometry.sf_nba.clam"
+      },
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "brown": "textures/sf/nba/entity/clam/brown_clam",
+        "white": "textures/sf/nba/entity/clam/white_clam"
+      },
+      "animations": {
+        "main_controller": "controller.animation.sf_nba.clam.main",
+        "idle_closed": "animation.sf_nba.clam.idle_closed",
+        "idle_open": "animation.sf_nba.clam.idle_open",
+        "open": "animation.sf_nba.clam.open",
+        "close": "animation.sf_nba.clam.close",
+        "launch": "animation.sf_nba.clam.launch"
+      },
+      "scripts": {
+        "animate": [
+          "main_controller"
+        ]
+      },
+      "spawn_egg": {
+        "base_color": "#ADD8E6",
+        "overlay_color": "#F0F8FF"
+      },
+      "sound_effects": {
+        "launch": "sf_nba.clam.launch"
+      }
+    }
+  }
+}

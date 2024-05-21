@@ -1,0 +1,23 @@
+{
+  "format_version": "1.20.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "sf_nba:pink_feather",
+      "menu_category": {
+        "category": "items",
+        "group": "naturalist"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "texture": "sf_nba.pink_feather"
+      },
+      "minecraft:display_name": {
+        "value": "item.sf_nba:pink_feather.name"
+      },
+      "minecraft:can_destroy_in_creative": {
+        "value": true
+      }
+    }
+  }
+}

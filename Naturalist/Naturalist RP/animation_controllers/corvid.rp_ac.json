@@ -1,0 +1,52 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.corvid.main": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": [
+            "idle"
+          ],
+          "transitions": [
+            {
+              "walk": "(q.modified_move_speed > 0.1)"
+            },
+            {
+              "fly": "!q.is_on_ground"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "walk": {
+          "animations": [
+            "walk"
+          ],
+          "transitions": [
+            {
+              "idle": "!(q.modified_move_speed > 0.1)"
+            },
+            {
+              "fly": "!q.is_on_ground"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "fly": {
+          "animations": [
+            "fly"
+          ],
+          "transitions": [
+            {
+              "idle": "q.is_on_ground && !(q.modified_move_speed > 0.1)"
+            },
+            {
+              "walk": "q.is_on_ground && (q.modified_move_speed > 0.1)"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}

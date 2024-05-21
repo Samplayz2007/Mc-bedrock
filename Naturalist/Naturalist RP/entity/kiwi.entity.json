@@ -1,0 +1,59 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:kiwi",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/kiwi"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.kiwi"
+      },
+      "animations": {
+        "cont_main": "controller.animation.sf_nba.kiwi.main",
+        "cont_happy_screech": "controller.animation.sf_nba.kiwi.happy_screech",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "idle": "animation.sf_nba.kiwi.idle",
+        "walk": "animation.sf_nba.kiwi.walk",
+        "run": "animation.sf_nba.kiwi.run",
+        "swim": "animation.sf_nba.kiwi.swim",
+        "sleep": "animation.sf_nba.kiwi.sleep",
+        "baby_transform": "animation.sf_nba.kiwi.baby_transform"
+      },
+      "scripts": {
+        "initialize": [
+          "v.anim_speed_multiplier = 0;",
+          "v.anim_speed_movement_max = 0;"
+        ],
+        "pre_animation": [
+          "v.anim_speed_multiplier = 2.0;",
+          "v.anim_speed_movement_max = 0.2;"
+        ],
+        "animate": [
+          "cont_main",
+          "cont_happy_screech",
+          {
+            "look_at_target": "!q.is_sleeping"
+          },
+          {
+            "baby_transform": "q.is_baby"
+          }
+        ]
+      },
+      "sound_effects": {
+        "sleep": "sf_nba.kiwi.sleep",
+        "screech": "sf_nba.kiwi.screech"
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.kiwi"
+      ],
+      "spawn_egg": {
+        "base_color": "#795335",
+        "overlay_color": "#553929"
+      }
+    }
+  }
+}

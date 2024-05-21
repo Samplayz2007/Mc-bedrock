@@ -1,0 +1,48 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:raven",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/corvid/raven"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.corvid"
+      },
+      "animations": {
+        "cont_main": "controller.animation.sf_nba.corvid.main",
+        "look_at_target": "animation.sf_nba.look_at_target",
+        "walk": "animation.sf_nba.corvid.walk",
+        "idle": "animation.sf_nba.corvid.idle",
+        "fly": "animation.sf_nba.corvid.fly",
+        "baby_transform": "animation.sf_nba.corvid.baby_transform"
+      },
+      "scripts": {
+        "scale": 1.25,
+        "animate": [
+          "cont_main",
+          "look_at_target",
+          {
+            "baby_transform": "q.is_baby"
+          }
+        ]
+      },
+      "sound_effects": {
+        "wing": "sf_nba.crow.wing",
+        "step": "sf_nba.step.smallbird",
+        "step_-6dB": "sf_nba.step.smallbird_-6dB",
+        "step_-12dB": "sf_nba.step.smallbird_-12dB"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "spawn_egg": {
+        "base_color": "#0F0E14",
+        "overlay_color": "#2D383A"
+      }
+    }
+  }
+}

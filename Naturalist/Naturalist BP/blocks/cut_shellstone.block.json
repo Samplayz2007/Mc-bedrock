@@ -1,0 +1,31 @@
+{
+	"format_version": "1.20.40",
+	"minecraft:block": {
+		"description": {
+			"identifier": "sf_nba:cut_shellstone",
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:geometry": {
+				"identifier": "geometry.sf_nba.cube_all"
+			},
+			"minecraft:loot": "loot_tables/sf/nba/blocks/cut_shellstone.loot.json",
+			"minecraft:destructible_by_mining": {
+				"seconds_to_destroy": 0.4
+			},
+			"minecraft:destructible_by_explosion": {
+				"explosion_resistance": 1.2
+			},
+			"minecraft:map_color": "#DCBE8C",
+			"minecraft:collision_box": true,
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "sf_nba.cut_shellstone",
+					"render_method": "opaque"
+				}
+			}
+		}
+	}
+}

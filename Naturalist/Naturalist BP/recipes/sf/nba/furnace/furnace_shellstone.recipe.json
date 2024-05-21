@@ -1,0 +1,16 @@
+{
+    "format_version": "1.20.10",
+    "minecraft:recipe_furnace": {
+      "description": {
+        "identifier": "sf_nba:furnace_shellstone"
+      },
+      "unlock": [
+        {
+          "item": "sf_nba:shellstone"
+        }
+      ],
+      "tags": ["furnace"],
+      "input": "sf_nba:shellstone",
+      "output": "sf_nba:smooth_shellstone"
+    }
+  }

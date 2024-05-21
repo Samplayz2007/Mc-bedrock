@@ -1,0 +1,341 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.sf_nba.coyote",
+        "texture_width": 64,
+        "texture_height": 64,
+        "visible_bounds_width": 3,
+        "visible_bounds_height": 2.5,
+        "visible_bounds_offset": [
+          0,
+          0.75,
+          0
+        ]
+      },
+      "bones": [
+        {
+          "name": "root",
+          "pivot": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "pivot": [
+            0,
+            8,
+            0.5
+          ]
+        },
+        {
+          "name": "rightFrontLeg",
+          "parent": "body",
+          "pivot": [
+            -1.5,
+            5,
+            -3
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -2.5,
+                0,
+                -4
+              ],
+              "size": [
+                2,
+                6,
+                2
+              ],
+              "inflate": -0.01,
+              "uv": [
+                5,
+                17
+              ],
+              "mirror": true
+            }
+          ]
+        },
+        {
+          "name": "leftFrontLeg",
+          "parent": "body",
+          "pivot": [
+            1.5,
+            5,
+            -3
+          ],
+          "cubes": [
+            {
+              "origin": [
+                0.5,
+                0,
+                -4
+              ],
+              "size": [
+                2,
+                6,
+                2
+              ],
+              "inflate": -0.01,
+              "uv": [
+                5,
+                17
+              ]
+            }
+          ]
+        },
+        {
+          "name": "rightBackLeg",
+          "parent": "body",
+          "pivot": [
+            -1.5,
+            5,
+            4.5
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -2.5,
+                0,
+                3.5
+              ],
+              "size": [
+                2,
+                6,
+                2
+              ],
+              "inflate": -0.01,
+              "uv": [
+                5,
+                17
+              ],
+              "mirror": true
+            }
+          ]
+        },
+        {
+          "name": "leftBackLeg",
+          "parent": "body",
+          "pivot": [
+            1.5,
+            5,
+            4.5
+          ],
+          "cubes": [
+            {
+              "origin": [
+                0.5,
+                0,
+                3.5
+              ],
+              "size": [
+                2,
+                6,
+                2
+              ],
+              "inflate": -0.01,
+              "uv": [
+                5,
+                17
+              ]
+            }
+          ]
+        },
+        {
+          "name": "torso",
+          "parent": "body",
+          "pivot": [
+            0,
+            8,
+            0.5
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -2.5,
+                5,
+                -5
+              ],
+              "size": [
+                5,
+                6,
+                11
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "torso",
+          "pivot": [
+            0,
+            9.25,
+            6
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -1,
+                8.5,
+                6
+              ],
+              "size": [
+                2,
+                2,
+                8
+              ],
+              "pivot": [
+                0,
+                10.5,
+                6
+              ],
+              "rotation": [
+                -45,
+                0,
+                0
+              ],
+              "uv": [
+                12,
+                22
+              ]
+            }
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "torso",
+          "pivot": [
+            0,
+            9,
+            -4
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -1.5,
+                7,
+                -11
+              ],
+              "size": [
+                3,
+                2,
+                3
+              ],
+              "uv": [
+                10,
+                25
+              ]
+            },
+            {
+              "origin": [
+                -3,
+                12,
+                -5
+              ],
+              "size": [
+                2,
+                2,
+                1
+              ],
+              "uv": [
+                13,
+                22
+              ]
+            },
+            {
+              "origin": [
+                1,
+                12,
+                -5
+              ],
+              "size": [
+                2,
+                2,
+                1
+              ],
+              "uv": [
+                13,
+                22
+              ],
+              "mirror": true
+            },
+            {
+              "origin": [
+                -5,
+                7,
+                -7
+              ],
+              "size": [
+                2,
+                5,
+                0
+              ],
+              "uv": [
+                0,
+                17
+              ],
+              "mirror": true
+            },
+            {
+              "origin": [
+                3,
+                7,
+                -7
+              ],
+              "size": [
+                2,
+                5,
+                0
+              ],
+              "uv": [
+                0,
+                17
+              ]
+            },
+            {
+              "origin": [
+                -3,
+                7,
+                -8
+              ],
+              "size": [
+                6,
+                5,
+                4
+              ],
+              "uv": [
+                28,
+                13
+              ]
+            }
+          ],
+          "locators": {
+            "locator": [
+              0,
+              9,
+              -4
+            ]
+          }
+        },
+        {
+          "name": "rightItem",
+          "parent": "head",
+          "pivot": [
+            -0.75,
+            8,
+            -10
+          ]
+        }
+      ]
+    }
+  ]
+}

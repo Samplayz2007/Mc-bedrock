@@ -1,0 +1,117 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.monkey.main": {
+      "states": {
+        "default": {
+          "animations": [
+            "idle"
+          ],
+          "transitions": [
+            {
+              "walk": "q.modified_move_speed > 0.05"
+            },
+            {
+              "idle_event": "math.random_integer(0, 2000) == 0 && !q.is_moving"
+            },
+            {
+              "climb": "q.is_wall_climbing"
+            },
+            {
+              "attack": "v.attack_time > 0"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "idle_event": {
+          "animations": [
+            "idle_event"
+          ],
+          "transitions": [
+            {
+              "default": "query.all_animations_finished"
+            },
+            {
+              "climb": "q.is_wall_climbing"
+            },
+            {
+              "attack": "v.attack_time > 0"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "walk": {
+          "animations": [
+            "walk"
+          ],
+          "transitions": [
+            {
+              "default": "q.modified_move_speed < 0.05"
+            },
+            {
+              "run": "q.has_target"
+            },
+            {
+              "climb": "q.is_wall_climbing"
+            },
+            {
+              "attack": "v.attack_time > 0"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "run": {
+          "animations": [
+            "run"
+          ],
+          "transitions": [
+            {
+              "default": "q.modified_move_speed < 0.05"
+            },
+            {
+              "walk": "!q.has_target"
+            },
+            {
+              "climb": "q.is_wall_climbing"
+            },
+            {
+              "attack": "v.attack_time > 0"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "climb": {
+          "animations": [
+            "climb"
+          ],
+          "transitions": [
+            {
+              "default": "!q.is_wall_climbing"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "attack": {
+          "animations": [
+            "attack"
+          ],
+          "transitions": [
+            {
+              "default": "!v.attack_time && q.modified_move_speed < 0.05"
+            },
+            {
+              "climb": "!v.attack_time && q.is_wall_climbing"
+            },
+            {
+              "walk": "!v.attack_time && !q.has_target"
+            },
+            {
+              "run": "!v.attack_time && q.has_target"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}

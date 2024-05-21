@@ -1,0 +1,23 @@
+{
+  "format_version": "1.20.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "sf_nba:clouded_yellow",
+      "menu_category": {
+        "category": "items",
+        "group": "naturalist"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "texture": "sf_nba.clouded_yellow"
+      },
+      "minecraft:display_name": {
+        "value": "item.sf_nba:clouded_yellow.name"
+      },
+      "minecraft:can_destroy_in_creative": {
+        "value": true
+      }
+    }
+  }
+}

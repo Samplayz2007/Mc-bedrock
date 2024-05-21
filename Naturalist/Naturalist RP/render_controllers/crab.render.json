@@ -1,0 +1,27 @@
+{
+  "format_version": "1.20.0",
+  "render_controllers": {
+    "controller.render.sf_nba.crab": {
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "arrays": {
+        "textures": {
+          "Array.variant": [
+            "Texture.default",
+            "Texture.brown",
+            "Texture.orange",
+            "Texture.red",
+            "Texture.yellow"
+          ]
+        }
+      },
+      "textures": [
+        "Array.variant[q.property('sf_nba:variant')]"
+      ]
+    }
+  }
+}

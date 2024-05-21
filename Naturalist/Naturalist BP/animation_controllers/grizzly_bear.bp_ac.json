@@ -1,0 +1,47 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.grizzly_bear.eat": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "can_use": "q.property('sf_nba:is_sitting')"
+            }
+          ]
+        },
+        "can_use": {
+          "transitions": [
+            {
+              "default": "!q.property('sf_nba:is_sitting')"
+            },
+            {
+              "configure_eating": "math.random_integer(1, 80) == 1"
+            }
+          ]
+        },
+        "configure_eating": {
+          "on_entry": [
+            "@s sf_nba:configure_eating"
+          ],
+          "transitions": [
+            {
+              "eat": "1.0"
+            }
+          ]
+        },
+        "eat": {
+          "on_entry": [
+            "/scriptevent sf_nba:bear_eating"
+          ],
+          "transitions": [
+            {
+              "default": "!q.property('sf_nba:is_sitting')"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

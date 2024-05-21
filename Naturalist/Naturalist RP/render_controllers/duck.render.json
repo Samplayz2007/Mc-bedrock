@@ -1,0 +1,24 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.sf_nba.duck": {
+      "arrays": {
+        "textures": {
+          "array.skins": [
+            "texture.duck",
+            "texture.queso"
+          ]
+        }
+      },
+      "geometry": "geometry.default",
+      "materials": [
+        {
+          "*": "material.default"
+        }
+      ],
+      "textures": [
+        "q.is_baby ? texture.baby : Array.skins[q.variant]"
+      ]
+    }
+  }
+}

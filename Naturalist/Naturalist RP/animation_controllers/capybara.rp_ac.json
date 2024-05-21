@@ -1,0 +1,64 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.capybara.main": {
+      "states": {
+        "default": {
+          "animations": [
+            "idle"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "walk": "q.modified_move_speed > 0.05 && !q.is_in_water"
+            },
+            {
+              "swim": "q.modified_move_speed > 0.05 && q.is_in_water"
+            },
+            {
+              "sleeping": "q.is_sleeping"
+            }
+          ]
+        },
+        "walk": {
+          "animations": [
+            "walk"
+          ],
+          "transitions": [
+            {
+              "default": "q.modified_move_speed < 0.05 || q.is_in_water"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "swim": {
+          "animations": [
+            "swim"
+          ],
+          "transitions": [
+            {
+              "default": "q.modified_move_speed < 0.05 || !q.is_in_water"
+            }
+          ],
+          "blend_transition": 0.5
+        },
+        "sleeping": {
+          "animations": [
+            {
+              "sleep": "q.property('sf_nba:sleep')"
+            },
+            {
+              "sleep2": "!q.property('sf_nba:sleep')"
+            }
+          ],
+          "transitions": [
+            {
+              "default": "!q.is_sleeping"
+            }
+          ],
+          "blend_transition": 0.5
+        }
+      }
+    }
+  }
+}

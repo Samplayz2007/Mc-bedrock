@@ -1,0 +1,101 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sf_nba.deer.move": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            "idle",
+            "look_at_target"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "run": "v.is_sprinting"
+            },
+            {
+              "walk": "v.is_moving"
+            },
+            {
+              "eat": "q.is_grazing"
+            }
+          ]
+        },
+        "walk": {
+          "animations": [
+            "walk",
+            "look_at_target"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "!v.is_moving"
+            },
+            {
+              "run": "v.is_sprinting"
+            },
+            {
+              "eat": "q.is_grazing"
+            }
+          ]
+        },
+        "run": {
+          "animations": [
+            "run",
+            "look_at_target"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "!v.is_moving"
+            },
+            {
+              "walk": "!v.is_sprinting"
+            },
+            {
+              "eat": "q.is_grazing"
+            }
+          ]
+        },
+        "eat": {
+          "animations": [
+            "eat"
+          ],
+          "blend_transition": 0.5,
+          "transitions": [
+            {
+              "default": "q.all_animations_finished"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sf_nba.deer.ambient": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "on_entry": [
+            "v.next_flick = math.random_integer(0, 50);",
+            "v.last_flick = q.life_time;"
+          ],
+          "transitions": [
+            {
+              "ear_flick": "q.life_time >= ((v.next_flick ?? 0) + (v.last_flick ?? 0))"
+            }
+          ]
+        },
+        "ear_flick": {
+          "animations": [
+            "ear_flick"
+          ],
+          "transitions": [
+            {
+              "default": "q.all_animations_finished"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sf_nba:firefly",
+      "materials": {
+        "default": "entity_emissive_alpha"
+      },
+      "textures": {
+        "default": "textures/sf/nba/entity/firefly"
+      },
+      "geometry": {
+        "default": "geometry.sf_nba.firefly"
+      },
+      "animations": {
+        "fly": "animation.sf_nba.firefly.fly",
+        "hide": "controller.animation.sf_nba.firefly.hide"
+      },
+      "scripts": {
+        "initialize": [
+          "v.glow_ticks = 0;"
+        ],
+        "pre_animation": [
+          "v.glow_ticks = v.glow_ticks > 0 ? v.glow_ticks - 1 : q.property('sf_nba:can_glow') && math.random(0.0, 0.99) <= 0.01 ? 40 + math.random_integer(0, 19);"
+        ],
+        "animate": [
+          "fly",
+          "hide"
+        ]
+      },
+      "particle_effects": {
+        "hide": "sf_nba:firefly_tallgrass_hide",
+        "perish": "sf_nba:firefly_perish"
+      },
+      "render_controllers": [
+        "controller.render.sf_nba.firefly"
+      ],
+      "spawn_egg": {
+        "base_color": "#A13F00",
+        "overlay_color": "#FFCE00"
+      },
+      "sound_effects": {
+        "fly": "sf_nba.beetle.fly"
+      }
+    }
+  }
+}
